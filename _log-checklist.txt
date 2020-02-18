@@ -26,6 +26,7 @@ TUESDAY 2/18
 [x] Create react front end (npm create-react-app)
 [x] Create test front end test components
 [x] Install redux dependencies (redux, react-redux, redux-devtools (--save-dev), & redux-thunk)
+[x] Connect test components (without thunk)
 [ ] Get fetch requests working without Foreman (using two terminal windows)
 [ ] Link front and back ends (see blog post?)
 [ ] Create basic component for fetch test
