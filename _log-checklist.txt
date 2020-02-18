@@ -12,6 +12,7 @@ MONDAY 2/17
 [x] Complete gemfile
 [x] Create models for fetch tests.
 [x] Create basic component for fetch test
+>>> FATAL ERROR
 
 TUESDAY 2/18
 [x] APPLICATION REBOOT
@@ -23,7 +24,8 @@ TUESDAY 2/18
 [x] Complete gemfile
 [x] Create models for fetch tests.
 [x] Create react front end (npm create-react-app)
-[ ] Create test front end test components
+[x] Create test front end test components
+[x] Install redux dependencies (redux, react-redux, redux-devtools (--save-dev), & redux-thunk)
 [ ] Get fetch requests working without Foreman (using two terminal windows)
 [ ] Link front and back ends (see blog post?)
 [ ] Create basic component for fetch test
