@@ -22,7 +22,9 @@ TUESDAY 2/18
 [x] Reset Plan DB structure
 [x] Complete gemfile
 [x] Create models for fetch tests.
-[ ] Create react front end (npm create-react-app)
+[x] Create react front end (npm create-react-app)
+[ ] Create test front end test components
+[ ] Get fetch requests working without Foreman (using two terminal windows)
 [ ] Link front and back ends (see blog post?)
 [ ] Create basic component for fetch test
 [ ] Finish creating all models / associated tables (DB Setup)
