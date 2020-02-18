@@ -1,0 +1,52 @@
+PAGES
+
+SCHEDULING
+    - Day View
+        - Non-timed Items - ALL
+        - Timed Items - ALL
+        - Associated Journal Entry (link?)
+    - Week View
+        - Non-timed Items - ALL
+        - Timed Items - ALL
+        - Goals
+    - Month View
+        - Non-timed Items - ONLY
+            - Deadlines
+            - All Day Events / Holidays
+            - Birthdays
+            - Trips
+        - Timed Items - ALL, but limited info.
+        - Broad to do list (Like, to do at some point)
+        - Goals
+
+    FOR SCHEDULING PAGES:
+    - Non-timed Items
+        - Tasks
+        - Deadlines
+        - All Day Events / Holidays
+        - Birthdays
+        - Trips
+    - Timed Items
+        - Appointments
+        - Anything with a specific time.
+    - Goals
+        - Non-time specific, not to do based, just like things to keep in mind, or habit goals. LIST format.
+
+
+TRACKERS
+    - Habits
+    - Mood
+    - Sleep
+    - Custom? ON HOLD
+
+
+LISTS (Create your own, but some examples)
+    - Movies to watch
+    - Bands to check out
+    - Bucket list
+
+
+JOURNAL
+    - Associated with day.
+
+

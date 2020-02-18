@@ -1,0 +1,125 @@
+[x] YEAR:
+    Has Many MONTHS
+    Has Many WEEKS Through MONTHS
+    Has Many :goals, as :goalable POLYMORPHIC 
+    - id
+    - year
+    - leap (default: false)
+    - startDay
+
+[x] MONTH:
+    Has Many WEEKS
+    Has Many DAYS Through WEEKS
+    Has Many EVENTS Through DAYS
+    Has Many TRACKERS
+    Has Many :goals, as :goalable POLYMORPHIC
+    Belongs To YEAR
+    - id
+    - YEAR id
+    - name
+    - number
+    - numDays
+
+[ ] WEEK:
+    Has Many DAYS
+    Has Many EVENTS Through DAYS
+    Has Many :goals, as :goalable POLYMORPHIC
+    Belongs To MONTH
+    Belongs To YEAR Through MONTH
+    - id
+    - MONTH id
+    - start-date
+    - end-date
+
+[ ] DAY:
+    Has Many EVENTS
+    Has One JOURNAL
+    Has One TRACKABLE-DAY
+    Has Many :goals, as :goalable POLYMORPHIC
+    Belongs To WEEK
+    Belongs To MONTH Through WEEK
+    - id
+    - WEEK id
+    - date
+
+[ ] EVENTS:
+    Belongs To DAY
+    - id
+    - type: must be included in
+        - timed
+        - untimed
+    - subtype: must be included in
+        - UNTIMED: task
+        - UNTIMED: deadline
+        - UNTIMED: allDay
+        - UNTIMED: birthday
+        - UNTIMED: holiday
+        - TIMED: appointment
+    - date 
+    - start: (nil if untimed)
+    - end: (nil if untimed)
+
+[ ] GOALS:
+    Belongs To :goalable, polymorphic: true
+    - id
+    - goalable_id
+    - goalable_type
+    - content 
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+[ ] TRACKER:
+    Has Many TRACKABLES
+    Has Many TRACKABLE-DAYS Through TRACKABLES
+    Belongs To MONTH
+    - id
+    - MONTH id
+    - name
+    - month: must be included in [MONTHS]
+    - type: must be included in
+        - habit
+        - mood
+        - sleep
+
+[ ] TRACKABLE:
+    Belongs To TRACKER
+    Belongs To MONTH Through TRACKER
+    Has Many TRACKABLE-DAYS
+    - id
+    - TRACKER id
+    - name
+
+[ ] TRACKABLE-DAY:
+    Belongs To TRACKABLE
+    Belongs To TRACKER Through TRACKABLE-DAYS
+    Belongs To DAY
+    - id
+    - TRACKABLE id
+    - DAY id
+    - completed (default: false)
+    - color (nil if not mood)
+    - duration (nil if not sleep)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+[ ] LIST:
+    Has Many LIST-ITEMS
+    - id
+    - name
+    - checklist (default: false)
+
+[ ] LIST-ITEM:
+    Belongs To LIST
+    - id
+    - LIST id
+    - name
+    - completed (default: false)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+[ ] JOURNAL:
+    Belongs To DAY
+    - id
+    - DAY id
+    - content
