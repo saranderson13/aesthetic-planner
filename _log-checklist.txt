@@ -11,16 +11,19 @@ MONDAY 2/17
 [x] Link front and back ends (see blog post?)
 [x] Complete gemfile
 [x] Create models for fetch tests.
+[x] Create basic component for fetch test
+
+TUESDAY 2/18
+[x] APPLICATION REBOOT
+[x] Create repo
+[x] Create rails back end
+[x] Reset day log / checklist
+[x] Transfer Brainstorm / map out pages & navigation
+[x] Reset Plan DB structure
+[ ] Complete gemfile
+[ ] Create models for fetch tests.
+[ ] Create react front end
+[ ] Link front and back ends (see blog post?)
 [ ] Create basic component for fetch test
 [ ] Finish creating all models / associated tables (DB Setup)
 [ ] Create permanent seed data (years / weeks / days)
-
-TUESDAY 2/18
-[ ] Break down pages into components / diagram pages
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
-[ ] 
