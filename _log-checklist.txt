@@ -31,7 +31,9 @@ TUESDAY 2/18
 [x] Integrate Foreman (Can now start both servers with -foreman start -p 3000-)
 >>> BRANCH >> CORS Error; start dev on BACKEND & DB 
 >>> DO NOT TOUCH FRONT END UNTIL CORS ERROR IS RESOLVED.
-[ ] Finish creating all models / associated tables
+[x] Add remaining scheduling resources
+[ ] Add Goal resource (polymorphic)
+[ ] Add Tracker / List / Journal resources
 [ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)
 

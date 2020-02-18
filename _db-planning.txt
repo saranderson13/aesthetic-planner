@@ -30,7 +30,7 @@
     - start-date
     - end-date
 
-[ ] DAY:
+[x] DAY:
     Has Many EVENTS
     Has One JOURNAL
     Has One TRACKABLE-DAY
@@ -40,7 +40,7 @@
     - WEEK id
     - date
 
-[ ] EVENTS:
+[x] EVENTS:
     Belongs To DAY
     - id
     - DAY id 
@@ -56,9 +56,11 @@
         - TIMED: appointment
     - start: (nil if untimed)
     - end: (nil if untimed)
-    ** MORE COLUMNS WILL BE ADDED
+[ ]   ** MORE COLUMNS WILL BE ADDED
         - name
         - description
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 [ ] GOALS:
     Belongs To :goalable, polymorphic: true
@@ -66,7 +68,6 @@
     - goalable_id
     - goalable_type
     - content 
-
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
