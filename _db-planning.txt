@@ -1,4 +1,4 @@
-[ ] YEAR:
+[x] YEAR:
     Has Many MONTHS
     Has Many WEEKS Through MONTHS
     Has Many :goals, as :goalable POLYMORPHIC 
@@ -7,7 +7,7 @@
     - leap (default: false)
     - startDay
 
-[ ] MONTH:
+[x] MONTH:
     Has Many WEEKS
     Has Many DAYS Through WEEKS
     Has Many EVENTS Through DAYS
