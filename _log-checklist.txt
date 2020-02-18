@@ -20,7 +20,7 @@ TUESDAY 2/18
 [x] Reset day log / checklist
 [x] Transfer Brainstorm / map out pages & navigation
 [x] Reset Plan DB structure
-[ ] Complete gemfile
+[x] Complete gemfile
 [x] Create models for fetch tests.
 [ ] Create react front end
 [ ] Link front and back ends (see blog post?)
