@@ -43,7 +43,7 @@ MERGE >> Any BE changes.
 [x] Add Goal resource (polymorphic)
 [x] Test dependent destroy with goals
 >>> DOES NOT WORK; Goals need to be cleared separately in resets
-[ ] Add Tracker / List / Journal resources
+[x] Add Tracker / List / Journal resources
 [ ] Add basic routes/controllers for new resources
 [ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)

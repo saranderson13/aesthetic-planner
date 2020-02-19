@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :journals
+  resources :list_items
+  resources :lists
   resources :tracker_days
   resources :tracker_lines
   resources :trackers

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_192454) do
+ActiveRecord::Schema.define(version: 2020_02_19_193735) do
 
   create_table "days", force: :cascade do |t|
     t.integer "week_id", null: false
@@ -39,6 +39,30 @@ ActiveRecord::Schema.define(version: 2020_02_19_192454) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["goalable_type", "goalable_id"], name: "index_goals_on_goalable_type_and_goalable_id"
+  end
+
+  create_table "journals", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_journals_on_day_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.integer "list_id", null: false
+    t.string "name"
+    t.boolean "completed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_list_items_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.boolean "checklist", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "months", force: :cascade do |t|
@@ -98,6 +122,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_192454) do
 
   add_foreign_key "days", "weeks"
   add_foreign_key "events", "days"
+  add_foreign_key "journals", "days"
+  add_foreign_key "list_items", "lists"
   add_foreign_key "months", "years"
   add_foreign_key "tracker_days", "days"
   add_foreign_key "tracker_days", "tracker_lines"

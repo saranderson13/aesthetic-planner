@@ -100,13 +100,13 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-[ ] LIST:
+[x] LIST:
     Has Many LIST-ITEMS
     - id
     - name
     - checklist (default: false)
 
-[ ] LIST-ITEM:
+[x] LIST-ITEM:
     Belongs To LIST
     - id
     - LIST id
@@ -115,7 +115,7 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-[ ] JOURNAL:
+[x] JOURNAL:
     Belongs To DAY
     - id
     - DAY id
