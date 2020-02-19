@@ -32,12 +32,14 @@ TUESDAY 2/18
 >>> BRANCH >> CORS Error; start dev on BACKEND & DB 
 >>> DO NOT TOUCH FRONT END UNTIL CORS ERROR IS RESOLVED.
 [x] Add remaining scheduling resources
-[ ] Add Goal resource (polymorphic)
-[ ] Add Tracker / List / Journal resources
-[ ] Add validations
-[ ] Create permanent seed data (years / weeks / days)
 
 
 WEDNESDAY 2/19
 MERGE >> Any BE changes.
-[ ] Get fetch requests working 
+[x] Get fetch requests working 
+[x] Merge BE Dev branch with master.
+[ ] Add new columns to Event resource
+[ ] Add Goal resource (polymorphic)
+[ ] Add Tracker / List / Journal resources
+[ ] Add validations
+[ ] Create permanent seed data (years / weeks / days)
