@@ -13,6 +13,7 @@ const testReducer = (
                 }
 
             case 'ADD_TEST_DATA':
+                // debugger;
                 return {
                     ...state,
                     months: action.months,
