@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_215926) do
+ActiveRecord::Schema.define(version: 2020_02_19_183140) do
 
   create_table "days", force: :cascade do |t|
     t.integer "week_id", null: false
@@ -28,7 +28,17 @@ ActiveRecord::Schema.define(version: 2020_02_18_215926) do
     t.time "end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["day_id"], name: "index_events_on_day_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "goalable_type"
+    t.integer "goalable_id"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["goalable_type", "goalable_id"], name: "index_goals_on_goalable_type_and_goalable_id"
   end
 
   create_table "months", force: :cascade do |t|

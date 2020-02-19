@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   resources :events, only: [:index, :show]
   resources :days, only: [:index, :show]
   resources :weeks, only: [:index, :show]

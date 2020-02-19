@@ -38,7 +38,8 @@ WEDNESDAY 2/19
 MERGE >> Any BE changes.
 [x] Get fetch requests working 
 [x] Merge BE Dev branch with master.
-[ ] Add new columns to Event resource
+[x] Add new columns to Event resource
+[x] Fix dependent destroys for scheduling resources
 [ ] Add Goal resource (polymorphic)
 [ ] Add Tracker / List / Journal resources
 [ ] Add validations

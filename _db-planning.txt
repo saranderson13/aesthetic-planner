@@ -56,13 +56,12 @@
         - TIMED: appointment
     - start: (nil if untimed)
     - end: (nil if untimed)
-[ ]   ** MORE COLUMNS WILL BE ADDED
+[x]   ** ADD NAME COLUMN
         - name
-        - description
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-[ ] GOALS:
+[x] GOALS:
     Belongs To :goalable, polymorphic: true
     - id
     - goalable_id

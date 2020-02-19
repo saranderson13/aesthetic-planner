@@ -6,6 +6,11 @@ import { fetchTest } from './actions/testAction'
 class App extends Component {
 
   componentDidMount() {
+    // STATIC TEST
+    // let months = ["January", "February", "March"]
+    // this.props.fetchTest(months)
+
+    // DYNAMIC TEST
     this.props.fetchTest()
   }
 
