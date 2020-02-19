@@ -20,31 +20,30 @@
     - number
     - numDays
 
-[ ] WEEK:
+[x] WEEK:
     Has Many DAYS
     Has Many EVENTS Through DAYS
     Has Many :goals, as :goalable POLYMORPHIC
     Belongs To MONTH
-    Belongs To YEAR Through MONTH
     - id
     - MONTH id
     - start-date
     - end-date
 
-[ ] DAY:
+[x] DAY:
     Has Many EVENTS
     Has One JOURNAL
     Has One TRACKABLE-DAY
     Has Many :goals, as :goalable POLYMORPHIC
     Belongs To WEEK
-    Belongs To MONTH Through WEEK
     - id
     - WEEK id
     - date
 
-[ ] EVENTS:
+[x] EVENTS:
     Belongs To DAY
     - id
+    - DAY id 
     - type: must be included in
         - timed
         - untimed
@@ -55,9 +54,13 @@
         - UNTIMED: birthday
         - UNTIMED: holiday
         - TIMED: appointment
-    - date 
     - start: (nil if untimed)
     - end: (nil if untimed)
+[ ]   ** MORE COLUMNS WILL BE ADDED
+        - name
+        - description
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 [ ] GOALS:
     Belongs To :goalable, polymorphic: true
@@ -65,7 +68,6 @@
     - goalable_id
     - goalable_type
     - content 
-
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -84,7 +86,6 @@
 
 [ ] TRACKABLE:
     Belongs To TRACKER
-    Belongs To MONTH Through TRACKER
     Has Many TRACKABLE-DAYS
     - id
     - TRACKER id
@@ -92,7 +93,6 @@
 
 [ ] TRACKABLE-DAY:
     Belongs To TRACKABLE
-    Belongs To TRACKER Through TRACKABLE-DAYS
     Belongs To DAY
     - id
     - TRACKABLE id

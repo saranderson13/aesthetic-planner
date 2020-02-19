@@ -14,6 +14,7 @@ MONDAY 2/17
 [x] Create basic component for fetch test
 >>> FATAL ERROR
 
+
 TUESDAY 2/18
 [x] APPLICATION REBOOT
 [x] Create repo
@@ -26,9 +27,17 @@ TUESDAY 2/18
 [x] Create react front end (npm create-react-app)
 [x] Create test front end test components
 [x] Install redux dependencies (redux, react-redux, redux-devtools (--save-dev), & redux-thunk)
-[x] Connect test components (without thunk)
-[ ] Get fetch requests working without Foreman (using two terminal windows)
-[ ] Link front and back ends (see blog post?)
-[ ] Create basic component for fetch test
-[ ] Finish creating all models / associated tables (DB Setup)
+[x] Connect test components (without fetching)
+[x] Integrate Foreman (Can now start both servers with -foreman start -p 3000-)
+>>> BRANCH >> CORS Error; start dev on BACKEND & DB 
+>>> DO NOT TOUCH FRONT END UNTIL CORS ERROR IS RESOLVED.
+[x] Add remaining scheduling resources
+[ ] Add Goal resource (polymorphic)
+[ ] Add Tracker / List / Journal resources
+[ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)
+
+
+WEDNESDAY 2/19
+MERGE >> Any BE changes.
+[ ] Get fetch requests working 

@@ -9,7 +9,9 @@ class YearsController < ApplicationController
 
     def show
         year = Year.find_by(id: params["id"])
-        render json: year.to_json()
+        render json: year.to_json(
+            include: :months
+        )
     end
 
 end

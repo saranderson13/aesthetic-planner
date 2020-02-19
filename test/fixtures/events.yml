@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: one
+  e_type: MyString
+  subtype: MyString
+  start: 2020-02-18 16:59:27
+  end: 2020-02-18 16:59:27
+
+two:
+  day: two
+  e_type: MyString
+  subtype: MyString
+  start: 2020-02-18 16:59:27
+  end: 2020-02-18 16:59:27
