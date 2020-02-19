@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tracker_days
+  resources :tracker_lines
+  resources :trackers
   resources :goals
   resources :events, only: [:index, :show]
   resources :days, only: [:index, :show]

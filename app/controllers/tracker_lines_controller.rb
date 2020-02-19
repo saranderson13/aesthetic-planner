@@ -1,0 +1,2 @@
+class TrackerLinesController < ApplicationController
+end

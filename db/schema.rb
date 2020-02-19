@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_183140) do
+ActiveRecord::Schema.define(version: 2020_02_19_192454) do
 
   create_table "days", force: :cascade do |t|
     t.integer "week_id", null: false
@@ -51,6 +51,34 @@ ActiveRecord::Schema.define(version: 2020_02_19_183140) do
     t.index ["year_id"], name: "index_months_on_year_id"
   end
 
+  create_table "tracker_days", force: :cascade do |t|
+    t.integer "tracker_line_id", null: false
+    t.integer "day_id", null: false
+    t.boolean "complete", default: false
+    t.string "color"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_tracker_days_on_day_id"
+    t.index ["tracker_line_id"], name: "index_tracker_days_on_tracker_line_id"
+  end
+
+  create_table "tracker_lines", force: :cascade do |t|
+    t.integer "tracker_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tracker_id"], name: "index_tracker_lines_on_tracker_id"
+  end
+
+  create_table "trackers", force: :cascade do |t|
+    t.integer "month_id", null: false
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["month_id"], name: "index_trackers_on_month_id"
+  end
+
   create_table "weeks", force: :cascade do |t|
     t.integer "month_id", null: false
     t.date "start_date"
@@ -71,5 +99,9 @@ ActiveRecord::Schema.define(version: 2020_02_19_183140) do
   add_foreign_key "days", "weeks"
   add_foreign_key "events", "days"
   add_foreign_key "months", "years"
+  add_foreign_key "tracker_days", "days"
+  add_foreign_key "tracker_days", "tracker_lines"
+  add_foreign_key "tracker_lines", "trackers"
+  add_foreign_key "trackers", "months"
   add_foreign_key "weeks", "months"
 end

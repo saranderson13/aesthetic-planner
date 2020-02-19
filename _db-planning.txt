@@ -70,31 +70,29 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-[ ] TRACKER:
-    Has Many TRACKABLES
-    Has Many TRACKABLE-DAYS Through TRACKABLES
+[x] TRACKER:
+    Has Many TRACKER-LINES
+    Has Many TRACKER-DAYS Through TRACKABLES
     Belongs To MONTH
     - id
     - MONTH id
-    - name
-    - month: must be included in [MONTHS]
     - type: must be included in
         - habit
         - mood
         - sleep
 
-[ ] TRACKABLE:
+[x] TRACKER-LINE:
     Belongs To TRACKER
-    Has Many TRACKABLE-DAYS
+    Has Many TRACKER-LINE-DAYS
     - id
     - TRACKER id
     - name
 
-[ ] TRACKABLE-DAY:
-    Belongs To TRACKABLE
+[x] TRACKER-DAY:
+    Belongs To TRACKER-LINE
     Belongs To DAY
     - id
-    - TRACKABLE id
+    - TRACKER-LINE id
     - DAY id
     - completed (default: false)
     - color (nil if not mood)
