@@ -6,6 +6,7 @@ class Week < ApplicationRecord
   belongs_to :month
 
   validates :month_id, :start_date, :end_date, presence: true
+  validates :start_date, uniqueness: true
   validate :validate_start_end_dates
 
 
@@ -41,15 +42,6 @@ class Week < ApplicationRecord
         errors.add(:end_date, "At least one day of the week must be within the assigned month.")
       end
     end
-
-    # validate that a week does not already exist with that start date
-    if(!!self.start_date && self.start_date.class == Date)
-      allWeeks = Week.all.map { |w| w.start_date }
-      if (allWeeks.include?(self.start_date))
-        errors.add(:start_date, "A week with that start date already exists.")
-      end
-    end
-
   end
 
 end
