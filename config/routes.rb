@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-  resources :journals
-  resources :list_items
-  resources :lists
-  resources :tracker_days
-  resources :tracker_lines
-  resources :trackers
-  resources :goals
-  resources :events, only: [:index, :show]
-  resources :days, only: [:index, :show]
-  resources :weeks, only: [:index, :show]
-  resources :months, only: [:index, :show]
+  
+  # :index, :show, :new, :create, :edit, :update, :destroy
   resources :years, only: [:index, :show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :months, only: [:index, :show]
+  resources :weeks, only: [:index, :show]
+  resources :days, only: [:index, :show]
+  
+  resources :events, except: [:new, :edit]
+  resources :goals, except: [:new, :edit]
+
+  resources :lists, except: [:new, :edit]
+  resources :list_items, only: [:create, :update, :destroy]
+
+  resources :trackers, only: [:index, :update]
+  resources :tracker_lines, only: [:create, :update, :destroy]
+  resources :tracker_days, only: [:update]
+
+  resources :journals, except: [:new, :edit]
+
 end

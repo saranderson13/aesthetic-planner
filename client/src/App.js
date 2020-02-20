@@ -11,6 +11,7 @@ class App extends Component {
     // this.props.fetchTest(months)
 
     // DYNAMIC TEST
+    debugger;
     this.props.fetchTest()
   }
 

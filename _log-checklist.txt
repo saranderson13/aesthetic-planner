@@ -44,6 +44,8 @@ MERGE >> Any BE changes.
 [x] Test dependent destroy with goals
 >>> DOES NOT WORK; Goals need to be cleared separately in resets
 [x] Add Tracker / List / Journal resources
-[ ] Add basic routes/controllers for new resources
+[x] Configure backend routes
+[x] All controller actions for routes (rough)
+[ ] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
 [ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)
