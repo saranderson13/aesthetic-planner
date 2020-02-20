@@ -32,19 +32,11 @@ class Month < ApplicationRecord
   validates :year_id, :name, :number, :numDays, presence: true
   validates :number, :numDays, numericality: { only_integer: true }
   validates :name, inclusion: { in: MONTHS.values }
-  validate :validate_year_exists, :validate_name_num_match, :validate_monthNum, :validate_monthNumDays
+  validate :validate_name_num_match, :validate_monthNum, :validate_monthNumDays
 
 
 
   private
-
-  def validate_year_exists
-
-    if (!!self.year_id && !Year.find_by(id: self.year_id))
-      errors.add(:year_id, "Year id is not valid.")
-    end
-
-  end
 
   def validate_name_num_match
     if (!!self.number && !!self.name)
