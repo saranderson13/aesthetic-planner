@@ -47,5 +47,7 @@ MERGE >> Any BE changes.
 [x] Configure backend routes
 [x] All controller actions for routes (rough)
 [x] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
+
+THURSDAY 2/20
 [ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)
