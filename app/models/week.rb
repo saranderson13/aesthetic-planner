@@ -18,8 +18,8 @@ class Week < ApplicationRecord
     errors.add(:end_date, "End date must be a date.") if (!!self.end_date && self.end_date.class != Date)
 
     # validate that start date is a Monday, and end date is a Sunday
-    errors.add(:start_date, "Start date must be a Monday.") if (!!self.start_date && self.start_date.class == Date && self.start_date.wday != 1)
-    errors.add(:end_date, "End date must be a Sunday.") if (!!self.end_date && self.end_date.class == Date && self.end_date.wday != 0)
+    errors.add(:start_date, "Start date must be a Monday.") if (!!self.start_date && self.start_date.class == Date && !self.start_date.monday?)
+    errors.add(:end_date, "End date must be a Sunday.") if (!!self.end_date && self.end_date.class == Date && !self.end_date.sunday?)
 
     # validations that require pre-checking of date existences and types
     if (!!self.start_date && self.start_date.class == Date && !!self.end_date && self.end_date.class == Date)
