@@ -46,6 +46,6 @@ MERGE >> Any BE changes.
 [x] Add Tracker / List / Journal resources
 [x] Configure backend routes
 [x] All controller actions for routes (rough)
-[ ] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
+[x] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
 [ ] Add validations
 [ ] Create permanent seed data (years / weeks / days)

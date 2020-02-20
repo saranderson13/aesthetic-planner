@@ -19,7 +19,10 @@ class YearsController < ApplicationController
     private
 
     def json_include
-        return { months: { include: :weeks } }
+        return [
+            :months,
+            :goals
+        ]
     end
 
 end

@@ -14,14 +14,18 @@ class EventsController < ApplicationController
 
     def create
         event = Event.create(event_params)
-        render json: event.day.to_json()
+        render json: event.day.to_json(
+            include: json_include()
+        )
     end
 
 
     def update
         event = Event.find_by(id: event_params["id"])
         event.update(event_params)
-        render json: event.day.to_json()
+        render json: event.day.to_json(
+            include: json_include()
+        )
     end
 
 
@@ -29,7 +33,9 @@ class EventsController < ApplicationController
         event = Event.find_by(id: event_params["id"])
         day = event.day
         event.delete
-        render json: day.to_json()
+        render json: day.to_json(
+            include: json_include()
+        )
     end
 
 
@@ -38,6 +44,16 @@ class EventsController < ApplicationController
 
     def event_params
         params.require(:event).permit(:id, :day_id, :kind, :subkind, :start, :end, :name)
+    end
+
+    # USED WHEN DAY IS RETURNED
+    def json_include()
+        return [
+            :events,
+            :goals,
+            :tracker_days,
+            :journal
+        ]
     end
 
 end

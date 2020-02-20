@@ -2,7 +2,9 @@ class TrackersController < ApplicationController
 
     def index 
         trackers = Tracker.all
-        render json: trackers.to_json()
+        render json: trackers.to_json(
+            include: json_include()
+        )
     end
 
 
@@ -10,7 +12,9 @@ class TrackersController < ApplicationController
         tracker = Tracker.find_by(id: tracker_params["id"])
         tracker.update(tracker_params)
         trackers = Tracker.all
-        render json: trackers.to_json()
+        render json: trackers.to_json(
+            include: json_include()
+        )
     end
 
 
@@ -18,6 +22,12 @@ class TrackersController < ApplicationController
 
     def tracker_params
         params.require(:tracker).permit(:id, :month_id, :kind)
+    end
+
+    def json_include
+        return {
+            tracker_lines: { include: :tracker_days }
+        }
     end
 
 end

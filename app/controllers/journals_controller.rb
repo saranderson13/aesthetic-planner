@@ -7,8 +7,8 @@ class JournalsController < ApplicationController
 
 
     def show
-        journal = Journal.find_by(id: params["id"])
-        render json: journal.to_json()
+        entry = Journal.find_by(id: params["id"])
+        render json: entry.to_json()
     end
 
     
@@ -29,7 +29,14 @@ class JournalsController < ApplicationController
         entry = Journal.find_by(id: journal_params["id"])
         day = entry.day
         entry.delete
-        render json: day.to_json()
+        render json: day.to_json(
+            include: [
+                :events,
+                :goals,
+                :tracker_days,
+                :journal
+            ]
+        )
     end
 
 
