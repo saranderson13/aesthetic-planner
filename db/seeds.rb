@@ -62,15 +62,15 @@ MONTHS = {
         numDays: 31
       }
   }  
-
-# Create 5 years.
-# Create all months for all years
-# Create all weeks for all months
-# Create all days for all weeks
-# Create 3 trackers for each month
-# Create 1 line for each tracker
-# Create appropriate number of day cells for each line
-
+  
+# [x] Create 5 years.
+# [x] Create all months for all years
+# [ ] Create all weeks for all months
+# [ ] Create all days for all weeks
+# [x] Create 3 trackers for each month
+# [x] Create 1 line for each tracker
+# [ ] Create appropriate number of day cells for each line
+  
 # NO seeded Events
 # NO seeded Goals
 # NO seeded Lists
@@ -96,4 +96,20 @@ year.each do |y|
         end
         y.save
     end
+end
+
+months = Month.all
+
+months.each do |mo|
+    h = Tracker.create(month_id: mo.id, kind: "habit")
+    TrackerLine.create(tracker: h, name: "Example Line")
+    # once days are created, loop to create a TrackerDay for each.
+
+    m = Tracker.create(month_id: mo.id, kind: "mood")
+    TrackerLine.create(tracker: m, name: "mood line")
+    # once days are created, loop to create a TrackerDay for each.
+
+    s = Tracker.create(month_id: mo.id, kind: "sleep")
+    TrackerLine.create(tracker: s, name: "sleep line")
+    # once days are created, loop to create a TrackerDay for each.
 end

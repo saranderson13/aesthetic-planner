@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_193735) do
+ActiveRecord::Schema.define(version: 2020_02_21_041937) do
 
   create_table "days", force: :cascade do |t|
     t.integer "week_id", null: false
@@ -104,12 +104,12 @@ ActiveRecord::Schema.define(version: 2020_02_19_193735) do
   end
 
   create_table "weeks", force: :cascade do |t|
-    t.integer "month_id", null: false
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["month_id"], name: "index_weeks_on_month_id"
+    t.integer "year_id"
+    t.index ["year_id"], name: "index_weeks_on_year_id"
   end
 
   create_table "years", force: :cascade do |t|
@@ -129,5 +129,4 @@ ActiveRecord::Schema.define(version: 2020_02_19_193735) do
   add_foreign_key "tracker_days", "tracker_lines"
   add_foreign_key "tracker_lines", "trackers"
   add_foreign_key "trackers", "months"
-  add_foreign_key "weeks", "months"
 end

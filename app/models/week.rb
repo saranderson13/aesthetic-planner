@@ -3,10 +3,10 @@ class Week < ApplicationRecord
   has_many :days, dependent: :destroy
   has_many :events, through: :days
   has_many :goals, as: :goalable
-  belongs_to :month
+  belongs_to :year
 
-  validates :month_id, :start_date, :end_date, presence: true
-  validates :start_date, uniqueness: true
+  validates :year_id, :start_date, :end_date, presence: true
+  validate :validate_start_date_unique_in_year, on: :create
   validate :validate_start_end_dates
 
 
@@ -26,21 +26,25 @@ class Week < ApplicationRecord
 
       # validate that start date comes before end date
       if(self.end_date <= self.start_date)
-        errors.add(:start_date, "Start date must be before end date.") 
-        errors.add(:end_date, "End date must be after start date.")
+        errors.add(:base, "Start date must be before end date.") 
       end
 
       # validate that the dates are 7 days apart
       if ((self.end_date - self.start_date).to_i != 6)
-        errors.add(:start_date, "Week must be 7 days long.")
-        errors.add(:end_date, "Week must be 7 days long.")
+        errors.add(:base, "Week must be 7 days long.")
       end
 
-      # validate that at least 1 day of the week is within the month
-      if(self.start_date.month == self.month_id || self.end_date.month == self.month_id)
-        errors.add(:start_date, "At least one day of the week must be within the assigned month.")
-        errors.add(:end_date, "At least one day of the week must be within the assigned month.")
+      # validate that at least 1 day of the week is within the year
+      if(self.start_date.year != self.year.year && self.end_date.year != self.year.year)
+        errors.add(:base, "At least one day of the week must be within the assigned year.")
       end
+    end
+  end
+
+  def validate_start_date_unique_in_year
+    starts = self.year.weeks.map { |m| m.start_date }
+    if (starts.include?(self.start_date))
+      errors.add(:start_date, "Week already exists within the assigned year.")
     end
   end
 

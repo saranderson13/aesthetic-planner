@@ -50,4 +50,5 @@ MERGE >> Any BE changes.
 
 THURSDAY 2/20
 [x] Add validations
+[ ] Change DB so that weeks belong to year, not month
 [ ] Create permanent seed data (years / weeks / days)
