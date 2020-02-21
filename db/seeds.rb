@@ -4,7 +4,7 @@
 # [x] Create all days for all weeks
 # [x] Create 3 trackers for each month
 # [x] Create 1 line for each tracker
-# [ ] Create appropriate number of day cells for each line
+# [x] Create appropriate number of day cells for each line
   
 # NO seeded Events
 # NO seeded Goals
@@ -17,58 +17,22 @@ Tracker.destroy_all
 List.destroy_all
 Year.destroy_all
 
+
 MONTHS = {
-    1 => {
-        name: "January",
-        numDays: 31
-      },
-    2 => {
-        name: "February",
-        numDays: "dependent"
-      },
-    3 => {
-        name: "March",
-        numDays: 31
-      },
-    4 => {
-        name: "April",
-        numDays: 30
-      },
-    5 => {
-        name: "May",
-        numDays: 31
-      }, 
-    6 => {
-        name: "June",
-        numDays: 30
-      },
-    7 => {
-        name: "July",
-        numDays: 31
-      },
-    8 => {
-        name: "August",
-        numDays: 31
-      },
-    9 => {
-        name: "September",
-        numDays: 30
-      },
-    10 => {
-        name: "October",
-        numDays: 31
-      },
-    11 => {
-        name: "November",
-        numDays: 30
-      },
-    12 => {
-        name: "December",
-        numDays: 31
-      }
+    1 => { name: "January", numDays: 31 },
+    2 => { name: "February", numDays: "dependent" },
+    3 => { name: "March", numDays: 31 },
+    4 => { name: "April", numDays: 30 },
+    5 => { name: "May", numDays: 31 }, 
+    6 => { name: "June", numDays: 30 },
+    7 => { name: "July", numDays: 31 },
+    8 => { name: "August", numDays: 31 },
+    9 => { name: "September", numDays: 30 },
+    10 => { name: "October", numDays: 31 },
+    11 => { name: "November", numDays: 30 },
+    12 => { name: "December", numDays: 31 }
   }  
   
-
 
 # CREATE YEARS
 year = Year.create([
@@ -78,6 +42,7 @@ year = Year.create([
     { year: 2023, leap: false, startDay: 0 },
     { year: 2024, leap: true, startDay: 1 },
 ])
+
 
 # CREATE MONTHS & WEEKS
 year.each do |y|
@@ -106,6 +71,7 @@ year.each do |y|
 
 end
 
+
 # CREATE DAYS
 weeks = Week.all
 weeks.each do |w|
@@ -117,6 +83,7 @@ weeks.each do |w|
     end
 
 end
+
 
 # CREATE TRACKERS & ASSOCIATED RESOURCES
 months = Month.all
