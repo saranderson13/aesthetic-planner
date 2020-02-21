@@ -66,7 +66,7 @@ MONTHS = {
 # [x] Create 5 years.
 # [x] Create all months for all years
 # [x] Create all weeks for all months
-# [ ] Create all days for all weeks
+# [x] Create all days for all weeks
 # [x] Create 3 trackers for each month
 # [x] Create 1 line for each tracker
 # [ ] Create appropriate number of day cells for each line
@@ -86,8 +86,8 @@ year = Year.create([
 ])
 
 year.each do |y|
+
     #  Build all months
-    # binding.pry
     MONTHS.each do |num, info|
         if num != 2
             y.months.build(name: info[:name], number: num, numDays: info[:numDays])
@@ -108,10 +108,20 @@ year.each do |y|
         Week.create(year_id: y.id, start_date: monday, end_date: monday + 6)
         n += 1
     end
-    # binding.pry
+
 end
 
 # CREATE DAYS
+weeks = Week.all
+weeks.each do |w|
+
+    n = w.start_date
+    while n <= w.end_date
+        Day.create(week: w, date: n)
+        n += 1
+    end
+
+end
 
 months = Month.all
 months.each do |mo|

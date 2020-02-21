@@ -51,7 +51,8 @@ MERGE >> Any BE changes.
 
 THURSDAY 2/20
 [x] Add ALL validations
-[x] Create year + month seed data
+[x] Create year seed data
+[x] Create month seed data
 [x] Create tracker + tracker line seed data (not tracker days yet)
 [x] Change DB so that weeks belong to year, not month
 [x] Methods to give months access to days and events
@@ -59,5 +60,6 @@ THURSDAY 2/20
 
 FRIDAY 2/21
 [x] Create week seed data
-[ ] Create day + tracker_day seed data
+[x] Create day seed data
+[ ] Create tracker_day seed data
 [ ] Test #get_days and #get_events

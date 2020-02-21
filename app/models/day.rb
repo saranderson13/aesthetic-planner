@@ -24,7 +24,7 @@ class Day < ApplicationRecord
       end
       
       # validate day is not duplicated within week
-      dates_in_week = week.map { |d| d.date }
+      dates_in_week = week.days.map { |d| d.date }
       if dates_in_week.include?(self.date)
         errors.add(:date, "Date must be unique within the assigned week")
       end
