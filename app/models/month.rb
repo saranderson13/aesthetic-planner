@@ -33,11 +33,13 @@ class Month < ApplicationRecord
   validate :validate_monthNum, on: :create
   
   def get_days
-    self.year.days.select { |d| d.date.month == self.number }
+    self.year.days.select do |d| 
+      d.date.month == self.number && d.date.year == self.year.year 
+    end
   end
 
   def get_events
-    self.get_days.map { |d| d.events }.flatten
+    self.get_days().map { |d| d.events }.flatten
   end
 
 

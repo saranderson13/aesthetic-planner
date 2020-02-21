@@ -1,10 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# [x] Create 5 years.
+# [x] Create all months for all years
+# [x] Create all weeks for all months
+# [x] Create all days for all weeks
+# [x] Create 3 trackers for each month
+# [x] Create 1 line for each tracker
+# [ ] Create appropriate number of day cells for each line
+  
+# NO seeded Events
+# NO seeded Goals
+# NO seeded Lists
+# NO seeded Journals
 
 Event.destroy_all
 Goal.destroy_all
@@ -63,20 +68,9 @@ MONTHS = {
       }
   }  
   
-# [x] Create 5 years.
-# [x] Create all months for all years
-# [x] Create all weeks for all months
-# [x] Create all days for all weeks
-# [x] Create 3 trackers for each month
-# [x] Create 1 line for each tracker
-# [ ] Create appropriate number of day cells for each line
-  
-# NO seeded Events
-# NO seeded Goals
-# NO seeded Lists
-# NO seeded Journals
 
 
+# CREATE YEARS
 year = Year.create([
     { year: 2020, leap: true, startDay: 3 },
     { year: 2021, leap: false, startDay: 5 },
@@ -85,9 +79,10 @@ year = Year.create([
     { year: 2024, leap: true, startDay: 1 },
 ])
 
+# CREATE MONTHS & WEEKS
 year.each do |y|
 
-    #  Build all months
+    #  CREATE MONTHS
     MONTHS.each do |num, info|
         if num != 2
             y.months.build(name: info[:name], number: num, numDays: info[:numDays])
@@ -99,7 +94,7 @@ year.each do |y|
         y.save
     end
 
-    # Build all weeks
+    # CREATE WEEKS
     n = 0
     first_of_year = Date.new(y.year, 1, 1)
     while n < 53 
@@ -123,17 +118,22 @@ weeks.each do |w|
 
 end
 
+# CREATE TRACKERS & ASSOCIATED RESOURCES
 months = Month.all
 months.each do |mo|
     h = Tracker.create(month_id: mo.id, kind: "habit")
-    TrackerLine.create(tracker: h, name: "Example Line")
-    # once days are created, loop to create a TrackerDay for each.
+    htl = TrackerLine.create(tracker: h, name: "Example Line")
 
     m = Tracker.create(month_id: mo.id, kind: "mood")
-    TrackerLine.create(tracker: m, name: "mood line")
-    # once days are created, loop to create a TrackerDay for each.
+    mtl = TrackerLine.create(tracker: m, name: "mood line")
 
     s = Tracker.create(month_id: mo.id, kind: "sleep")
-    TrackerLine.create(tracker: s, name: "sleep line")
-    # once days are created, loop to create a TrackerDay for each.
+    stl = TrackerLine.create(tracker: s, name: "sleep line")
+
+    days = mo.get_days()
+    days.each do |d|
+        TrackerDay.create(tracker_line: htl, day: d)
+        TrackerDay.create(tracker_line: mtl, day: d)
+        TrackerDay.create(tracker_line: stl, day: d)
+    end
 end

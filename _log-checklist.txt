@@ -61,5 +61,5 @@ THURSDAY 2/20
 FRIDAY 2/21
 [x] Create week seed data
 [x] Create day seed data
-[ ] Create tracker_day seed data
-[ ] Test #get_days and #get_events
+[x] Create tracker_day seed data
+[x] Test #get_days and #get_events
