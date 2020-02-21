@@ -49,6 +49,10 @@ MERGE >> Any BE changes.
 [x] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
 
 THURSDAY 2/20
-[x] Add validations
-[ ] Change DB so that weeks belong to year, not month
-[ ] Create permanent seed data (years / weeks / days)
+[x] Add ALL validations
+[x] Create year + month seed data
+[x] Create tracker + tracker line seed data (not tracker days yet)
+[x] Change DB so that weeks belong to year, not month
+[x] Methods to give months access to days and events
+[ ] Create week + day + tracker_day seed data
+[ ] Test #get_days and #get_events

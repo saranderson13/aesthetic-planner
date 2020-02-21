@@ -98,8 +98,11 @@ year.each do |y|
     end
 end
 
-months = Month.all
+# CREATE WEEKS
 
+# CREATE DAYS
+
+months = Month.all
 months.each do |mo|
     h = Tracker.create(month_id: mo.id, kind: "habit")
     TrackerLine.create(tracker: h, name: "Example Line")

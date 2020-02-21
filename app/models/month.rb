@@ -1,7 +1,5 @@
 class Month < ApplicationRecord
 
-  # has_many :days, through: :weeks
-  # has_many :events, through: :days
   has_many :goals, as: :goalable
   has_many :trackers
   belongs_to :year
@@ -34,6 +32,13 @@ class Month < ApplicationRecord
   validate :validate_name_num_match, :validate_monthNumDays
   validate :validate_monthNum, on: :create
   
+  def get_days
+    self.year.days.select { |d| d.date.month == self.number }
+  end
+
+  def get_events
+    self.get_days.map { |d| d.events }.flatten
+  end
 
 
   private
