@@ -27,14 +27,12 @@ class Event < ApplicationRecord
 
       # test timed event compatibility
       if (self.kind == "timed" && !KIND_SUBKINDS[:timed].include?(self.subkind))
-        errors.add(:kind, "Event type and subtype are incompatible.")
-        errors.add(:subkind, "Event type and subtype are incompatible.")
+        errors.add(:base, "Event type and subtype are incompatible.")
       end
 
       # test untimed event compatibility
       if (self.kind == "untimed" && !KIND_SUBKINDS[:untimed].include?(self.subkind))
-        errors.add(:kind, "Event type and subtype are incompatible.")
-        errors.add(:subkind, "Event type and subtype are incompatible.")
+        errors.add(:base, "Event type and subtype are incompatible.")
       end
 
     end
@@ -72,8 +70,7 @@ class Event < ApplicationRecord
 
       # validate that end time comes after start time.
       if (!!self.start && !!self.end)
-        errors.add(:start, "Start time must be before end time.") if (self.start > self.end)
-        errors.add(:end, "End time must be after start time.") if (self.end < self.start)
+        errors.add(:base, "Start time must be before end time.") if (self.start > self.end)
       end
     end
   end

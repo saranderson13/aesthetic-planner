@@ -32,15 +32,16 @@ class Month < ApplicationRecord
   validates :year_id, :name, :number, :numDays, presence: true
   validates :number, :numDays, numericality: { only_integer: true }
   validates :name, inclusion: { in: MONTHS.values }
-  validate :validate_name_num_match, :validate_monthNum, :validate_monthNumDays
-
+  validate :validate_name_num_match, :validate_monthNumDays
+  validate :validate_monthNum, on: :create
+  
 
 
   private
 
   def validate_name_num_match
     if (!!self.number && !!self.name)
-      if (MONTHS[`#{self.number}`] != self.name)
+      if (MONTHS[self.number] != self.name)
         errors.add(:name, "Name and number do not match.")
       end
     end

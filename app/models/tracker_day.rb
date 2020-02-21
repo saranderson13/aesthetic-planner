@@ -5,7 +5,8 @@ class TrackerDay < ApplicationRecord
 
   validates :tracker_line_id, :day_id, presence: true
   validates :complete, inclusion: { in: [true, false] }
-  validate :validate_not_duplicate_day, :validate_day_within_month, :validate_duration_if_sleep
+  validate :validate_not_duplicate_day, on: :create
+  validate :validate_day_within_month, :validate_duration_if_sleep
 
 
   private

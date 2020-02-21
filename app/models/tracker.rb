@@ -6,7 +6,7 @@ class Tracker < ApplicationRecord
 
   validates :month_id, :kind, presence: true
   validates :kind, inclusion: { in: ["habit", "mood", "sleep"] }
-  validate :validates_not_duplicate_kind
+  validate :validates_not_duplicate_kind, on: :create
   
   
   private

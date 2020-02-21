@@ -4,7 +4,7 @@ class TrackerLine < ApplicationRecord
   belongs_to :tracker
 
   validates :tracker_id, :name, presence: true
-  validate :validate_line_count
+  validate :validate_line_count, on: :create
 
 
   private
