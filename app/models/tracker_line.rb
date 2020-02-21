@@ -1,6 +1,6 @@
 class TrackerLine < ApplicationRecord
 
-  has_many :tracker_days
+  has_many :tracker_days, dependent: :destroy
   belongs_to :tracker
 
   validates :tracker_id, :name, presence: true

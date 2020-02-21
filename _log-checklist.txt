@@ -49,5 +49,5 @@ MERGE >> Any BE changes.
 [x] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
 
 THURSDAY 2/20
-[ ] Add validations
+[x] Add validations
 [ ] Create permanent seed data (years / weeks / days)
