@@ -48,11 +48,16 @@ MERGE >> Any BE changes.
 [x] All controller actions for routes (rough)
 [x] Format json returns (SEE YearsController FOR EXAMPLE OF json_include())
 
+
 THURSDAY 2/20
 [x] Add ALL validations
 [x] Create year + month seed data
 [x] Create tracker + tracker line seed data (not tracker days yet)
 [x] Change DB so that weeks belong to year, not month
 [x] Methods to give months access to days and events
-[ ] Create week + day + tracker_day seed data
+
+
+FRIDAY 2/21
+[x] Create week seed data
+[ ] Create day + tracker_day seed data
 [ ] Test #get_days and #get_events
