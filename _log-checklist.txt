@@ -63,6 +63,9 @@ FRIDAY 2/21
 [x] Create day seed data
 [x] Create tracker_day seed data
 [x] Test #get_days and #get_events
+
+
+SATURDAY 2/22
 >>> BEGIN FRONT END DEVELOPMENT
 [ ] Set up client-side routing
 [ ] Set up data-less containers

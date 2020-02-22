@@ -37,10 +37,10 @@ MONTHS = {
 # CREATE YEARS
 year = Year.create([
     { year: 2020, leap: true, startDay: 3 },
-    { year: 2021, leap: false, startDay: 5 },
-    { year: 2022, leap: false, startDay: 6 },
-    { year: 2023, leap: false, startDay: 0 },
-    { year: 2024, leap: true, startDay: 1 },
+    # { year: 2021, leap: false, startDay: 5 },
+    # { year: 2022, leap: false, startDay: 6 },
+    # { year: 2023, leap: false, startDay: 0 },
+    # { year: 2024, leap: true, startDay: 1 },
 ])
 
 
@@ -97,7 +97,7 @@ months.each do |mo|
     s = Tracker.create(month_id: mo.id, kind: "sleep")
     stl = TrackerLine.create(tracker: s, name: "sleep line")
 
-    days = mo.get_days()
+    days = mo.days()
     days.each do |d|
         TrackerDay.create(tracker_line: htl, day: d)
         TrackerDay.create(tracker_line: mtl, day: d)

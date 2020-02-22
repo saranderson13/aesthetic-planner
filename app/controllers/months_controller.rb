@@ -20,7 +20,7 @@ class MonthsController < ApplicationController
 
     def json_include
         return [
-            :weeks,
+            :days,
             :trackers,
             :events,
             :goals

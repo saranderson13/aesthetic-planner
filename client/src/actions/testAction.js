@@ -5,7 +5,7 @@ export const fetchTest = () => {
         fetch('/months')
             .then( resp => resp.json() )
             .then (json => {
-                debugger;
+                // debugger;
                 dispatch({type: 'ADD_TEST_DATA', months: json})
             })
     }
