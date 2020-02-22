@@ -1,49 +1,52 @@
 import React, { Component } from 'react';
 import './assets/App.css';
-import { connect } from 'react-redux'
-import { fetchTest } from './actions/testAction'
 
-import NavContainer from './containers/navContainer'
-import ControlsContainer from './containers/controlsContainer'
-import BodyContainer from './containers/bodyContainer'
+// ROUTER
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+// ONLY NEEDED TO RUN FETCH TEST
+// import { connect } from 'react-redux'
+// import { fetchTest } from './actions/testAction'
+
+import PlannerContainer from './containers/plannerContainer'
+import TrackerContainer from './containers/trackerContainer'
+import ListsContainer from './containers/listsContainer'
+import JournalContainer from './containers/journalContainer'
+import DayPlannerContainer from './containers/dayPlannerContainer'
 
 class App extends Component {
 
-  componentDidMount() {
-    // fetch initial data
-  }
-
-  // Render all main containers.
   render() {
     return (
-      <body>
-        <aside id="controlsContainer">
-          <ControlsContainer />
-          <nav id="navContainer"><NavContainer /></nav>
-        </aside>
-        <section id="bodyContainer"><BodyContainer /></section>
-      </body>
+      <Router>      
+        <Switch>
+          <Route path="/planner">
+            <PlannerContainer />
+          </Route>
+
+          <Route path="/trackers">
+            <TrackerContainer />
+          </Route>
+
+          <Route path="/lists">
+            <ListsContainer />
+          </Route>
+
+          <Route path="/journal">
+            <JournalContainer />
+          </Route>
+
+          <Route path="/">
+            <DayPlannerContainer />
+          </Route>
+        </Switch>
+      </Router>
     )
   }
-
+  
 }
 
-const mapStateToProps = state => {
-  return {
-    months: state.months,
-    loading: state.loading
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchTest: (months) => dispatch(fetchTest(months))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-
+export default App
 
 
 // EXAMPLE: #componentDidMount()
@@ -59,3 +62,29 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // EXAMPLE: Mapping to display elements
 // {this.props.months.map( m => { return <li>{m.name}</li>})}
+
+
+// NOT NEEDED IN APP COMPONENT
+// componentDidMount() {
+  // fetch initial data
+// }
+
+// const mapStateToProps = state => {
+  //   return {
+    //     months: state.months,
+    //     loading: state.loading
+    //   }
+    // }
+    
+    // const mapDispatchToProps = dispatch => {
+      //   return {
+        //     fetchTest: (months) => dispatch(fetchTest(months))
+//   }
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
+
+
