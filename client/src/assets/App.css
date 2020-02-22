@@ -1,0 +1,27 @@
+html, body, #root {
+  width: 100%; height: 100%;
+  box-sizing: border-box;
+}
+
+#controlsContainer {
+  box-sizing: inherit;
+  display: inline-block;
+  width: 300px; height: 100%;
+  background-color: #e8c76b;
+}
+
+#navContainer {
+  box-sizing: inherit;
+  display: block;
+  width: inherit; height: 70px;
+  position: absolute;
+  bottom: 0px;
+  background-color: #f0b
+}
+
+#bodyContainer {
+  box-sizing: inherit;
+  display: inline-block;
+  width: calc(100% - 300px); height: inherit;
+  background-color: #a03
+}

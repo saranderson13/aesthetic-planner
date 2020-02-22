@@ -67,6 +67,7 @@ FRIDAY 2/21
 
 SATURDAY 2/22
 >>> BEGIN FRONT END DEVELOPMENT
+[x] BUGFIX: Month json output + limit seed data for faster everything.
 [ ] Set up client-side routing
 [ ] Set up data-less containers
 [ ] Set up data-less components

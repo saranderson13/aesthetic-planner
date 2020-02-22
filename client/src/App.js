@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
-import './App.css';
+import './assets/App.css';
 import { connect } from 'react-redux'
 import { fetchTest } from './actions/testAction'
+
+import NavContainer from './containers/navContainer'
+import ControlsContainer from './containers/controlsContainer'
+import BodyContainer from './containers/bodyContainer'
 
 class App extends Component {
 
   componentDidMount() {
-    // STATIC TEST
-    // let months = ["January", "February", "March"]
-    // this.props.fetchTest(months)
-
-    // DYNAMIC TEST
-    // debugger;
-    this.props.fetchTest()
+    // fetch initial data
   }
 
+  // Render all main containers.
   render() {
     return (
-      <div>
-        <h1>Main App Page</h1>
-        {this.props.months.map( m => { return <li>{m.name}</li>})}
-      </div>
+      <body>
+        <aside id="controlsContainer">
+          <ControlsContainer />
+          <nav id="navContainer"><NavContainer /></nav>
+        </aside>
+        <section id="bodyContainer"><BodyContainer /></section>
+      </body>
     )
   }
 
@@ -40,3 +42,20 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
+
+// EXAMPLE: #componentDidMount()
+// componentDidMount() {
+    // STATIC TEST
+    // let months = ["January", "February", "March"]
+    // this.props.fetchTest(months)
+
+    // DYNAMIC TEST
+    // debugger;
+    // this.props.fetchTest()
+  // }
+
+// EXAMPLE: Mapping to display elements
+// {this.props.months.map( m => { return <li>{m.name}</li>})}
