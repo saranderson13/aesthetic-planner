@@ -70,10 +70,11 @@ SATURDAY 2/22
 [x] BUGFIX: Month json output + limit seed data for faster everything.
 [x] Set up basic page structure (main containers)
 [x] Basic set up for client-side routing
-[ ] Set up data-less components
-[ ]
-[ ]
-[ ]
+[x] All layout containers for all routes
+[ ] Day Planner page components
+[ ] Tracker page components
+[ ] Lists page components
+[ ] Journals page components
 [ ]
 [ ]
 [ ]

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import NavContainer from './universalContainers/navContainer'
-import ControlsContainer from './universalContainers/controlsContainer'
-import BodyContainer from './universalContainers/bodyContainer'
+import NavContainer from '../navContainer'
+import DayPlannerControlsContainer from './dayPlannerControlsContainer'
+import DayPlannerBodyContainer from './dayPlannerBodyContainer'
 
 class DayPlannerContainer extends Component {
 
@@ -11,10 +11,10 @@ class DayPlannerContainer extends Component {
         return (
             <body>
                 <aside id="controlsContainer">
-                    <ControlsContainer />
+                    <DayPlannerControlsContainer />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
-                <section id="bodyContainer"><BodyContainer pageName="Day Planner"/></section>
+                <section id="bodyContainer"><DayPlannerBodyContainer pageName="Day Planner"/></section>
             </body>
         )
     }

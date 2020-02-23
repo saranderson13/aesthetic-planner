@@ -19,6 +19,12 @@ html, body, #root {
   background-color: #f0b
 }
 
+#navContainer a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 #bodyContainer {
   box-sizing: inherit;
   display: inline-block;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class ControlsContainer extends Component {
+class TrackersBodyContainer extends Component {
 
     render() {
         return (
-            <h1>Controls Container</h1>
+            <h1>{this.props.pageName}</h1>
         )
     }
 
 }
 
-export default ControlsContainer
+export default TrackersBodyContainer

@@ -8,11 +8,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import { connect } from 'react-redux'
 // import { fetchTest } from './actions/testAction'
 
-import PlannerContainer from './containers/plannerContainer'
-import TrackerContainer from './containers/trackerContainer'
-import ListsContainer from './containers/listsContainer'
-import JournalContainer from './containers/journalContainer'
-import DayPlannerContainer from './containers/dayPlannerContainer'
+// import PlannerContainer from './containers/plannerContainer'
+import TrackerContainer from './containers/trackersContainers/trackerContainer'
+import ListsContainer from './containers/listsContainers/listsContainer'
+import JournalContainer from './containers/journalContainers/journalContainer'
+import DayPlannerContainer from './containers/dayPlannerContainers/dayPlannerContainer'
 
 class App extends Component {
 
@@ -20,10 +20,6 @@ class App extends Component {
     return (
       <Router>      
         <Switch>
-          <Route path="/planner">
-            <PlannerContainer />
-          </Route>
-
           <Route path="/trackers">
             <TrackerContainer />
           </Route>
@@ -59,6 +55,21 @@ export default App
     // debugger;
     // this.props.fetchTest()
   // }
+
+
+// const handleSubmit = async (monthId) => {
+//   try {
+//     const resp = await fetch(`/months/${monthId}`)
+//     if(!resp.ok) { throw resp }
+
+//     const data = await resp.json
+//     console.log(data)
+//   } catch {
+
+//   }
+// }
+
+
 
 // EXAMPLE: Mapping to display elements
 // {this.props.months.map( m => { return <li>{m.name}</li>})}

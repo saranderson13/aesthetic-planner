@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import NavContainer from './universalContainers/navContainer'
-import ControlsContainer from './universalContainers/controlsContainer'
-import BodyContainer from './universalContainers/bodyContainer'
+import NavContainer from '../navContainer'
+import TrackersControlsContainer from './trackersControlsContainer'
+import TrackersBodyContainer from './trackersBodyContainer'
 
 class TrackerContainer extends Component {
 
@@ -11,10 +11,10 @@ class TrackerContainer extends Component {
         return (
             <body>
                 <aside id="controlsContainer">
-                    <ControlsContainer />
+                    <TrackersControlsContainer />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
-                <section id="bodyContainer"><BodyContainer pageName="Trackers" /></section>
+                <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" /></section>
             </body>
         )
     }
