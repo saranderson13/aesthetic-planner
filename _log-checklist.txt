@@ -72,10 +72,10 @@ SATURDAY 2/22
 [x] Basic set up for client-side routing
 [x] All layout containers for all routes
 [x] Map out directives for pages
-[ ] Change DB so that days belong to year not weeks
-[ ] Create methods for weeks to get days and events
-[ ] Update seed data & DB
-[ ] Add pre-loaded holiday seeds
+[x] Change DB so that days belong to year not weeks
+[x] Create methods for weeks to get days and events
+[x] Update seed data & DB
+[x] Add pre-loaded holiday seeds
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Lists page components

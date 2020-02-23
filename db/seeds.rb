@@ -5,8 +5,9 @@
 # [x] Create 3 trackers for each month
 # [x] Create 1 line for each tracker
 # [x] Create appropriate number of day cells for each line
+# [x] Create Holiday Events
   
-# NO seeded Events
+# ONLY seeded Holiday Events
 # NO seeded Goals
 # NO seeded Lists
 # NO seeded Journals
@@ -44,19 +45,34 @@ year = Year.create([
 ])
 
 
-# CREATE MONTHS & WEEKS
+# CREATE MONTHS, WEEKS, & DAYS
 year.each do |y|
 
-    #  CREATE MONTHS
+    #  CREATE MONTHS & DAYS
     MONTHS.each do |num, info|
         if num != 2
-            y.months.build(name: info[:name], number: num, numDays: info[:numDays])
-        elsif y.leap == true
-            y.months.build(name: info[:name], number: num, numDays: 29)
+            Month.create(year: y, name: info[:name], number: num, numDays: info[:numDays])
+            n = 1
+            while n <= info[:numDays]
+                Day.create(year: y, date: Date.new(y.year, num, n))
+                n += 1
+            end
+
+        elsif y.leap 
+            Month.create(year: y, name: info[:name], number: num, numDays: 29)
+            n = 1
+            while n <= 29
+                Day.create(year: y, date: Date.new(y.year, num, n))
+                n += 1
+            end
         else
-            y.months.build(name: info[:name], number: num, numDays: 28)
+            Month.create(year: y, name: info[:name], number: num, numDays: 28)
+            n = 1
+            while n <= 28
+                Day.create(year: y, date: Date.new(y.year, num, n))
+                n += 1
+            end
         end
-        y.save
     end
 
     # CREATE WEEKS
@@ -66,19 +82,6 @@ year.each do |y|
         masterMonday = y.startDay != 1 ? first_of_year - (y.startDay - 1) : first_of_year
         monday = n == 0 ? masterMonday : masterMonday + (n * 7)
         Week.create(year_id: y.id, start_date: monday, end_date: monday + 6)
-        n += 1
-    end
-
-end
-
-
-# CREATE DAYS
-weeks = Week.all
-weeks.each do |w|
-
-    n = w.start_date
-    while n <= w.end_date
-        Day.create(week: w, date: n)
         n += 1
     end
 
@@ -102,5 +105,47 @@ months.each do |mo|
         TrackerDay.create(tracker_line: htl, day: d)
         TrackerDay.create(tracker_line: mtl, day: d)
         TrackerDay.create(tracker_line: stl, day: d)
+    end
+end
+
+
+HOLIDAYS_2020 = {
+    Date.new(2020, 1, 1) => "New Years Day",
+    Date.new(2020, 1, 20) => "Martin Luther King Jr. Day",
+    Date.new(2020, 1, 25) => "Chinese New Year",
+    Date.new(2020, 2, 2) => "Groundhog Day",
+    Date.new(2020, 2, 3) => "Super Bowl Sunday",
+    Date.new(2020, 2, 14) => "Valentine's Day",
+    Date.new(2020, 2, 17) => "President's Day",
+    Date.new(2020, 2, 25) => "Mardi Gras",
+    Date.new(2020, 2, 26) => "Ash Wednesday",
+    Date.new(2020, 3, 8) => "Daylight Savings Begins",
+    Date.new(2020, 3, 17) => "St. Patrick's Day",
+    Date.new(2020, 4, 12) => "Easter Sunday",
+    Date.new(2020, 4, 13) => "Easter Monday",
+    Date.new(2020, 4, 15) => "Tax Day",
+    Date.new(2020, 5, 5) => "Cinco de Mayo",
+    Date.new(2020, 5, 10) => "Mother's Day",
+    Date.new(2020, 5, 25) => "Memorial Day",
+    Date.new(2020, 6, 21) => "Father's Day",
+    Date.new(2020, 7, 4) => "Independence Day",
+    Date.new(2020, 9, 7) => "Labor Day",
+    Date.new(2020, 9, 19) => "Rosh Hashana",
+    Date.new(2020, 9, 28) => "Yom Kippur",
+    Date.new(2020, 10, 31) => "Halloween",
+    Date.new(2020, 11, 3) => "Election Day",
+    Date.new(2020, 11, 11) => "Veterans Day",
+    Date.new(2020, 11, 26) => "Thanksgiving",
+    Date.new(2020, 12, 11) => "First Day of Hanukkah",
+    Date.new(2020, 12, 24) => "Christmas Eve",
+    Date.new(2020, 12, 25) => "Christmas",
+    Date.new(2020, 12, 26) => "First Day of Kwanzaa",
+    Date.new(2020, 12, 31) => "New Years Eve"
+}
+
+Day.all.each do |d|
+    holidates = HOLIDAYS_2020.keys
+    if holidates.include?(d.date)
+        Event.create(day: d, kind: "untimed", subkind: "holiday", name: HOLIDAYS_2020[d.date])
     end
 end

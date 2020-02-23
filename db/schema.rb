@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_041937) do
+ActiveRecord::Schema.define(version: 2020_02_23_062618) do
 
   create_table "days", force: :cascade do |t|
-    t.integer "week_id", null: false
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["week_id"], name: "index_days_on_week_id"
+    t.integer "year_id"
+    t.index ["year_id"], name: "index_days_on_year_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 2020_02_21_041937) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "days", "weeks"
   add_foreign_key "events", "days"
   add_foreign_key "journals", "days"
   add_foreign_key "list_items", "lists"

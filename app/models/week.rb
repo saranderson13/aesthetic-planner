@@ -1,13 +1,20 @@
 class Week < ApplicationRecord
 
-  has_many :days, dependent: :destroy
-  has_many :events, through: :days
   has_many :goals, as: :goalable
   belongs_to :year
 
   validates :year_id, :start_date, :end_date, presence: true
   validate :validate_start_date_unique_in_year, on: :create
   validate :validate_start_end_dates
+
+
+  def days 
+    self.year.days.select { |d| d.date >= self.start_date && d.date <= self.end_date }
+  end
+
+  def events
+    self.days().map { |d| d.events }.flatten
+  end
 
 
   private
