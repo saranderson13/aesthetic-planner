@@ -1,0 +1,60 @@
+#controlsContainer {
+    box-sizing: inherit;
+    display: inline-block;
+    width: 300px; height: 100%;
+    background-color: #e8c76b;
+}
+  
+#navContainer {
+    box-sizing: inherit;
+    display: block;
+    width: inherit; height: 300px;
+    position: absolute;
+    bottom: 0px;
+    background-color: #f0b
+}
+  
+#navContainer a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.monthWidget {
+    box-sizing: inherit;
+    width: inherit; height: 250px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.monthWidget table {
+    border-collapse: collapse;
+    margin: 10px auto;
+    border: 2px solid #f0b;
+}
+
+.monthWidget th, .monthWidget td {
+    width: 30px; height: 20px;
+    border: 1px solid #f0b;
+    text-align: center;
+}
+
+.monthWidget th {
+    border-bottom: 2px solid #f0b;
+}
+
+.monthWidgetHeader {
+    box-sizing: inherit;
+    width: 230px;
+    margin: auto; padding-top: 10px;
+}
+
+.monthWidgetHeader span {
+    display: inline-block;
+    min-width: 60px;
+}
+
+.monthWidgetHeader .back { float: left; width: 70px;}
+.monthWidgetHeader .next { float: right; width: 70px; }
+.monthWidgetHeader .current {  font-weight: bold; width: 90px; }
+.monthWidgetHeader .disabled { color: #fff; user-select: none;}

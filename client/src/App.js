@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './assets/controls.css'
 import './assets/App.css';
 
 // ROUTER
@@ -6,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // ONLY NEEDED TO RUN FETCH TEST
 // import { connect } from 'react-redux'
-// import { fetchTest } from './actions/testAction'
+// import { fetchTest } from './actions/_testAction'
 
 // import PlannerContainer from './containers/plannerContainer'
 import TrackerContainer from './containers/trackersContainers/trackerContainer'
@@ -88,10 +89,10 @@ export default App
     // }
     
     // const mapDispatchToProps = dispatch => {
-      //   return {
-        //     fetchTest: (months) => dispatch(fetchTest(months))
-//   }
-// }
+    //     return {
+    //         fetchTest: (months) => dispatch(fetchTest(months))
+    //     }
+    // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 
