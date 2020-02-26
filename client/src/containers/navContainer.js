@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import MonthWidget from '../components/controlsComponents/monthWidget'
+import MonthWidget from '../components/navComponents/monthWidget'
+import PageLinks from '../components/navComponents/pageLinks'
 
 export default class NavContainer extends Component {
 
     render() {
         return (
             <div>
-                <span><Link to="/">Day Planner</Link></span> - 
-                <span><Link to="/trackers"> Trackers</Link></span> - 
-                <span><Link to="/lists"> Lists</Link></span> - 
-                <span><Link to="/journal"> Journal</Link></span>
-                <div>
-                    <MonthWidget />
-                </div>
+                <PageLinks />
+                <MonthWidget />
             </div>
         )
     }

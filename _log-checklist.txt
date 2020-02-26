@@ -76,17 +76,26 @@ SATURDAY 2/22
 [x] Create methods for weeks to get days and events
 [x] Update seed data & DB
 [x] Add pre-loaded holiday seeds
-[ ] Setup for combined reducers
-[ ] create month widget for controls component
+
+
+SUNDAY 2/23
+[x] Setup for combined reducers
+
+
+TUESDAY 2/25
+[x] create month widget for controls component
+
+
+WEDNESDAY 2/26
+[x] Change page links to functional component
+[x] Give month widget knowledge of current page
+[ ] Change calendar days to component to enable linking (Day planner page & Journal page)
+[ ] 
+[ ]
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Lists page components
 [ ] Journals page components
-[ ]
-[ ]
-[ ]
-[ ]
-[ ]
 [ ]
 [ ]
 [ ]

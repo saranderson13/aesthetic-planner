@@ -21,6 +21,10 @@ class App extends Component {
     return (
       <Router>      
         <Switch>
+          <Route path="/day-planner">
+            <DayPlannerContainer />
+          </Route>
+
           <Route path="/trackers">
             <TrackerContainer />
           </Route>
@@ -31,10 +35,6 @@ class App extends Component {
 
           <Route path="/journal">
             <JournalContainer />
-          </Route>
-
-          <Route path="/">
-            <DayPlannerContainer />
           </Route>
         </Switch>
       </Router>

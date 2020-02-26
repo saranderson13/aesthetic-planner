@@ -13,11 +13,22 @@
     bottom: 0px;
     background-color: #f0b
 }
-  
-#navContainer a {
+
+.pageLinksBar {
+    width: inherit; height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pageLinksBar a {
     color: #000;
     text-decoration: none;
     font-weight: bold;
+    transition: color .3s ease-in-out;
+}
+
+.pageLinksBar a:hover {
+    color: #f87;
 }
 
 .monthWidget {
@@ -25,6 +36,11 @@
     width: inherit; height: 250px;
     background-color: #fff;
     text-align: center;
+}
+
+.monthWidget a, .monthWidget a:visited {
+    color: #d45;
+    text-decoration: none;
 }
 
 .monthWidget table {

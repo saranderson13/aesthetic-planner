@@ -8,7 +8,8 @@ import LoadingWheel from '../../assets/images/loading-wheel.gif'
 class MonthWidget extends Component {
     
     state = {
-        displayMonth: null
+        displayMonth: null,
+        page: window.location.href.split("/").reverse()[0]
     }
 
     componentDidMount() {
@@ -37,14 +38,14 @@ class MonthWidget extends Component {
                 return (
                     <>
                         <MonthWidgetHeader month={this.props.currentMonth} back={this.navToPrevMonth.bind(this)} next={this.navToNextMonth.bind(this)} />
-                        <MonthWidgetCalendar month={this.props.currentMonth} />
+                        <MonthWidgetCalendar month={this.props.currentMonth} page={this.state.page}/>
                     </>
                 )
             } else {
                 return (
                     <>
                         <MonthWidgetHeader month={this.state.displayMonth} back={this.navToPrevMonth.bind(this)} next={this.navToNextMonth.bind(this)} />
-                        <MonthWidgetCalendar month={this.state.displayMonth} />
+                        <MonthWidgetCalendar month={this.state.displayMonth} page={this.state.page}/>
                     </>
                 )
             }

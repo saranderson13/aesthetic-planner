@@ -18,13 +18,13 @@ class ListsContainer extends Component {
 
     render() {
         return (
-            <body>
+            <>
                 <aside id="controlsContainer">
                     <ListsControlsContainer />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
                 <section id="bodyContainer"><ListsBodyContainer pageName="Lists"/></section>
-            </body>
+            </>
         )
     }
 

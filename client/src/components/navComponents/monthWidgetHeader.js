@@ -6,14 +6,14 @@ export default class MonthWidgetHeader extends Component {
 
     displayBack() {
         if(this.props.month.number !== 1) {
-            return (<span class="back" onClick={this.props.back}>back</span>)
-        } else { return <span class="back disabled">-</span> }
+            return (<span className="back" onClick={this.props.back}>back</span>)
+        } else { return <span className="back disabled">-</span> }
     }
 
     displayNext() {
         if(this.props.month.number !== 12) {
-            return (<span class="next" onClick={this.props.next}>next</span>)
-        } else { return <span class="next disabled">-</span> }
+            return (<span className="next" onClick={this.props.next}>next</span>)
+        } else { return <span className="next disabled">-</span> }
     }
 
     render() {

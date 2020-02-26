@@ -1,6 +1,7 @@
 // STATELESS COMPONENT #1
 
 import React, { Component } from 'react';
+import MonthWidgetDay from './monthWidgetDay'
 
 export default class MonthWidgetCalendar extends Component {
 
@@ -31,15 +32,6 @@ export default class MonthWidgetCalendar extends Component {
         return weeks
     }
 
-    formatStringDate = (dateString) => {
-        // takes in a string such as "2020-02-01" and reformats as "1"
-        // avoids timezone conversion by not transating the string to a Date object
-        // and takes away any leading zeros
-        let date = dateString.split("-")[2]
-        date = date[0] === 0 ? date[1] : date
-        return date
-    }
-
     generateCalendarRows = () => {
         // returns an array of an array for each week containing <td>'s for each day
         // only returns a sixth row if necessary
@@ -55,7 +47,7 @@ export default class MonthWidgetCalendar extends Component {
             if (!Object.values(weeks[i]).every( val => val == null)) {
                 rowVals = []
                 for (let n = 0; n < 7; n++){
-                    rowVals.push(weeks[i][n] == null ? "" : this.formatStringDate(weeks[i][n].date))
+                    rowVals.push(weeks[i][n] == null ? "" : <MonthWidgetDay day={weeks[i][n]} page={this.props.page} /> )
                 }
                 rows.push(rowVals.map( d => <td>{d}</td>))
             }
