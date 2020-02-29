@@ -91,7 +91,13 @@ WEDNESDAY 2/26
 [x] Give month widget knowledge of current page
 [x] Change calendar days to component to enable linking (Day planner page & Journal page)
 [x] Fix journal page calendar links
-[ ] Lists page components
+[x] Lists forms display (& back button)
+[x] Lists add form (without post)
+[x] Lists edit form (without patch)
+[ ] Move lists fetch to lists container (and pass to controls & body)
+[ ]
+[ ]
+[ ]
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Journals page components

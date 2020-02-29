@@ -46,11 +46,11 @@ class ListsControlsContainer extends Component {
 
         if ( this.state.addToggled === true ) {
             return(
-                <ListForm listFunction={this.props.addList} back={this.backButton.bind(this)}/>
+                <ListForm listFunction={this.props.addList} submitName={"Create List"}back={this.backButton.bind(this)}/>
             )
         } else if (this.state.editToggled === true) {
             return(
-                <ListForm listFunction={this.props.editList} back={this.backButton.bind(this)} lists={this.props.lists} />
+                <ListForm listFunction={this.props.editList} submitName={"Edit List"} back={this.backButton.bind(this)} lists={this.props.lists} />
             )
         } else {
             return (

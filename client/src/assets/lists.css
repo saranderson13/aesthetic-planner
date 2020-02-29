@@ -7,6 +7,12 @@
     padding-left: 25px;
 } */
 
+.selectListDropdown {
+    box-sizing: border-box;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
 .listFormBackButtonContainer {
     box-sizing: border-box;
     width: 250px;
