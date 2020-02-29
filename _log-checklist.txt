@@ -91,13 +91,21 @@ WEDNESDAY 2/26
 [x] Give month widget knowledge of current page
 [x] Change calendar days to component to enable linking (Day planner page & Journal page)
 [x] Fix journal page calendar links
-[x] Lists forms display (& back button)
+
+FRIDAY 2/28
+[x] Lists forms display
+
+SATURDAY 2/29
+[x] list form back button
 [x] Lists add form (without post)
 [x] Lists edit form (without patch)
+[x] Successful POST request from add list form
+[x] Successtufl PATCH request from edit list form
+[x] Combine add/edit list form
+[x] Combine add/edit list action
+[ ] Add delete list button to edit form
+[ ] Successful DELETE request from edit list form
 [ ] Move lists fetch to lists container (and pass to controls & body)
-[ ]
-[ ]
-[ ]
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Journals page components

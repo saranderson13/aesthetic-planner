@@ -20,13 +20,12 @@ export default class ListForm extends Component {
                 list_items: this.removeBadCharacters(this.state.listItems.split(";"))
             }
         }
-        this.setState = {
-            name: "",
-            listItems: "",
-            currentListId: null
+        if (!!this.state.currentListId) {
+            listPacket["list"]["id"] = this.state.currentListId
         }
+        // debugger;
         this.props.back()
-        this.props.listFunction(listPacket, 'POST')
+        this.props.listFunction(listPacket, !!this.state.currentListId ? 'PATCH' : 'POST')
     }
 
     handleChange = e => {
@@ -67,7 +66,7 @@ export default class ListForm extends Component {
                 <div className="listFormBackButtonContainer" ><button onClick={this.props.back}>X</button></div>
                 <form id="listForm" onSubmit={e => this.handleSubmit(e)}>
                     <select
-                        id="currentLists" 
+                        id={this.state.currentListId} 
                         className="selectListDropdown"
                         onChange={ e => this.populateEditFields(e) }
                         value={this.state.currentListId} 

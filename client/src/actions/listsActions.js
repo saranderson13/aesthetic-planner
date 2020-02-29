@@ -15,9 +15,9 @@ export const fetchLists = () => {
 }
 
 export const createOrUpdateList = (listPacket, fetchMethod) => {
-    debugger;
+    const url = !!listPacket.list.id  ? `./lists/${listPacket.list.id}` : './lists'
     return async function (dispatch) {
-        const resp = await fetch('./lists', {
+        const resp = await fetch(url, {
             method: fetchMethod,
             headers: {
                 'Accept': 'application/json',
@@ -26,11 +26,6 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
             body: JSON.stringify(listPacket)
         })
         const json = await resp.json()
-        debugger;
         return await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
-
-// export const editList = listPacket => {
-
-// }

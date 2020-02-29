@@ -31,8 +31,16 @@ class ListsController < ApplicationController
 
     def update
         list = List.find_by(id: list_params["id"])
-        list.update(list_params)
-        render json: list.to_json(
+        list.update(name: list_params["name"])
+        list.list_items.delete_all
+
+        list_params["list_items"].each do |i|
+            list.list_items.build(name: i)
+        end
+
+        list.save
+        lists = List.all
+        render json: lists.to_json(
             include: json_include()
         )
     end
