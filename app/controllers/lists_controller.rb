@@ -17,8 +17,13 @@ class ListsController < ApplicationController
 
 
     def create
-        list = List.Create(list_params)
-        render json: list.to_json(
+        list = List.create(name: list_params["name"])
+        list_params["list_items"].each do |i|
+            list.list_items.build(name: i)
+        end
+        list.save
+        lists = List.all
+        render json: lists.to_json(
             include: json_include()
         )
     end
@@ -46,7 +51,7 @@ class ListsController < ApplicationController
     private
 
     def list_params
-        params.require(:list).permit(:id, :name, :checklist)
+        params.require(:list).permit(:id, :checklist, :name, :list_items => [])
     end
 
     def json_include

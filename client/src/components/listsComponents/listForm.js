@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class ListForm extends Component {
 
     state = {
-        title: "",
+        name: "",
         listItems: "",
         currentListId: null
     }
@@ -15,15 +15,18 @@ export default class ListForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const listPacket = {
-            title: this.state.title,
-            listItems: this.removeBadCharacters(this.state.listItems.split(";"))
+            list: {
+                name: this.state.name,
+                list_items: this.removeBadCharacters(this.state.listItems.split(";"))
+            }
         }
-        this.props.listFunction(listPacket)
         this.setState = {
-            title: "",
+            name: "",
             listItems: "",
             currentListId: null
         }
+        this.props.back()
+        this.props.listFunction(listPacket, 'POST')
     }
 
     handleChange = e => {
@@ -42,7 +45,7 @@ export default class ListForm extends Component {
         const selectedList = Array.from(e.target.children).find( o => o.selected )
         if (selectedList.value === "blank"){
             this.setState({
-                title: "",
+                name: "",
                 listItems: "",
                 currentListId: null
             })
@@ -51,7 +54,7 @@ export default class ListForm extends Component {
             const listItems = listObject.list_items.map ( i => i.name ).join(" ; ");
 
             this.setState({
-                title: listObject.name,
+                name: listObject.name,
                 listItems: listItems,
                 currentListId: listObject.id
             })
@@ -74,13 +77,13 @@ export default class ListForm extends Component {
                         {this.generateListOptions()}
                     </select>
                     <label className="listFormLabel">
-                        List Title
+                        List Name
                         <input 
-                            id="title" 
+                            id="name" 
                             type="text" 
-                            className="listFormTitleInput" 
+                            className="listFormNameInput" 
                             onChange={ e => this.handleChange(e)} 
-                            value={this.state.title}/>
+                            value={this.state.name}/>
                         </label>
                     <div className="listFormSubText">**Separate list items with a semicolon (;).</div>
                     <textarea 

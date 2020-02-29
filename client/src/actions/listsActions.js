@@ -13,3 +13,24 @@ export const fetchLists = () => {
         return await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
+
+export const createOrUpdateList = (listPacket, fetchMethod) => {
+    debugger;
+    return async function (dispatch) {
+        const resp = await fetch('./lists', {
+            method: fetchMethod,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(listPacket)
+        })
+        const json = await resp.json()
+        debugger;
+        return await dispatch({ type: 'ADD_LISTS', lists: json })
+    }
+}
+
+// export const editList = listPacket => {
+
+// }

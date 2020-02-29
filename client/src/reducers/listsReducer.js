@@ -20,17 +20,17 @@ const listsReducer = (
                     loading: false
                 }
 
-            case 'CREATE_LIST':
-                return {
-                    ...state,
-                    lists: action.listPacket
-                }
+            // case 'CREATE_LIST':
+            //     return {
+            //         ...state,
+            //         list: action.payload.list
+            //     }
 
-            case 'EDIT_LIST':
-                return {
-                    ...state,
-                    lists: action.lists
-                }
+            // case 'EDIT_LIST':
+            //     return {
+            //         ...state,
+            //         lists: action.lists
+            //     }
 
             default:
                 return state;
