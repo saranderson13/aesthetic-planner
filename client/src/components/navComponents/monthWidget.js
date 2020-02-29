@@ -77,10 +77,10 @@ const mapStateToProps = state => {
     };
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchMonthsForWidget: (months) => dispatch(fetchMonthsForWidget(months))
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         fetchMonthsForWidget: () => dispatch(fetchMonthsForWidget())
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MonthWidget)
+export default connect(mapStateToProps, { fetchMonthsForWidget })(MonthWidget)

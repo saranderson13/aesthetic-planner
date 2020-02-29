@@ -1,0 +1,31 @@
+#listForm {
+    box-sizing: border-box;
+    margin: 15px 25px 25px;
+}
+
+/* .listFormLabel {
+    padding-left: 25px;
+} */
+
+.listFormBackButtonContainer {
+    box-sizing: border-box;
+    width: 250px;
+    margin: 10px 25px 0px;
+    text-align: right;
+  }
+
+.listFormSubText {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.listFormTitleInput {
+    box-sizing: border-box;
+    width: 250px;
+}
+
+.listFormTextArea {
+    box-sizing: border-box;
+    width: 250px; height: 150px;
+    /* margin-top: 10px; */
+}

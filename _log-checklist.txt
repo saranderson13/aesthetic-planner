@@ -89,12 +89,11 @@ TUESDAY 2/25
 WEDNESDAY 2/26
 [x] Change page links to functional component
 [x] Give month widget knowledge of current page
-[ ] Change calendar days to component to enable linking (Day planner page & Journal page)
-[ ] 
-[ ]
+[x] Change calendar days to component to enable linking (Day planner page & Journal page)
+[x] Fix journal page calendar links
+[ ] Lists page components
 [ ] Day Planner page components
 [ ] Tracker page components
-[ ] Lists page components
 [ ] Journals page components
 [ ]
 [ ]
