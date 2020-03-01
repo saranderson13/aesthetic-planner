@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { fetchLists } from '../../actions/listsActions'
 
 import NavContainer from '../navContainer'
 import ListsControlsContainer from './listsControlsContainer'
@@ -16,18 +17,33 @@ class ListsContainer extends Component {
     //    Shows all lists grid style
     //    Lists are clickable - upon click, they show up in the controls container to be edited
 
+    componentDidMount() {
+        this.props.fetchLists()
+    }
+
     render() {
         return (
             <>
                 <aside id="controlsContainer">
-                    <ListsControlsContainer />
+                    <ListsControlsContainer lists={this.props.lists} />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
-                <section id="bodyContainer"><ListsBodyContainer pageName="Lists"/></section>
+                <section id="bodyContainer"><ListsBodyContainer pageName="Lists" lists={this.props.lists} /></section>
             </>
         )
     }
 
 }
 
-export default ListsContainer
+const mapStateToProps = state => {
+    return {
+        lists: state.lists.lists,
+        loading: state.lists.loading
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    fetchLists: () => dispatch(fetchLists())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListsContainer)

@@ -92,8 +92,10 @@ WEDNESDAY 2/26
 [x] Change calendar days to component to enable linking (Day planner page & Journal page)
 [x] Fix journal page calendar links
 
+
 FRIDAY 2/28
 [x] Lists forms display
+
 
 SATURDAY 2/29
 [x] list form back button
@@ -105,13 +107,16 @@ SATURDAY 2/29
 [x] Combine add/edit list action
 [x] Add delete list button to edit form
 [x] Successful DELETE request from edit list form
-[ ] Cleanup unncessary backend config for list items
-[ ] Move lists fetch to lists container (and pass to controls & body)
+[x] Cleanup unncessary backend config for list items
+
+
+SUNDAY 3/1
+[x] Add checklist capability
+[x] Move lists fetch to lists container (and pass to controls & body)
+[ ] Lists Body
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Journals page components
-[ ]
-[ ]
 [ ]
 [ ]
 [ ]

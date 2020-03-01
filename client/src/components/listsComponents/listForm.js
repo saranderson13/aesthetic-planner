@@ -30,15 +30,11 @@ export default class ListForm extends Component {
     }
 
     handleChange = e => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        this.setState({ [e.target.id]: e.target.value })
     }
 
     handleCheckbox = e => {
-        this.setState({
-            checklist: e.target.checked
-        })
+        this.setState({ checklist: e.target.checked })
     }
 
     handleDelete = e => {

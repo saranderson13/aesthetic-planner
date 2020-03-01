@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ListForm from '../../components/listsComponents/listForm'
-import { fetchLists, createOrUpdateList, deleteList } from '../../actions/listsActions';
+import { createOrUpdateList, deleteList } from '../../actions/listsActions';
 
 class ListsControlsContainer extends Component {
     
@@ -10,15 +10,11 @@ class ListsControlsContainer extends Component {
     
     // Edit list button
     // When clicked, dropdown of lists appears
-    // When one is selected, edit form appears
+    // When one is selected, edit form is populated
 
     state = {
         addToggled: false,
         editToggled: false
-    }
-
-    componentDidMount() {
-        this.props.fetchLists()
     }
 
     toggleAdd() {
@@ -71,24 +67,14 @@ class ListsControlsContainer extends Component {
     }
 
     render() {
-        return (
-            this.determineDisplay()
-        )
+        return this.determineDisplay()
     }
 
-}
-
-const mapStateToProps = state => {
-    return {
-        lists: state.lists.lists, 
-        loading: state.lists.loading
-    }
 }
 
 const mapDispatchToProps = dispatch => ({
     createOrUpdate: (listPacket, method) => dispatch(createOrUpdateList(listPacket, method)),
     deleteList: id => dispatch(deleteList(id)),
-    fetchLists: () => dispatch(fetchLists())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListsControlsContainer)
+export default connect(null, mapDispatchToProps)(ListsControlsContainer)

@@ -1,3 +1,12 @@
+/* LIST BODY STYLING */
+
+
+
+
+
+
+/* LIST FORM STYLING */
+
 #listForm {
     box-sizing: border-box;
     margin: 15px 25px 10px;
@@ -33,7 +42,6 @@
 .listFormTextArea {
     box-sizing: border-box;
     width: 250px; height: 150px;
-    /* margin-top: 10px; */
 }
 
 .listDeleteButton {
