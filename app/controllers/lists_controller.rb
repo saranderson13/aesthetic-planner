@@ -47,8 +47,8 @@ class ListsController < ApplicationController
 
 
     def destroy
-        list = List.find_by(id: list_params["id"])
-        list.delete
+        list = List.find_by(id: params["id"])
+        list.destroy
         lists = List.all
         render json: lists.to_json(
             include: json_include()

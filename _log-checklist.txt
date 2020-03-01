@@ -103,7 +103,7 @@ SATURDAY 2/29
 [x] Successtufl PATCH request from edit list form
 [x] Combine add/edit list form
 [x] Combine add/edit list action
-[ ] Add delete list button to edit form
+[x] Add delete list button to edit form
 [ ] Successful DELETE request from edit list form
 [ ] Move lists fetch to lists container (and pass to controls & body)
 [ ] Day Planner page components

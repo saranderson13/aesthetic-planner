@@ -1,6 +1,6 @@
 #listForm {
     box-sizing: border-box;
-    margin: 15px 25px 25px;
+    margin: 15px 25px 10px;
 }
 
 /* .listFormLabel {
@@ -34,4 +34,9 @@
     box-sizing: border-box;
     width: 250px; height: 150px;
     /* margin-top: 10px; */
+}
+
+.listDeleteButton {
+    box-sizing: border-box;
+    margin-left: 25px
 }

@@ -25,13 +25,18 @@ export default class ListForm extends Component {
         }
         // debugger;
         this.props.back()
-        this.props.listFunction(listPacket, !!this.state.currentListId ? 'PATCH' : 'POST')
+        this.props.createOrUpdate(listPacket, !!this.state.currentListId ? 'PATCH' : 'POST')
     }
 
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
         })
+    }
+
+    handleDelete = e => {
+        this.props.back()
+        this.props.deleteList(this.state.currentListId)
     }
 
     generateListOptions = () => {
@@ -94,7 +99,12 @@ export default class ListForm extends Component {
                         type="submit" 
                         value={this.props.submitName} />
                 </form>
-                
+                <button 
+                    onClick={e => this.handleDelete(e)}
+                    className="listDeleteButton"
+                    style={{display: !!this.state.currentListId ? 'block' : 'none' }}>
+                    DeleteList
+                </button>
             </>
         )
     }

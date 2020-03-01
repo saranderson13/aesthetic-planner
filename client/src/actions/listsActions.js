@@ -29,3 +29,17 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
         return await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
+
+export const deleteList = id => {
+    return async function (dispatch) {
+        const resp = await fetch(`./lists/${id}`, {
+            method: 'DELETE',
+            header: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await resp.json()
+        return await dispatch({ type: 'ADD_LISTS', lists: json })
+    }
+}

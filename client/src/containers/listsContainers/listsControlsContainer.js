@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ListForm from '../../components/listsComponents/listForm'
-import { fetchLists, createOrUpdateList } from '../../actions/listsActions';
+import { fetchLists, createOrUpdateList, deleteList } from '../../actions/listsActions';
 
 class ListsControlsContainer extends Component {
     
@@ -46,11 +46,19 @@ class ListsControlsContainer extends Component {
 
         if ( this.state.addToggled === true ) {
             return(
-                <ListForm listFunction={this.props.createOrUpdate} submitName={"Create List"} back={this.backButton.bind(this)}/>
+                <ListForm 
+                    createOrUpdate={this.props.createOrUpdate} 
+                    submitName={"Create List"} 
+                    back={this.backButton.bind(this)} />
             )
         } else if (this.state.editToggled === true) {
             return(
-                <ListForm listFunction={this.props.createOrUpdate} submitName={"Edit List"} back={this.backButton.bind(this)} lists={this.props.lists} />
+                <ListForm 
+                    createOrUpdate={this.props.createOrUpdate} 
+                    deleteList={this.props.deleteList}
+                    submitName={"Edit List"} 
+                    back={this.backButton.bind(this)} 
+                    lists={this.props.lists} />
             )
         } else {
             return (
@@ -79,6 +87,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     createOrUpdate: (listPacket, method) => dispatch(createOrUpdateList(listPacket, method)),
+    deleteList: id => dispatch(deleteList(id)),
     fetchLists: () => dispatch(fetchLists())
 })
 
