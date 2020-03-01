@@ -17,7 +17,7 @@ class ListsController < ApplicationController
 
 
     def create
-        list = List.create(name: list_params["name"])
+        list = List.create(name: list_params["name"], checklist: list_params["checklist"])
         list_params["list_items"].each do |i|
             list.list_items.build(name: i)
         end
@@ -31,7 +31,7 @@ class ListsController < ApplicationController
 
     def update
         list = List.find_by(id: list_params["id"])
-        list.update(name: list_params["name"])
+        list.update(name: list_params["name"], checklist: list_params["checklist"])
         list.list_items.delete_all
 
         list_params["list_items"].each do |i|

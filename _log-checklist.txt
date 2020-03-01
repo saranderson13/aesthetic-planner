@@ -104,7 +104,8 @@ SATURDAY 2/29
 [x] Combine add/edit list form
 [x] Combine add/edit list action
 [x] Add delete list button to edit form
-[ ] Successful DELETE request from edit list form
+[x] Successful DELETE request from edit list form
+[ ] Cleanup unncessary backend config for list items
 [ ] Move lists fetch to lists container (and pass to controls & body)
 [ ] Day Planner page components
 [ ] Tracker page components

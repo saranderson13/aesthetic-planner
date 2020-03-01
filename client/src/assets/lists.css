@@ -40,3 +40,10 @@
     box-sizing: border-box;
     margin-left: 25px
 }
+
+.checklistCheckbox {
+    box-sizing: border-box;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 15px;
+}

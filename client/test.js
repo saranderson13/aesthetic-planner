@@ -5,26 +5,26 @@ export default class ListForm extends Component {
     state = {
         name: "",
         listItems: "",
-        currentListId: null,
-        checklist: false
+        currentListId: null
     }
 
-    removeBadCharacters = arr => {
+    remove
+    BadCharacters = arr => {
         return arr.map ( i => i.replace(/^\s+|\s+$/g, '') ).filter( i => i !== "" )
     }
 
     handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         const listPacket = {
             list: {
                 name: this.state.name,
-                list_items: this.removeBadCharacters(this.state.listItems.split(";")),
-                checklist: this.state.checklist
+                list_items: this.removeBadCharacters(this.state.listItems.split(";"))
             }
         }
         if (!!this.state.currentListId) {
             listPacket["list"]["id"] = this.state.currentListId
         }
+        // debugger;
         this.props.back()
         this.props.createOrUpdate(listPacket, !!this.state.currentListId ? 'PATCH' : 'POST')
     }
@@ -32,12 +32,6 @@ export default class ListForm extends Component {
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
-        })
-    }
-
-    handleCheckbox = e => {
-        this.setState({
-            checklist: e.target.checked
         })
     }
 
@@ -54,43 +48,22 @@ export default class ListForm extends Component {
 
     populateEditFields = e => {
         const selectedList = Array.from(e.target.children).find( o => o.selected )
-        if (selectedList.value === ""){
+        if (selectedList.value === "blank"){
             this.setState({
                 name: "",
                 listItems: "",
-                currentListId: null,
-                checklist: false
+                currentListId: null
             })
         } else {
-            const listObject = this.props.lists.find( l => l.id.toString() === selectedList.value )
+            const listObject = this.props.lists.find( l => l.id.toString() ===selectedList.value )
             const listItems = listObject.list_items.map ( i => i.name ).join(" ; ");
+
             this.setState({
                 name: listObject.name,
                 listItems: listItems,
-                currentListId: listObject.id,
-                checklist: listObject.checklist
+                currentListId: listObject.id
             })
         }                                
-    }
-
-    renderCheckbox = checked => {
-        console.log(this.state)
-        if (this.state.checklist) {
-            return (
-                <input 
-                    type="checkbox"
-                    id="checklist"
-                    checked="checked"
-                    onChange={e => this.handleCheckbox(e) } />
-            )
-        } else {
-            return (
-                <input 
-                    type="checkbox"
-                    id="checklist"
-                    onChange={e => this.handleCheckbox(e) } />
-            )
-        }
     }
      
     render() {
@@ -102,10 +75,10 @@ export default class ListForm extends Component {
                         id={this.state.currentListId} 
                         className="selectListDropdown"
                         onChange={ e => this.populateEditFields(e) }
-                        value={ !!this.state.currentListId ? this.state.currentListId : "" } 
+                        value={this.state.currentListId} 
                         style={{display: !!this.props.lists ? 'block' : 'none'}}
-                        required={ !!this.props.lists }>
-                        <option value="" disabled="disabled">Select a list to edit...</option>
+                        required>
+                        <option value="blank">Select a list to edit...</option>
                         {this.generateListOptions()}
                     </select>
                     <label className="listFormLabel">
@@ -114,21 +87,15 @@ export default class ListForm extends Component {
                             id="name" 
                             type="text" 
                             className="listFormNameInput" 
-                            onChange={ e => this.handleChange(e) } 
-                            value={this.state.name}
-                            required />
+                            onChange={ e => this.handleChange(e)} 
+                            value={this.state.name}/>
                         </label>
                     <div className="listFormSubText">**Separate list items with a semicolon (;).</div>
                     <textarea 
                         id="listItems" 
                         className="listFormTextArea" 
-                        onChange={ e => this.handleChange(e) } 
-                        value={this.state.listItems} 
-                        required />
-                    <label className="checklistCheckbox">
-                        { this.renderCheckbox() }
-                        Is this list a checklist?
-                    </label>
+                        onChange={ e => this.handleChange(e)} 
+                        value={this.state.listItems} />
                     <input 
                         type="submit" 
                         value={this.props.submitName} />
