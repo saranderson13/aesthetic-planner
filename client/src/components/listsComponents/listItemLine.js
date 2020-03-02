@@ -5,6 +5,14 @@ import { checkboxForListItem } from '../../actions/listsActions'
 
 class ListLineItem extends Component {
 
+    state = {
+        checked: false
+    }
+
+    componentDidMount() {
+        this.setState({ checked: this.props.item.completed })
+    }
+
     handleCheckbox = e => {
         const itemPacket = {
             list_item: {
@@ -13,10 +21,11 @@ class ListLineItem extends Component {
             }
         }
         this.props.checkBox(itemPacket)
+        this.setState({ checked: e.target.checked })
     }
 
     renderCheckbox = () => {
-        if (this.props.item.completed) {
+        if (this.state.checked) {
             return (
                 <input 
                     type="checkbox"

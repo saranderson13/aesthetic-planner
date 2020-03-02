@@ -45,7 +45,6 @@ export const deleteList = id => {
 }
 
 export const checkboxForListItem = itemPacket => {
-    debugger;
     return async function (dispatch) {
         const resp = await fetch(`./list_items/${itemPacket.list_item.id}`, {
             method: 'PATCH',

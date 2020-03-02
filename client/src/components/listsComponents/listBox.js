@@ -18,8 +18,6 @@ export default class ListBox extends Component {
         }
     }
 
-    
-
     render() {
         return (
             <div key={this.props.list.id} className="listBox" >
