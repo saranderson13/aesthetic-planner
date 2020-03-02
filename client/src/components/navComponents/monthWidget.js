@@ -9,7 +9,7 @@ class MonthWidget extends Component {
     
     state = {
         displayMonth: null,
-        page: window.location.href.split("/").reverse()[0]
+        page: window.location.href.split("/").reverse()[1]
     }
 
     componentDidMount() {

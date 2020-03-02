@@ -120,10 +120,10 @@ SUNDAY 3/1
 MONDAY 3/2
 [x] Fix un-uncheckable bug
 [x] Link to current day for day planner & journal link in pageLinks
-[ ] Link to day from calendar widget for journal
-[ ] Link to day from calendar widget for dayPlanner
-[ ]
-[ ]
+[x] Link to day from calendar widget for journal
+[x] Link to day from calendar widget for dayPlanner
+[ ] Highlight selected day in calendar widget
+[ ] Make root page redirect to current day day planner
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Journals page components

@@ -11,6 +11,7 @@ class NavContainer extends Component {
     }
     
     render() {
+        // debugger;
         return (
             <div>
                 <PageLinks days={this.props.days} />
@@ -22,7 +23,6 @@ class NavContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    // debugger;
     return ({
         days: state.controls.days
     })
