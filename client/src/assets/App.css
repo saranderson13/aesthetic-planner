@@ -5,8 +5,9 @@ html, body, #root {
 
 #bodyContainer {
   box-sizing: inherit;
-  /* display: inline-block; */
+  display: block;
   position: absolute; top: 0px; left: 300px;
   width: calc(100% - 300px); height: inherit;
-  background-color: #a03
+  background-color: #a03;
+  overflow: auto;
 }

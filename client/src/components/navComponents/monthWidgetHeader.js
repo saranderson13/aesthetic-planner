@@ -1,4 +1,4 @@
-// STATELESS COMPONENT #2
+// STATELESS COMPONENT
 
 import React, { Component } from 'react';
 

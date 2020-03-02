@@ -58,10 +58,18 @@ class ListsControlsContainer extends Component {
             )
         } else {
             return (
-                <>
-                    <button onClick={this.toggleAdd.bind(this)}>Add List</button>
-                    <button onClick={this.toggleEdit.bind(this)}>Edit List</button>
-                </>
+                <div className="listFormStartButtonsContainer">
+                    <button 
+                        className="listFormStartButton"
+                        onClick={this.toggleAdd.bind(this)} >
+                        Add List
+                    </button>
+                    <button 
+                        className="listFormStartButton"
+                        onClick={this.toggleEdit.bind(this)} >
+                        Edit List
+                    </button>
+                </div>
             )
         }
     }

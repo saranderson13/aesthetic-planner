@@ -1,4 +1,4 @@
-// STATELESS COMPONENT #3
+// STATELESS COMPONENT // FUNCTIONAL COMPONENT
 
 import React from 'react'
 import { Link } from 'react-router-dom'

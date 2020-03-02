@@ -1,4 +1,4 @@
-// STATELESS COMPONENT #1
+// STATELESS COMPONENT
 
 import React, { Component } from 'react';
 import MonthWidgetDay from './monthWidgetDay'

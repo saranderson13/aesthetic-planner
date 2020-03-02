@@ -25,10 +25,17 @@ class ListsContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
-                    <ListsControlsContainer lists={this.props.lists} />
+                    <ListsControlsContainer 
+                        lists={this.props.lists} />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
-                <section id="bodyContainer"><ListsBodyContainer pageName="Lists" lists={this.props.lists} /></section>
+                <section id="bodyContainer">
+                    <ListsBodyContainer 
+                        style={{maxWidth: window.innerWidth - 300}}
+                        pageName="Lists" 
+                        loading={this.props.loading} 
+                        lists={this.props.lists} />
+                </section>
             </>
         )
     }
