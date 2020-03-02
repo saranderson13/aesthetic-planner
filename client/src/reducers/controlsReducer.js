@@ -2,7 +2,9 @@ const controlsReducer = (
     state = {
         months: [],
         currentMonth: {},
-        loading: false
+        loading: false,
+        days: [],
+        loadingDays: true
     }, action ) => {
         
         switch (action.type) {
@@ -19,6 +21,20 @@ const controlsReducer = (
                     months: action.months,
                     currentMonth: action.months.find( m => m.number == (new Date().getMonth() + 1)),
                     loading: false
+                }
+
+            case 'LOAD_DAYS':
+                return {
+                    ...state,
+                    days: [...state.days],
+                    loadingDays: true
+                }
+
+            case 'RETURN_DAYS':
+                return {
+                    ...state,
+                    days: action.days,
+                    loadingDays: false 
                 }
 
             default:

@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import { connect } from 'react-redux'
 // import { fetchTest } from './actions/_testAction'
 
+
+// PlannerContainer IS FOR FUTURE IMPLEMENTATION OF WEEKLY AND MONTHLY CALENDAR PAGES
 // import PlannerContainer from './containers/plannerContainer'
 import TrackerContainer from './containers/trackersContainers/trackerContainer'
 import ListsContainer from './containers/listsContainers/listsContainer'
@@ -22,7 +24,7 @@ class App extends Component {
     return (
       <Router>      
         <Switch>
-          <Route path="/day-planner">
+          <Route path="/day-planner/:id">
             <DayPlannerContainer />
           </Route>
 

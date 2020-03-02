@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchDays } from '../actions/journalActions'
+import { fetchDays } from '../actions/controlsActions'
 import MonthWidget from '../components/navComponents/monthWidget'
 import PageLinks from '../components/navComponents/pageLinks'
 
@@ -21,10 +21,10 @@ class NavContainer extends Component {
 
 }
 
-
 const mapStateToProps = state => {
+    // debugger;
     return ({
-        days: state.journals.days
+        days: state.controls.days
     })
 }
 

@@ -1,23 +1,23 @@
 const journalReducer = (
     state = {
-        days: [],
-        loadingDays: true
+        journals: [],
+        loadingDays: false
     }, action ) => {
 
         switch (action.type) {
 
-            case 'LOAD_DAYS':
+            case 'LOAD_JOURNALS':
                 return {
                     ...state,
-                    days: [...state.days],
-                    loadingDays: true
+                    journals: [...state.journals],
+                    loadingJournals: true
                 }
 
-            case 'RETURN_DATES':
+            case 'ADD_JOURNALS':
                 return {
                     ...state,
-                    days: action.days,
-                    loadingDays: false 
+                    journals: action.journals,
+                    loadingJournals: false 
                 }
 
             default:
