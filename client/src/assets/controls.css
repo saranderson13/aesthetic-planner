@@ -77,3 +77,5 @@
 .monthWidgetHeader .next { float: right; width: 70px; }
 .monthWidgetHeader .current {  font-weight: bold; width: 90px; }
 .monthWidgetHeader .disabled { color: #fff; user-select: none;}
+.selectedDayHighlight { background-color: #ed8 }
+.nonselectedDay { background-color: none; }

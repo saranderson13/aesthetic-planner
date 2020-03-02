@@ -14,14 +14,19 @@ export default class MonthWidgetDay extends Component {
         return date
     }
 
-    
-
     render() {
+        const currentPageId = window.location.href.split("/").reverse()[0]
         if (this.props.page === "day-planner" || this.props.page === "journal") {
+
             let dayURL = `/${this.props.page}/${this.props.day.id}`
+            
             return (
                 <Link to={dayURL}>
-                    <div key={this.props.day.id} style={{backgroundColor: "#ef8"}}>{this.formatStringDate(this.props.day.date)}</div>
+                    <div 
+                        key={this.props.day.id} 
+                        className={currentPageId === this.props.day.id.toString() ? "selectedDayHighlight" : "nonselectedDay"} >
+                        {this.formatStringDate(this.props.day.date)}
+                    </div>
                 </Link>
             )
         } else {

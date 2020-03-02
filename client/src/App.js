@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { fetchDays } from './actions/controlsActions'
 import './assets/lists.css'
 import './assets/controls.css'
 import './assets/App.css';
 
-// ROUTER
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 // ONLY NEEDED TO RUN FETCH TEST
-// import { connect } from 'react-redux'
 // import { fetchTest } from './actions/_testAction'
 
 
@@ -20,7 +19,24 @@ import DayPlannerContainer from './containers/dayPlannerContainers/dayPlannerCon
 
 class App extends Component {
 
+  componentDidMount() {
+    this.props.fetchDays()
+  }
+
+  getCurrentPlannerLink = days => {
+    debugger;
+    if (days.length > 0) {
+        const today = new Date()
+        const todayDateString = today.getFullYear().toString() + "-" + ( today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1 ) + "-" + ( today.getDate() < 10 ? "0" + today.getDate() : today.getDate() )
+        let currentDayId = (days.find( d => d.date === todayDateString).id )
+        return <Redirect to={`/day-planner/${currentDayId}`} />
+    } else {
+        return "Loading..."
+    }
+  }
+  
   render() {
+    // debugger;
     return (
       <Router>      
         <Switch>
@@ -39,6 +55,9 @@ class App extends Component {
           <Route path="/journal/:id">
             <JournalContainer />
           </Route>
+          <Route path="/">
+            { this.getCurrentPlannerLink(this.props.days) }
+          </Route>
         </Switch>
       </Router>
     )
@@ -46,7 +65,20 @@ class App extends Component {
   
 }
 
-export default App
+const mapStateToProps = state => {
+  return({
+    days: state.controls.days,
+    loadingDays: state.controls.loadingDays
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return ({
+      fetchDays: () => dispatch(fetchDays())
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
 // EXAMPLE: #componentDidMount()
