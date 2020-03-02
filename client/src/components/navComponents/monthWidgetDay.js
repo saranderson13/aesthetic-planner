@@ -14,13 +14,16 @@ export default class MonthWidgetDay extends Component {
         return date
     }
 
+    
+
     render() {
-        if (this.props.page === "day-planner") {
-            let dayURL = `/day-planner/${this.props.day.id}`
-            return <Link to={dayURL}><td>{this.formatStringDate(this.props.day.date)}</td></Link>
-        } else if (this.props.page === "journal") {
-            let dayURL = `/journal/${this.props.day.id}`
-            return <Link to={dayURL}><td>{this.formatStringDate(this.props.day.date)}</td></Link>
+        if (this.props.page === "day-planner" || this.props.page === "journal") {
+            let dayURL = `/${this.props.page}/${this.props.day.id}`
+            return (
+                <Link to={dayURL}>
+                    <div key={this.props.day.id} style={{backgroundColor: "#ef8"}}>{this.formatStringDate(this.props.day.date)}</div>
+                </Link>
+            )
         } else {
             return this.formatStringDate(this.props.day.date);
         }

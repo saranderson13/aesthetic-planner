@@ -31,7 +31,7 @@ class ListLineItem extends Component {
                     type="checkbox"
                     className="listCheckbox"
                     onChange={ e => this.handleCheckbox(e) } 
-                    checked="checked"/>
+                    checked={this.state.checked} />
             )
         } else {
             return (

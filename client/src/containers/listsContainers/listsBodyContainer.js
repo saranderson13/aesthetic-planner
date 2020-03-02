@@ -30,7 +30,7 @@ class ListsBodyContainer extends Component {
     render() {
         if (this.props.loading) {
             return (
-                <img src={LoadingWheel} />
+                <img src={LoadingWheel} alt="Loading" />
             )
         } else {
             return (

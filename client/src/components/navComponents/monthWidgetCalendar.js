@@ -1,6 +1,7 @@
 // STATELESS COMPONENT
 
 import React, { Component } from 'react';
+import uuid from 'uuid'
 import MonthWidgetDay from './monthWidgetDay'
 
 export default class MonthWidgetCalendar extends Component {
@@ -41,7 +42,7 @@ export default class MonthWidgetCalendar extends Component {
         let rowVals = []
 
         const days = ["M", "T", "W", "R", "F", "S", "U"]
-        rows.push(days.map( d => <th>{d}</th> ))
+        rows.push(days.map( d => <th key={d} >{d}</th> ))
         
         for (let i = 0; i < weeks.length; i++) {
             if (!Object.values(weeks[i]).every( val => val == null)) {
@@ -49,7 +50,8 @@ export default class MonthWidgetCalendar extends Component {
                 for (let n = 0; n < 7; n++){
                     rowVals.push(weeks[i][n] == null ? "" : <MonthWidgetDay day={weeks[i][n]} page={this.props.page} /> )
                 }
-                rows.push(rowVals.map( d => <td>{d}</td>))
+                // console.log(rowVals)
+                rows.push(rowVals.map( d => <td key={ d === "" ? uuid() : d.props.day.id}>{d}</td> ))
             }
         }
         return rows
@@ -59,7 +61,7 @@ export default class MonthWidgetCalendar extends Component {
         return (
             <table>
                 <tbody>
-                    {this.generateCalendarRows().map( r => { return <tr>{r}</tr> })}
+                    {this.generateCalendarRows().map( r => { return <tr key={uuid()}>{r}</tr> })}
                 </tbody>
             </table>
         )

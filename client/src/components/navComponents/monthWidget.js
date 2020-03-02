@@ -25,11 +25,11 @@ class MonthWidget extends Component {
     }
 
     navToPrevMonth() {
-        this.setState({ displayMonth: this.props.months.find( m => m.number == this.state.displayMonth.number - 1 ) })
+        this.setState({ displayMonth: this.props.months.find( m => m.number === this.state.displayMonth.number - 1 ) })
     }
 
     navToNextMonth = () => {
-        this.setState({ displayMonth: this.props.months.find( m => m.number == this.state.displayMonth.number + 1 ) })
+        this.setState({ displayMonth: this.props.months.find( m => m.number === this.state.displayMonth.number + 1 ) })
     }
 
     displayWidget() {
@@ -53,7 +53,7 @@ class MonthWidget extends Component {
             return (
                 <>
                     <div className="monthWidgetHeader">Loading...</div>
-                    <img src={LoadingWheel} />
+                    <img src={LoadingWheel} alt="Loading" />
                 </>
             )
         }

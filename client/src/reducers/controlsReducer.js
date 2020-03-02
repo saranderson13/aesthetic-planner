@@ -19,7 +19,7 @@ const controlsReducer = (
                 return {
                     ...state,
                     months: action.months,
-                    currentMonth: action.months.find( m => m.number == (new Date().getMonth() + 1)),
+                    currentMonth: action.months.find( m => m.number === (new Date().getMonth() + 1)),
                     loading: false
                 }
 
