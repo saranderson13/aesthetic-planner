@@ -34,7 +34,7 @@ class App extends Component {
             <ListsContainer />
           </Route>
 
-          <Route path="/journal">
+          <Route path="/journal/:id">
             <JournalContainer />
           </Route>
         </Switch>

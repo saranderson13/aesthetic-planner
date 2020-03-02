@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
 import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
