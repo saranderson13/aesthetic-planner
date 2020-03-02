@@ -113,7 +113,8 @@ SATURDAY 2/29
 SUNDAY 3/1
 [x] Add checklist capability
 [x] Move lists fetch to lists container (and pass to controls & body)
-[ ] Lists Body
+[x] Lists Body in mosaic/masonry style
+[ ] Add checklist capability to list entries
 [ ] Day Planner page components
 [ ] Tracker page components
 [ ] Journals page components

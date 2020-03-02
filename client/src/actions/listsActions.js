@@ -43,3 +43,17 @@ export const deleteList = id => {
         return await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
+
+export const checkboxForListItem = itemPacket => {
+    debugger;
+    return async function (dispatch) {
+        const resp = await fetch(`./list_items/${itemPacket.list_item.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(itemPacket)
+        })
+    }
+}

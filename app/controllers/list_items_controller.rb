@@ -1,8 +1,9 @@
 class ListItemsController < ApplicationController
 
     def update
+        # binding.pry
         item = ListItem.find_by(id: list_item_params["id"])
-        item.update(list_item_params)
+        item.update(completed: list_item_params["completed"])
         lists = List.all
         render json: lists.to_json(
             include: json_include()

@@ -14,6 +14,20 @@
     background-color: #f87;
 }
 
+.checklistItems { padding-left: 0px; }
+.listItems { padding-left: 20px; }
+
+.checklistItems li, .listItems li {
+    line-height: 20px;
+}
+
+.checklistBullet { list-style-type: none; }
+.listCheckbox { margin-right: 10px; }
+
+/* .regularBullet {
+
+} */
+
 
 /* LIST FORM STYLING */
 

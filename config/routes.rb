@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :goals, except: [:new, :edit]
 
   resources :lists, except: [:new, :edit]
-  resources :list_items, only: [:create, :update, :destroy]
+  resources :list_items, only: [:update]
 
   resources :trackers, only: [:index, :update]
   resources :tracker_lines, only: [:create, :update, :destroy]

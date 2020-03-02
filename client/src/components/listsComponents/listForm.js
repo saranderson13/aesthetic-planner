@@ -70,7 +70,6 @@ export default class ListForm extends Component {
     }
 
     renderCheckbox = checked => {
-        console.log(this.state)
         if (this.state.checklist) {
             return (
                 <input 
