@@ -41,6 +41,24 @@ class DayPlannerContainer extends Component {
     // Column 2, Box 1 - Daily Goals
     // Column 2, Box 2 - Daily Tasks 
 
+    state = {
+        currentDayId: null
+    }
+
+    componentDidMount() {
+        this.setState({
+            currentDayId: this.props.match.params.id
+        })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.setState({
+                currentDayId: this.props.match.params.id
+            })
+        }
+    }
+
     render() {
         return (
             <>
@@ -48,7 +66,7 @@ class DayPlannerContainer extends Component {
                     <DayPlannerControlsContainer />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
-                <section id="bodyContainer"><DayPlannerBodyContainer pageName="Day Planner"/></section>
+                <section id="bodyContainer"><DayPlannerBodyContainer pageName={`Day Planner - ${this.state.currentDayId}`} /></section>
             </>
         )
     }

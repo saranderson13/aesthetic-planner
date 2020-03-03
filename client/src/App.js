@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   getCurrentPlannerLink = days => {
-    debugger;
+    // debugger;
     if (days.length > 0) {
         const today = new Date()
         const todayDateString = today.getFullYear().toString() + "-" + ( today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1 ) + "-" + ( today.getDate() < 10 ? "0" + today.getDate() : today.getDate() )
@@ -40,9 +40,9 @@ class App extends Component {
     return (
       <Router>      
         <Switch>
-          <Route path="/day-planner/:id">
-            <DayPlannerContainer />
-          </Route>
+          <Route 
+            path="/day-planner/:id" 
+            component={ ({match}) => (<DayPlannerContainer match={match} />)} />
 
           <Route path="/trackers">
             <TrackerContainer />
@@ -52,9 +52,10 @@ class App extends Component {
             <ListsContainer />
           </Route>
 
-          <Route path="/journal/:id">
-            <JournalContainer />
-          </Route>
+          <Route 
+            path="/journal/:id" 
+            component={ ({match}) => (<JournalContainer match={match} />)} />
+          
           <Route path="/">
             { this.getCurrentPlannerLink(this.props.days) }
           </Route>

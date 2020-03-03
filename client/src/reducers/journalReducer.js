@@ -1,7 +1,7 @@
 const journalReducer = (
     state = {
         journals: [],
-        loadingDays: false
+        loadingJournals: false
     }, action ) => {
 
         switch (action.type) {
