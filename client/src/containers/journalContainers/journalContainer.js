@@ -20,20 +20,20 @@ class JournalContainer extends Component {
     state = {
         toggleView: true,
         toggleInput: false,
-        currentDayId: null
+        selectedDay: null
     }
 
     componentDidMount() {
         this.props.fetchJournals()
         this.setState({
-            currentDayId: this.props.match.params.id
+            selectedDay: this.props.match.params.id
         })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.setState({
-                currentDayId: this.props.match.params.id
+                selectedDay: this.props.match.params.id
             })
         }
     }
@@ -43,11 +43,11 @@ class JournalContainer extends Component {
             return <JournalBodyContainer status="loading" journalId={null} dayId={null} content={null} />
         } else {
             if(this.props.days.length > 0) {
-                const journal = this.props.journals.find( j => j.day_id.toString() === this.state.currentDayId )
+                const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
                 if (!!journal) {
                     return <JournalBodyContainer status="valid" journalId={journal.id} dayId={journal.day_id} content={journal.content} />
                 } else {
-                    return <JournalBodyContainer status="no entry" journalId={null} dayId={this.state.currentDayId} content={null} />
+                    return <JournalBodyContainer status="no entry" journalId={null} dayId={this.state.selectedDay} content={null} />
                 }
             } else {
                 return <JournalBodyContainer status="loading" journalId={null} dayId={null} content={null} />
@@ -56,12 +56,15 @@ class JournalContainer extends Component {
     }
 
     render() {
-        console.log("In render")
         return (
             <>
                 <aside id="controlsContainer">
                     <JournalControlsContainer />
-                    <nav id="navContainer"><NavContainer journals={this.props.journals} /></nav>
+                    <nav id="navContainer">
+                        <NavContainer 
+                            journals={this.props.journals} 
+                            dayId={this.props.match.params.id} />
+                    </nav>
                 </aside>
                 <section id="bodyContainer">{this.selectJournal()}</section>
             </>

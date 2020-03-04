@@ -14,21 +14,29 @@ export default class MonthWidgetDay extends Component {
         return date
     }
 
-    render() {
+    setDayDiv = () => {
         const currentPageId = window.location.href.split("/").reverse()[0]
-        if (this.props.page === "day-planner" || this.props.page === "journal") {
+        let divClass = ""
+        if(!!this.props.currentDayId && currentPageId === this.props.currentDayId.toString()) {
+            divClass = currentPageId === this.props.day.id.toString() ? "selectedDayHighlight currentDay" : "nonselectedDay"
+        } else {
+            divClass = currentPageId === this.props.day.id.toString() ? "selectedDayHighlight" : "nonselectedDay"
+            divClass += this.props.currentDayId === this.props.day.id ? " currentDay" : ""
+        }
 
+        return (
+            <div 
+                key={this.props.day.id} 
+                className={divClass} >
+                {this.formatStringDate(this.props.day.date)}
+            </div>
+        )
+    }
+
+    render() {
+        if (this.props.page === "day-planner" || this.props.page === "journal") {
             let dayURL = `/${this.props.page}/${this.props.day.id}`
-            
-            return (
-                <Link to={dayURL}>
-                    <div 
-                        key={this.props.day.id} 
-                        className={currentPageId === this.props.day.id.toString() ? "selectedDayHighlight" : "nonselectedDay"} >
-                        {this.formatStringDate(this.props.day.date)}
-                    </div>
-                </Link>
-            )
+            return ( <Link to={dayURL}> {this.setDayDiv()} </Link> )
         } else {
             return this.formatStringDate(this.props.day.date);
         }

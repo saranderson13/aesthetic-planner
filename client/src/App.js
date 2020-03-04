@@ -23,20 +23,15 @@ class App extends Component {
     this.props.fetchDays()
   }
 
-  getCurrentPlannerLink = days => {
-    // debugger;
-    if (days.length > 0) {
-        const today = new Date()
-        const todayDateString = today.getFullYear().toString() + "-" + ( today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1 ) + "-" + ( today.getDate() < 10 ? "0" + today.getDate() : today.getDate() )
-        let currentDayId = (days.find( d => d.date === todayDateString).id )
-        return <Redirect to={`/day-planner/${currentDayId}`} />
+  getCurrentPlannerLink = () => {
+    if (!!this.props.currentDayId) {
+        return <Redirect to={`/day-planner/${this.props.currentDayId}`} />
     } else {
         return "Loading..."
     }
   }
   
   render() {
-    // debugger;
     return (
       <Router>      
         <Switch>
@@ -57,7 +52,7 @@ class App extends Component {
             component={ ({match}) => (<JournalContainer match={match} />)} />
           
           <Route path="/">
-            { this.getCurrentPlannerLink(this.props.days) }
+            { this.getCurrentPlannerLink() }
           </Route>
         </Switch>
       </Router>
@@ -69,7 +64,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return({
     days: state.controls.days,
-    loadingDays: state.controls.loadingDays
+    loadingDays: state.controls.loadingDays,
+    currentDayId: state.controls.currentDayId
   })
 }
 

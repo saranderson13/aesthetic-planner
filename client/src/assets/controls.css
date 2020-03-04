@@ -79,3 +79,4 @@
 .monthWidgetHeader .disabled { color: #fff; user-select: none;}
 .selectedDayHighlight { background-color: #ed8 }
 .nonselectedDay { background-color: none; }
+.currentDay { border: 1px solid #a76}

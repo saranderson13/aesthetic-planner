@@ -4,7 +4,8 @@ const controlsReducer = (
         currentMonth: {},
         loading: false,
         days: [],
-        loadingDays: true
+        loadingDays: true,
+        currentDayId: null
     }, action ) => {
         
         switch (action.type) {
@@ -31,10 +32,13 @@ const controlsReducer = (
                 }
 
             case 'RETURN_DAYS':
+                const today = new Date()
+                const todayDateString = today.getFullYear().toString() + "-" + ( today.getMonth() + 1 < 10 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1 ) + "-" + ( today.getDate() < 10 ? "0" + today.getDate() : today.getDate() )
                 return {
                     ...state,
                     days: action.days,
-                    loadingDays: false 
+                    loadingDays: false,
+                    currentDayId: (action.days.find( d => d.date === todayDateString).id )
                 }
 
             default:

@@ -64,7 +64,10 @@ class DayPlannerContainer extends Component {
             <>
                 <aside id="controlsContainer">
                     <DayPlannerControlsContainer />
-                    <nav id="navContainer"><NavContainer /></nav>
+                    <nav id="navContainer">
+                        <NavContainer 
+                            dayId={this.props.match.params.id} />
+                    </nav>
                 </aside>
                 <section id="bodyContainer"><DayPlannerBodyContainer pageName={`Day Planner - ${this.state.currentDayId}`} /></section>
             </>

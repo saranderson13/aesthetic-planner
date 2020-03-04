@@ -48,9 +48,8 @@ export default class MonthWidgetCalendar extends Component {
             if (!Object.values(weeks[i]).every( val => val == null)) {
                 rowVals = []
                 for (let n = 0; n < 7; n++){
-                    rowVals.push(weeks[i][n] == null ? "" : <MonthWidgetDay day={weeks[i][n]} page={this.props.page} /> )
+                    rowVals.push(weeks[i][n] == null ? "" : <MonthWidgetDay day={weeks[i][n]} page={this.props.page} currentDayId={this.props.currentDayId} /> )
                 }
-                // console.log(rowVals)
                 rows.push(rowVals.map( d => <td key={ d === "" ? uuid() : d.props.day.id}>{d}</td> ))
             }
         }

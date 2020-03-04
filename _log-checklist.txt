@@ -123,15 +123,18 @@ MONDAY 3/2
 [x] Link to day from calendar widget for journal
 [x] Link to day from calendar widget for dayPlanner
 [x] clear console warnings & errors
-[-] Highlight selected day in calendar widget (I think this will work once the loaded page needs to change state.)
+[-] Highlight selected day in calendar widget (this did not work.)
 [x] Make root page redirect to current day day planner
 
 
 TUESDAY 3/3
 [x] Fix calendar widget routing (Journal)
 [x] Fix calendar widget routing (Day Planner)
-[ ]
-[ ]
+
+WEDNESDAY 3/4
+[x] Fix highlighting for selected day in calendar widget
+[x] Add border around current day in calendar widget
+[ ] Fix double loading of calendar widget
 [ ] Journal page controls - view/input toggle
 [ ] Journal page controls - list of most recent posts
 [ ] Journals page components

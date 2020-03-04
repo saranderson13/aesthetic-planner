@@ -9,11 +9,12 @@ class MonthWidget extends Component {
     
     state = {
         displayMonth: null,
-        page: window.location.href.split("/").reverse()[1]
+        page: window.location.href.split("/").reverse()[1],
     }
 
     componentDidMount() {
         this.props.fetchMonthsForWidget()   
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,21 +35,18 @@ class MonthWidget extends Component {
 
     displayWidget() {
         if (!this.props.loading && this.props.months.length > 0) {
-            if (this.state.displayMonth === null) { 
-                return (
-                    <>
-                        <MonthWidgetHeader month={this.props.currentMonth} back={this.navToPrevMonth.bind(this)} next={this.navToNextMonth.bind(this)} />
-                        <MonthWidgetCalendar month={this.props.currentMonth} page={this.state.page}/>
-                    </>
-                )
-            } else {
-                return (
-                    <>
-                        <MonthWidgetHeader month={this.state.displayMonth} back={this.navToPrevMonth.bind(this)} next={this.navToNextMonth.bind(this)} />
-                        <MonthWidgetCalendar month={this.state.displayMonth} page={this.state.page}/>
-                    </>
-                )
-            }
+            return (
+                <>
+                    <MonthWidgetHeader 
+                        month={this.state.displayMonth === null ? this.props.currentMonth : this.state.displayMonth} 
+                        back={this.navToPrevMonth.bind(this)} 
+                        next={this.navToNextMonth.bind(this)} />
+                    <MonthWidgetCalendar 
+                        month={this.state.displayMonth === null ? this.props.currentMonth : this.state.displayMonth} 
+                        page={this.state.page} 
+                        currentDayId={this.props.currentDayId} />
+                </>
+            )
         } else {
             return (
                 <>
@@ -73,14 +71,10 @@ const mapStateToProps = state => {
     return {
         months: state.controls.months,
         currentMonth: state.controls.currentMonth,
-        loading: state.controls.loading
+        loading: state.controls.loading,
+        days: state.controls.days,
+        currentDayId: state.controls.currentDayId
     };
 }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchMonthsForWidget: () => dispatch(fetchMonthsForWidget())
-//     }
-// }
 
 export default connect(mapStateToProps, { fetchMonthsForWidget })(MonthWidget)

@@ -26,9 +26,7 @@ export const fetchDays = () => {
             },
             body: JSON.stringify(dispatch)
         })
-        // console.log(resp)
         const json = await resp.json()
-        // debugger;
         return await dispatch({ type: 'RETURN_DAYS', days: json })
     }
 }
