@@ -45,14 +45,20 @@ class JournalContainer extends Component {
         return !!dateObj ? `${weekDays[dateObj.getUTCDay()]}, ${months[dateObj.getUTCMonth()]} ${dateObj.getUTCDate()}, ${dateObj.getUTCFullYear()}` : null
     }
 
+    toggleView = (e) => {
+        this.setState( prevState => {
+            return {
+                toggleView: !prevState.toggleView,
+                toggleInput: !prevState.toggleInput
+            }
+        })
+    }
+
     selectJournal = () => {
         if (this.props.loadingJournals || this.props.days.length <= 0) {
             return (
                 <JournalBodyContainer 
-                    status="loading" 
-                    journalId={null} 
-                    dayId={null} 
-                    content={null} />
+                    status="loading" />
             )
         } else {
             if(this.props.days.length > 0) {
@@ -64,25 +70,21 @@ class JournalContainer extends Component {
                     return (
                         <JournalBodyContainer 
                             entry={true} 
-                            journalId={journal.id} 
-                            // dayId={journal.day_id}
-                            // todayId={this.props.currentDayId}
-                            futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
-                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)}
+                            view={this.state.toggleView}
+                            edit={this.state.toggleInput} 
+                            journalId={journal.id}
                             formattedDate = {formattedDate}
-                            content={journal.content} />
+                            content={journal.content} 
+                            futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
+                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} />
                     )
                 } else {
                     return (
                         <JournalBodyContainer 
-                            entry={false} 
-                            journalId={null} 
-                            // dayId={this.state.selectedDay} 
-                            // todayId={this.props.currentDayId}
-                            futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
-                            pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)}
+                            entry={false}
                             formattedDate = {formattedDate}
-                            content={null} />
+                            futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
+                            pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} />
                     )
                 }
             }
@@ -93,7 +95,7 @@ class JournalContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
-                    <JournalControlsContainer />
+                    <JournalControlsContainer toggleView={this.toggleView.bind(this)} />
                     <nav id="navContainer">
                         <NavContainer 
                             journals={this.props.journals} 

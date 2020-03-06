@@ -1,7 +1,7 @@
 import React from 'react'
 
 const JournalEntry = props => {
-    console.log(props)
+    // console.log(props)
     return (
         <div>
             <h3>{props.formattedDate}</h3>

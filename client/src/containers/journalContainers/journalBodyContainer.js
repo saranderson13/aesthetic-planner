@@ -29,8 +29,6 @@ class JournalBodyContainer extends Component {
             return (
                 <JournalEntry 
                     entry={this.props.entry}
-                    // pastDate={!!(parseInt(this.props.dayId, 10) < this.props.todayId)}
-                    // futureDate={!!(parseInt(this.props.dayId, 10) > this.props.todayId)}
                     content={message}
                     formattedDate={this.props.formattedDate} />
             )
@@ -42,7 +40,6 @@ class JournalBodyContainer extends Component {
     }
 
     render() {
-        // debugger;
         return (
             <>
                 {this.displayJournal()}

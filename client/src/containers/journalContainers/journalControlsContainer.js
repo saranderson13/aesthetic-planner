@@ -7,7 +7,7 @@ class JournalControlsContainer extends Component {
 
     render() {
         return (
-            <h1>Controls Container</h1>
+            <button onClick={this.props.toggleView}>Toggle!</button>
         )
     }
 

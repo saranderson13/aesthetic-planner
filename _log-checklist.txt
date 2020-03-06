@@ -135,15 +135,15 @@ WEDNESDAY 3/4
 [x] Fix highlighting for selected day in calendar widget
 [x] Add border around current day in calendar widget
 [-] Fix double loading of calendar widget (this did not work.)
-[ ] Journal body conditional display (future/past/present for existing and non-existing entries)
+[x] Journal body conditional display (future/past/present for existing and non-existing entries)
+[x] Journal page controls - view/input toggle changes state via button
+[ ] Journal page controls - toggle button changes view in body
 [ ]
-[ ]
-[ ] Journal page controls - view/input toggle
 [ ] Journal page controls - list of most recent posts
 [ ] Journals page components
+[ ] Add current day highlight to tracker and list pages
 [ ] Day Planner page components
 [ ] Tracker page components
-[ ]
 [ ]
 [ ]
 [ ]
