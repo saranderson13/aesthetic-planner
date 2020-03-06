@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { connect } from 'react-redux'
 import { fetchDays } from './actions/controlsActions'
 import './assets/lists.css'
+import './assets/journal.css'
 import './assets/controls.css'
 import './assets/App.css';
 

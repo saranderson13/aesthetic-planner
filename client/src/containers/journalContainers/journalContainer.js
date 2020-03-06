@@ -38,19 +38,53 @@ class JournalContainer extends Component {
         }
     }
 
+    formatDate = dateObj => {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        
+        return !!dateObj ? `${weekDays[dateObj.getUTCDay()]}, ${months[dateObj.getUTCMonth()]} ${dateObj.getUTCDate()}, ${dateObj.getUTCFullYear()}` : null
+    }
+
     selectJournal = () => {
-        if (this.props.loadingJournals) {
-            return <JournalBodyContainer status="loading" journalId={null} dayId={null} content={null} />
+        if (this.props.loadingJournals || this.props.days.length <= 0) {
+            return (
+                <JournalBodyContainer 
+                    status="loading" 
+                    journalId={null} 
+                    dayId={null} 
+                    content={null} />
+            )
         } else {
             if(this.props.days.length > 0) {
                 const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
+                const day = this.props.days.find( d => d.id.toString() === this.state.selectedDay)
+                const dateObj = !!day ? new Date(day.date) : null
+                const formattedDate = this.formatDate(dateObj)
                 if (!!journal) {
-                    return <JournalBodyContainer status="valid" journalId={journal.id} dayId={journal.day_id} content={journal.content} />
+                    return (
+                        <JournalBodyContainer 
+                            entry={true} 
+                            journalId={journal.id} 
+                            // dayId={journal.day_id}
+                            // todayId={this.props.currentDayId}
+                            futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
+                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)}
+                            formattedDate = {formattedDate}
+                            content={journal.content} />
+                    )
                 } else {
-                    return <JournalBodyContainer status="no entry" journalId={null} dayId={this.state.selectedDay} content={null} />
+                    return (
+                        <JournalBodyContainer 
+                            entry={false} 
+                            journalId={null} 
+                            // dayId={this.state.selectedDay} 
+                            // todayId={this.props.currentDayId}
+                            futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
+                            pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)}
+                            formattedDate = {formattedDate}
+                            content={null} />
+                    )
                 }
-            } else {
-                return <JournalBodyContainer status="loading" journalId={null} dayId={null} content={null} />
             }
         }
     }
@@ -78,6 +112,7 @@ const mapStateToProps = state => {
         days: state.controls.days,
         journals: state.journals.journals,
         loadingJournals: state.journals.loadingJournals,
+        currentDayId: state.controls.currentDayId
     })
 }
 

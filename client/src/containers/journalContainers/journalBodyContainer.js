@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import JournalEntry from '../../components/journalComponents/journalEntry'
 // import { connect } from 'react-redux'
 
 class JournalBodyContainer extends Component {
@@ -6,16 +7,46 @@ class JournalBodyContainer extends Component {
     displayJournal = () => {
         if(this.props.status === "loading") {
             return "loading"
-        } else if (this.props.status === "no entry") {
-            return `no entry - ${this.props.dayId}`
+        } else if (this.props.entry) {
+            return (
+                <JournalEntry 
+                    entry={this.props.entry} 
+                    content={this.props.content} 
+                    formattedDate={this.props.formattedDate} />
+            )
         } else {
-            return this.props.content
+            // Return input form if current day.
+            // Return forbidden submission message for future days.
+            // Return no entry message for previous days.
+            let message = ""
+            if (this.props.futureDate) {
+                message = "You may not create a journal for a future date."
+            } else if (this.props.pastDate) {
+                message="There is no journal present for the selected date."
+            } else {
+                message="Input form here."
+            }
+            return (
+                <JournalEntry 
+                    entry={this.props.entry}
+                    // pastDate={!!(parseInt(this.props.dayId, 10) < this.props.todayId)}
+                    // futureDate={!!(parseInt(this.props.dayId, 10) > this.props.todayId)}
+                    content={message}
+                    formattedDate={this.props.formattedDate} />
+            )
         }
     }
 
+    displayInput = () => {
+
+    }
+
     render() {
+        // debugger;
         return (
-            <h1>{this.displayJournal()}</h1>
+            <>
+                {this.displayJournal()}
+            </>
         )
     }
 
