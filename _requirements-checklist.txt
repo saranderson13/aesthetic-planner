@@ -1,0 +1,43 @@
+[x] mostly ES6
+[x] use create-react-app
+[x] ROUTES (3 required)
+    [x] Day Planner (defaults to today)
+    [x] Trackers
+    [x] Lists
+    [x] Journal (defaults to today)
+    [x] Each day for Day Planner (nav from cal widget on day planner page)
+    [x] Any day with a journal entry (nav from cal widget on journal page)
+    [ ] Each month (nav from cal widget on trackers page)
+[x] CONTAINERS (2 required)
+****(Only checked off if fully built out.)
+    [x] Nav container
+    [ ] Day Planner Container
+    [ ] Day Planner Body Container
+    [ ] Day Planner Controls Container
+    [ ] Trackers Container
+    [ ] Trackers Body Container
+    [ ] Trackers Controls Container
+    [x] Lists Container
+    [x] Lists Body Container
+    [x] Lists Controls Container
+    [ ] Journal Container
+    [ ] Journal Body Container
+    [ ] Journal Controls Container
+[x] STATELESS COMPONENTS (5 required)
+    [x] Month Widget Calendar
+    [x] Month Widget Day
+    [x] Month Widget Header
+    [x] Page Links (also functional)
+    [x] List Box
+    [x] Journal Entry
+    [x] Journal Message Box (also functional)
+    [ ]
+    [ ]
+[x] Use react-router
+[x] Use Redux
+[x] Use async functions to send/receive data from server
+[x] Rails API backend
+[x] Use fetch()
+[x] Client-side handles mostly display
+[x] Some CSS
+

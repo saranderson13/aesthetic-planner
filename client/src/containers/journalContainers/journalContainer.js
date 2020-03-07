@@ -69,6 +69,8 @@ class JournalContainer extends Component {
     }
 
     selectJournal = () => {
+        let mode = this.state.toggleView ? "view" : "edit"
+
         if (this.props.loadingJournals || this.props.days.length <= 0) {
             return (
                 <JournalBodyContainer 
@@ -86,6 +88,7 @@ class JournalContainer extends Component {
                             entry={true} 
                             view={this.state.toggleView}
                             edit={this.state.toggleInput} 
+                            mode={mode}
                             journalId={journal.id}
                             formattedDate = {formattedDate}
                             content={journal.content} 
@@ -98,6 +101,7 @@ class JournalContainer extends Component {
                     return (
                         <JournalBodyContainer 
                             entry={false}
+                            mode={mode}
                             formattedDate = {formattedDate}
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
@@ -110,7 +114,7 @@ class JournalContainer extends Component {
     }
 
     render() {
-        // console.log(this.state)
+        console.log(this.state)
         return (
             <>
                 <aside id="controlsContainer">

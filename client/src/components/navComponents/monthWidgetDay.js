@@ -1,5 +1,6 @@
+// STATELESS COMPONENT
+
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class MonthWidgetDay extends Component {
@@ -19,7 +20,6 @@ class MonthWidgetDay extends Component {
 
         // if today's id has loaded and the current page is for today
         if(!!this.props.currentDayId) {
-            // let noJournal = !!(this.props.page === "journal" && !this.props.journals.find( j => j.day_id === this.props.day.id ))
             if(currentPageId === this.props.currentDayId.toString()) {
                 divClass = currentPageId === this.props.day.id.toString() ? "selectedDayHighlight currentDay" : "nonselectedDay"
             } else {
@@ -27,8 +27,6 @@ class MonthWidgetDay extends Component {
                 divClass = currentPageId === this.props.day.id.toString() ? "selectedDayHighlight" : "nonselectedDay"
                 divClass += this.props.currentDayId === this.props.day.id ? " currentDay" : ""
             }
-
-            console.log(divClass)
         }
 
         return (
@@ -46,7 +44,7 @@ class MonthWidgetDay extends Component {
             return ( <Link to={dayURL}> {this.setDayDiv()} </Link> )
         } else if (this.props.page === "journal" && this.props.day.id <= this.props.currentDayId) {
             let dayURL = `/${this.props.page}/${this.props.day.id}`
-            let noJournal = !!(this.props.day.id != this.props.currentDayId && this.props.page === "journal" && !this.props.journals.find( j => j.day_id === this.props.day.id ))
+            let noJournal = !!(this.props.day.id !== this.props.currentDayId && this.props.page === "journal" && !this.props.journals.find( j => j.day_id === this.props.day.id ))
             if (noJournal) {
                 return (
                     <div 

@@ -14,25 +14,29 @@ class JournalBodyContainer extends Component {
                 <JournalEntry 
                     entry={this.props.entry} 
                     content={this.props.content} 
-                    formattedDate={this.props.formattedDate} />
+                    formattedDate={this.props.formattedDate} 
+                    setViewMode={this.props.setViewMode.bind(this)} />
             )
         } else {
-            // Return input form if current day.
-            // Return forbidden submission message for future days.
-            // Return no entry message for previous days.
             let message = ""
             if (this.props.futureDate) {
+                // Return forbidden submission message for future days.
+                // Cannot nav to this from cal widget - only by manually entering url
                 message = "You may not create a journal for a future date."
             } else if (this.props.pastDate) {
+                // Return no entry message for previous days.
+                // Cannot nav to this from cal widget - only by manually entering url
                 message="There is no journal present for the selected date."
             } else {
-                // this.props.setInputMode()
+                // Return input form if current day.
                 return <JournalForm setInputMode={this.props.setInputMode.bind(this)} />
             }
             return (
                 <JournalMessageBox
                     content={message}
-                    formattedDate={this.props.formattedDate} />
+                    mode={this.props.mode}
+                    formattedDate={this.props.formattedDate} 
+                    setViewMode={this.props.setViewMode.bind(this)} />
             )
         }
     }
