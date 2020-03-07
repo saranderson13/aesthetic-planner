@@ -6,10 +6,6 @@ export default class JournalForm extends Component {
         content: ""
     }
 
-    componentDidMount() {
-        this.props.setInputMode()
-    }
-
     handleChange = e => {
         this.setState({ content: e.target.value })
     }
@@ -27,7 +23,6 @@ export default class JournalForm extends Component {
     }
 
     render() {
-        // console.log(this.state)
         return (
             <div>
                 <h3>{this.props.formattedDate}</h3>

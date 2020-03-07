@@ -143,10 +143,13 @@ WEDNESDAY 3/4
 SATURDAY 3/7
 [x] Grey out days that do not have entries in cal widget
 [x] on journal page - future days do not have links in cal widget
+[x] create journal form
 [ ] Journal page controls - toggle button changes view in body
+[ ] transform create form to also work for edit
+[ ] transoform journal submit to work for both create & edit
+[ ]
 [ ] list of most recent posts
 [ ] Add current day highlight to tracker and list pages
-[ ]
 [ ]
 [ ]
 [ ] Day Planner page components

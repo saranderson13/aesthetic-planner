@@ -2,21 +2,29 @@ import React, { Component } from 'react'
 import JournalEntry from '../../components/journalComponents/journalEntry'
 import JournalForm from '../../components/journalComponents/journalForm'
 import JournalMessageBox from '../../components/journalComponents/journalMessageBox'
-// import { connect } from 'react-redux'
 
 class JournalBodyContainer extends Component {
 
     displayJournal = () => {
+        console.log(this.props.mode)
         if(this.props.status === "loading") {
             return "loading"
         } else if (this.props.entry) {
-            return (
-                <JournalEntry 
-                    entry={this.props.entry} 
-                    content={this.props.content} 
-                    formattedDate={this.props.formattedDate} 
-                    setViewMode={this.props.setViewMode.bind(this)} />
-            )
+            if(this.props.mode === "view") {
+                return (
+                    <JournalEntry 
+                        entry={this.props.entry} 
+                        content={this.props.content} 
+                        formattedDate={this.props.formattedDate} />
+                )
+            } else {
+                return (
+                    <JournalForm 
+                            dayId={this.props.dayId}
+                            formattedDate={this.props.formattedDate}
+                            submitJournal={this.props.submitJournal} />
+                )
+            }
         } else {
             let message = ""
             if (this.props.futureDate) {
@@ -33,16 +41,13 @@ class JournalBodyContainer extends Component {
                     <JournalForm 
                         dayId={this.props.dayId}
                         formattedDate={this.props.formattedDate}
-                        setInputMode={this.props.setInputMode.bind(this)}
                         submitJournal={this.props.submitJournal} />
                 )
             }
             return (
                 <JournalMessageBox
                     content={message}
-                    mode={this.props.mode}
-                    formattedDate={this.props.formattedDate} 
-                    setViewMode={this.props.setViewMode.bind(this)} />
+                    formattedDate={this.props.formattedDate} />
             )
         }
     }

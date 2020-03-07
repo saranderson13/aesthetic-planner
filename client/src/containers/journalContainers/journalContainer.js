@@ -31,10 +31,24 @@ class JournalContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        if (this.props.days.length > 0 && !this.loadingJournals && this.props.journals.length > 0 ) {
+            const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
+            if ( this.state.selectedDay === this.props.currentDayId && !journal ) {
+                if ( this.state.toggleView ) { 
+                    this.setState({
+                        toggleView: false,
+                        toggleInput: true
+                    })
+                }
+            } 
+        }
+        
         if (prevProps.match.params.id !== this.props.match.params.id) {
+            const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
+            console.log(journal)
             this.setState({
                 selectedDay: this.props.match.params.id
-            })
+            }, this.forceView())
         }
     }
 
@@ -54,23 +68,17 @@ class JournalContainer extends Component {
         })
     }
 
-    forceSetViewMode = e => {
-        this.setState({
-            toggleView: true,
-            toggleInput: false
-        })
-    }
-
-    forceSetInputMode = e => {
-        this.setState({
-            toggleView: false,
-            toggleInput: true
-        })
+    forceView = () => {
+        if(this.state.toggleInput) {
+            this.setState({
+                toggleView: true,
+                toggleInput: false
+            })
+        }
     }
 
     selectJournal = () => {
         let mode = this.state.toggleView ? "view" : "edit"
-
         if (this.props.loadingJournals || this.props.days.length <= 0) {
             return (
                 <JournalBodyContainer 
@@ -78,7 +86,6 @@ class JournalContainer extends Component {
             )
         } else {
             if(this.props.days.length > 0) {
-                debugger;
                 const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
                 const day = this.props.days.find( d => d.id.toString() === this.state.selectedDay)
                 const dateObj = !!day ? new Date(day.date) : null
@@ -94,8 +101,6 @@ class JournalContainer extends Component {
                             content={journal.content} 
                             futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
-                            setViewMode={this.forceSetViewMode.bind(this)}
-                            setInputMode={this.forceSetInputMode.bind(this)} 
                             submitJournal={this.props.submitJournal} />
                     )
                 } else {
@@ -107,8 +112,6 @@ class JournalContainer extends Component {
                             formattedDate = {formattedDate}
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
-                            setViewMode={this.forceSetViewMode.bind(this)}
-                            setInputMode={this.forceSetInputMode.bind(this)}
                             submitJournal={this.props.submitJournal} />
                     )
                 }
@@ -117,7 +120,7 @@ class JournalContainer extends Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <>
                 <aside id="controlsContainer">
