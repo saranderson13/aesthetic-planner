@@ -42,7 +42,7 @@
 }
 
 .monthWidget a, .monthWidget a:visited {
-    color: #d45;
+    color: rgb(255, 17, 17);
     text-decoration: none;
 }
 
@@ -80,3 +80,4 @@
 .selectedDayHighlight { background-color: #ed8 }
 .nonselectedDay { background-color: none; }
 .currentDay { border: 1px solid #a76}
+.noJournalEntry { background-color: rgb(212, 212, 212) }

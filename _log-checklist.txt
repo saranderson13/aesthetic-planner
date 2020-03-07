@@ -131,19 +131,23 @@ TUESDAY 3/3
 [x] Fix calendar widget routing (Journal)
 [x] Fix calendar widget routing (Day Planner)
 
+
 WEDNESDAY 3/4
 [x] Fix highlighting for selected day in calendar widget
 [x] Add border around current day in calendar widget
 [-] Fix double loading of calendar widget (this did not work.)
 [x] Journal body conditional display (future/past/present for existing and non-existing entries)
 [x] Journal page controls - view/input toggle changes state via button
+
+
+SATURDAY 3/7
+[x] Grey out days that do not have entries in cal widget
+[x] on journal page - future days do not have links in cal widget
 [ ] Journal page controls - toggle button changes view in body
-[ ]
-[ ] Journal page controls - list of most recent posts
-[ ] Journals page components
+[ ] list of most recent posts
 [ ] Add current day highlight to tracker and list pages
+[ ]
+[ ]
+[ ]
 [ ] Day Planner page components
 [ ] Tracker page components
-[ ]
-[ ]
-[ ]

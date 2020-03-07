@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import JournalEntry from '../../components/journalComponents/journalEntry'
+import JournalForm from '../../components/journalComponents/journalForm'
+import JournalMessageBox from '../../components/journalComponents/journalMessageBox'
 // import { connect } from 'react-redux'
 
 class JournalBodyContainer extends Component {
@@ -24,11 +26,11 @@ class JournalBodyContainer extends Component {
             } else if (this.props.pastDate) {
                 message="There is no journal present for the selected date."
             } else {
-                message="Input form here."
+                // this.props.setInputMode()
+                return <JournalForm setInputMode={this.props.setInputMode.bind(this)} />
             }
             return (
-                <JournalEntry 
-                    entry={this.props.entry}
+                <JournalMessageBox
                     content={message}
                     formattedDate={this.props.formattedDate} />
             )

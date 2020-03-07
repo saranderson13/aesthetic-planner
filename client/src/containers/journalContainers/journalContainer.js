@@ -45,12 +45,26 @@ class JournalContainer extends Component {
         return !!dateObj ? `${weekDays[dateObj.getUTCDay()]}, ${months[dateObj.getUTCMonth()]} ${dateObj.getUTCDate()}, ${dateObj.getUTCFullYear()}` : null
     }
 
-    toggleView = (e) => {
+    toggleView = e => {
         this.setState( prevState => {
             return {
                 toggleView: !prevState.toggleView,
                 toggleInput: !prevState.toggleInput
             }
+        })
+    }
+
+    forceSetViewMode = e => {
+        this.setState({
+            toggleView: true,
+            toggleInput: false
+        })
+    }
+
+    forceSetInputMode = e => {
+        this.setState({
+            toggleView: false,
+            toggleInput: true
         })
     }
 
@@ -76,7 +90,9 @@ class JournalContainer extends Component {
                             formattedDate = {formattedDate}
                             content={journal.content} 
                             futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
-                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} />
+                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
+                            setViewMode={this.forceSetViewMode.bind(this)}
+                            setInputMode={this.forceSetInputMode.bind(this)} />
                     )
                 } else {
                     return (
@@ -84,7 +100,9 @@ class JournalContainer extends Component {
                             entry={false}
                             formattedDate = {formattedDate}
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
-                            pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} />
+                            pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
+                            setViewMode={this.forceSetViewMode.bind(this)}
+                            setInputMode={this.forceSetInputMode.bind(this)} />
                     )
                 }
             }
@@ -92,6 +110,7 @@ class JournalContainer extends Component {
     }
 
     render() {
+        // console.log(this.state)
         return (
             <>
                 <aside id="controlsContainer">

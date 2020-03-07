@@ -44,7 +44,8 @@ class MonthWidget extends Component {
                     <MonthWidgetCalendar 
                         month={this.state.displayMonth === null ? this.props.currentMonth : this.state.displayMonth} 
                         page={this.state.page} 
-                        currentDayId={this.props.currentDayId} />
+                        currentDayId={this.props.currentDayId}
+                        journals={this.props.journals} />
                 </>
             )
         } else {
@@ -73,7 +74,8 @@ const mapStateToProps = state => {
         currentMonth: state.controls.currentMonth,
         loading: state.controls.loading,
         days: state.controls.days,
-        currentDayId: state.controls.currentDayId
+        currentDayId: state.controls.currentDayId,
+        journals: state.journals.journals
     };
 }
 
