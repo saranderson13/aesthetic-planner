@@ -14,7 +14,8 @@ class JournalsController < ApplicationController
     
     def create
         entry = Journal.create(journal_params)
-        render json: entry.to_json()
+        journals = Journal.all
+        render json: journals.to_json()
     end
 
 

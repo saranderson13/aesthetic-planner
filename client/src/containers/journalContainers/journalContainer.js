@@ -78,6 +78,7 @@ class JournalContainer extends Component {
             )
         } else {
             if(this.props.days.length > 0) {
+                debugger;
                 const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
                 const day = this.props.days.find( d => d.id.toString() === this.state.selectedDay)
                 const dateObj = !!day ? new Date(day.date) : null

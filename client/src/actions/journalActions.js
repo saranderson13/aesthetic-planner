@@ -16,7 +16,7 @@ export const fetchJournals = () => {
 
 
 export const submitJournal = (journalPacket, fetchMethod) => {
-    debugger;
+    // debugger;
     const url = !!journalPacket.journal.id ? `/journals/${journalPacket.journal.id}` : '/journals'
     return async function (dispatch) {
         const resp = await fetch(url, {
@@ -28,7 +28,7 @@ export const submitJournal = (journalPacket, fetchMethod) => {
             body: JSON.stringify(journalPacket)
         })
         const json = await resp.json()
-        debugger;
+        // debugger;
         return await dispatch({ type: 'ADD_JOURNALS', journals: json })
     }
 }
