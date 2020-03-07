@@ -48,7 +48,6 @@ class MonthWidgetDay extends Component {
             let dayURL = `/${this.props.page}/${this.props.day.id}`
             let noJournal = !!(this.props.day.id != this.props.currentDayId && this.props.page === "journal" && !this.props.journals.find( j => j.day_id === this.props.day.id ))
             if (noJournal) {
-                console.log("day with no entry")
                 return (
                     <div 
                         key={this.props.day.id} 
