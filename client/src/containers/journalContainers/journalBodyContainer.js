@@ -29,7 +29,13 @@ class JournalBodyContainer extends Component {
                 message="There is no journal present for the selected date."
             } else {
                 // Return input form if current day.
-                return <JournalForm setInputMode={this.props.setInputMode.bind(this)} />
+                return (
+                    <JournalForm 
+                        dayId={this.props.dayId}
+                        formattedDate={this.props.formattedDate}
+                        setInputMode={this.props.setInputMode.bind(this)}
+                        submitJournal={this.props.submitJournal} />
+                )
             }
             return (
                 <JournalMessageBox
@@ -39,10 +45,6 @@ class JournalBodyContainer extends Component {
                     setViewMode={this.props.setViewMode.bind(this)} />
             )
         }
-    }
-
-    displayInput = () => {
-
     }
 
     render() {

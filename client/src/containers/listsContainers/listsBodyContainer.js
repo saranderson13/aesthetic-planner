@@ -1,5 +1,3 @@
-// STATELESS COMPONENT
-
 import React, { Component } from 'react'
 import ListBox from '../../components/listsComponents/listBox'
 import LoadingWheel from '../../assets/images/loading-wheel.gif'

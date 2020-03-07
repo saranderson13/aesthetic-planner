@@ -1,0 +1,4 @@
+.journalFormTextArea {
+    width: 300px; height: 500px;
+    overflow: auto
+}

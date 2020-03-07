@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchJournals } from '../../actions/journalActions'
+import { fetchJournals, submitJournal } from '../../actions/journalActions'
 import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
@@ -86,27 +86,29 @@ class JournalContainer extends Component {
                     return (
                         <JournalBodyContainer 
                             entry={true} 
-                            view={this.state.toggleView}
-                            edit={this.state.toggleInput} 
                             mode={mode}
                             journalId={journal.id}
+                            dayId={this.state.selectedDay}
                             formattedDate = {formattedDate}
                             content={journal.content} 
                             futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
                             setViewMode={this.forceSetViewMode.bind(this)}
-                            setInputMode={this.forceSetInputMode.bind(this)} />
+                            setInputMode={this.forceSetInputMode.bind(this)} 
+                            submitJournal={this.props.submitJournal} />
                     )
                 } else {
                     return (
                         <JournalBodyContainer 
                             entry={false}
                             mode={mode}
+                            dayId={this.state.selectedDay}
                             formattedDate = {formattedDate}
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
                             setViewMode={this.forceSetViewMode.bind(this)}
-                            setInputMode={this.forceSetInputMode.bind(this)} />
+                            setInputMode={this.forceSetInputMode.bind(this)}
+                            submitJournal={this.props.submitJournal} />
                     )
                 }
             }
@@ -143,7 +145,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        fetchJournals: () => dispatch(fetchJournals())
+        fetchJournals: () => dispatch(fetchJournals()),
+        submitJournal: (journalPacket, method) => dispatch(submitJournal(journalPacket, method))
     })
 }
 
