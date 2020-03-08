@@ -144,10 +144,12 @@ SATURDAY 3/7
 [x] Grey out days that do not have entries in cal widget
 [x] on journal page - future days do not have links in cal widget
 [x] create journal form
-[ ] Journal page controls - toggle button changes view in body
-[ ] transform create form to also work for edit
-[ ] transoform journal submit to work for both create & edit
-[ ]
+[x] Journal page controls - toggle button changes view in body
+[x] transform create form to also work for edit
+[x] transform journal submit to work for both create & edit
+[x] bugfix: exit edit mode after patch request
+[x] bugfix: exit edit mode after post request
+[ ] make toggle button not visible on uneditable pages
 [ ] list of most recent posts
 [ ] Add current day highlight to tracker and list pages
 [ ]

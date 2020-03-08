@@ -6,11 +6,18 @@ export default class JournalForm extends Component {
         content: ""
     }
 
+    componentDidMount() {
+        if(!!this.props.id) {
+            this.setState({ content: this.props.content })
+        }
+    }
+
     handleChange = e => {
         this.setState({ content: e.target.value })
     }
 
     handleSubmit = e => {
+        // debugger;
         e.preventDefault()
         const journalPacket = {
             journal: {
@@ -18,8 +25,13 @@ export default class JournalForm extends Component {
                 content: this.state.content
             }
         }
-        console.log(journalPacket)
-        this.props.submitJournal(journalPacket, 'POST')
+        if(!!this.props.id) {
+            journalPacket["journal"]["id"] = this.props.id
+        }
+        // console.log(journalPacket)
+        debugger
+        this.props.forceView()
+        this.props.submitJournal(journalPacket, !!this.props.id ? 'PATCH' : 'POST')
     }
 
     render() {

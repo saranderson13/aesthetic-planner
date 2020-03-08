@@ -8,7 +8,7 @@ import JournalBodyContainer from './journalBodyContainer'
 class JournalContainer extends Component {
 
     // DIRECTIVES
-    // Controls container has options for a view mode or input mode.
+    // Controls container has options for a view mode or input mode for editable entries.
     // Below that is navigation to view specific entries
     // links in calendar widget for future days are disabled
 
@@ -40,12 +40,18 @@ class JournalContainer extends Component {
                         toggleInput: true
                     })
                 }
-            } 
+            } else if (this.state.selectedDay === this.props.currentDayId && !!journal ) {
+                if ( this.state.toggleInput ) {
+                    this.setState({
+                        toggleView: true,
+                        toggleInput: false
+                    })
+                }
+            }
         }
         
         if (prevProps.match.params.id !== this.props.match.params.id) {
             const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
-            console.log(journal)
             this.setState({
                 selectedDay: this.props.match.params.id
             }, this.forceView())
@@ -101,6 +107,7 @@ class JournalContainer extends Component {
                             content={journal.content} 
                             futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
+                            forceView={this.forceView}
                             submitJournal={this.props.submitJournal} />
                     )
                 } else {
@@ -112,6 +119,7 @@ class JournalContainer extends Component {
                             formattedDate = {formattedDate}
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
+                            forceView={this.forceView}
                             submitJournal={this.props.submitJournal} />
                     )
                 }
@@ -120,7 +128,6 @@ class JournalContainer extends Component {
     }
 
     render() {
-        // console.log(this.state)
         return (
             <>
                 <aside id="controlsContainer">

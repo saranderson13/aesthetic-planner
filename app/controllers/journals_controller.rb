@@ -22,7 +22,8 @@ class JournalsController < ApplicationController
     def update
         entry = Journal.find_by(id: journal_params["id"])
         entry.update(journal_params)
-        render json: entry.to_json()
+        journals = Journal.all
+        render json: journals.to_json()
     end
 
 
