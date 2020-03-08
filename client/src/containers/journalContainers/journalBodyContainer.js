@@ -6,7 +6,6 @@ import JournalMessageBox from '../../components/journalComponents/journalMessage
 class JournalBodyContainer extends Component {
 
     displayJournal = () => {
-        console.log(this.props)
         if(this.props.status === "loading") {
             return "loading"
         } else if (this.props.entry) {
@@ -25,6 +24,7 @@ class JournalBodyContainer extends Component {
                             content={this.props.content}
                             formattedDate={this.props.formattedDate}
                             forceView={this.props.forceView}
+                            enableToggle={this.props.enableToggle}
                             submitJournal={this.props.submitJournal} />
                 )
             }
@@ -40,12 +40,12 @@ class JournalBodyContainer extends Component {
                 message="There is no journal present for the selected date."
             } else {
                 // Return input form if current day.
-                debugger;
                 return (
                     <JournalForm 
                         dayId={this.props.dayId}
                         formattedDate={this.props.formattedDate}
                         forceView={this.props.forceView}
+                        enableToggle={this.props.enableToggle}
                         submitJournal={this.props.submitJournal} />
                 )
             }
@@ -58,7 +58,6 @@ class JournalBodyContainer extends Component {
     }
 
     render() {
-        // debugger;
         return (
             <>
                 {this.displayJournal()}

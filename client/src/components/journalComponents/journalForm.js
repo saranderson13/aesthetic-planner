@@ -17,7 +17,6 @@ export default class JournalForm extends Component {
     }
 
     handleSubmit = e => {
-        // debugger;
         e.preventDefault()
         const journalPacket = {
             journal: {
@@ -28,9 +27,8 @@ export default class JournalForm extends Component {
         if(!!this.props.id) {
             journalPacket["journal"]["id"] = this.props.id
         }
-        // console.log(journalPacket)
-        debugger
         this.props.forceView()
+        this.props.enableToggle()
         this.props.submitJournal(journalPacket, !!this.props.id ? 'PATCH' : 'POST')
     }
 

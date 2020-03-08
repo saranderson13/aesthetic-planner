@@ -6,9 +6,13 @@ class JournalControlsContainer extends Component {
     
 
     render() {
-        return (
-            <button onClick={this.props.toggleView}>Toggle!</button>
-        )
+        if (this.props.legal) {
+            return (
+                <button onClick={this.props.toggleView}>Toggle!</button>
+            )
+        } else {
+            return "can't edit"
+        }
     }
 
 }

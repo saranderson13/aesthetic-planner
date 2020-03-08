@@ -20,7 +20,8 @@ class JournalContainer extends Component {
     state = {
         toggleView: true,
         toggleInput: false,
-        selectedDay: null
+        selectedDay: null,
+        inputLegal: false
     }
 
     componentDidMount() {
@@ -37,16 +38,24 @@ class JournalContainer extends Component {
                 if ( this.state.toggleView ) { 
                     this.setState({
                         toggleView: false,
-                        toggleInput: true
+                        toggleInput: true,
+                        inputLegal: false
                     })
                 }
             } else if (this.state.selectedDay === this.props.currentDayId && !!journal ) {
                 if ( this.state.toggleInput ) {
                     this.setState({
                         toggleView: true,
-                        toggleInput: false
+                        toggleInput: false,
+                        inputLegal: true
                     })
                 }
+            }
+
+            if (this.state.selectedDay <= this.props.currentDayId && !!journal && !this.state.inputLegal) {
+                this.setState({
+                    inputLegal: true
+                })
             }
         }
         
@@ -66,6 +75,7 @@ class JournalContainer extends Component {
     }
 
     toggleView = e => {
+        console.log(this.state)
         this.setState( prevState => {
             return {
                 toggleView: !prevState.toggleView,
@@ -79,6 +89,14 @@ class JournalContainer extends Component {
             this.setState({
                 toggleView: true,
                 toggleInput: false
+            })
+        }
+    }
+
+    enableToggle = () => {
+        if(!this.state.inputLegal) {
+            this.setState({
+                inputLegal: true
             })
         }
     }
@@ -108,6 +126,7 @@ class JournalContainer extends Component {
                             futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
                             forceView={this.forceView}
+                            enableToggle={this.enableToggle}
                             submitJournal={this.props.submitJournal} />
                     )
                 } else {
@@ -120,6 +139,7 @@ class JournalContainer extends Component {
                             futureDate={!!(parseInt(this.state.selectedDay, 10) > this.props.currentDayId)}
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
                             forceView={this.forceView}
+                            enableToggle={this.enableToggle}
                             submitJournal={this.props.submitJournal} />
                     )
                 }
@@ -131,7 +151,7 @@ class JournalContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
-                    <JournalControlsContainer toggleView={this.toggleView.bind(this)} />
+                    <JournalControlsContainer toggleView={this.toggleView.bind(this)} legal={this.state.inputLegal} />
                     <nav id="navContainer">
                         <NavContainer 
                             journals={this.props.journals} 
