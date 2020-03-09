@@ -6,18 +6,19 @@ class ListsBodyContainer extends Component {
 
     componentDidMount() {
         const body = document.getElementById('bodyContainer')
-        body.addEventListener("resize", this.resizeAllGridItems);
+        body.addEventListener("resize", this.resizeAllListBoxes);
     }
 
-    resizeGridItem = item => {
-        const rowSpan = Math.ceil(160/50)
-        item.style.gridRowEnd = "span " + rowSpan;
+    resizeListBox = box => {
+        const contentHeight = 40 + box.children[0].offsetHeight + box.children[1].offsetHeight
+        const rowSpan = Math.ceil( contentHeight / 20 )
+        box.style.gridRowEnd = "span " + rowSpan;
     }
     
-    resizeAllGridItems = () => {
-        const allItems = document.getElementsByClassName("listBox");
-        for( let x = 0; x < allItems.length; x++ ) {
-            this.resizeGridItem(allItems[x]);
+    resizeAllListBoxes = () => {
+        const allBoxes = document.getElementsByClassName("listBox");
+        for( let x = 0; x < allBoxes.length; x++ ) {
+            this.resizeListBox(allBoxes[x]);
         }
     }
 

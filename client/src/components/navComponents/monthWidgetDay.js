@@ -65,7 +65,13 @@ class MonthWidgetDay extends Component {
                 </div>
             )
         } else {
-            return this.formatStringDate(this.props.day.date);
+            return (
+                <div
+                    key={this.props.day.id}
+                    className="futureDate" >
+                    {this.formatStringDate(this.props.day.date)}
+                </div>
+            )            
         }
     }
 

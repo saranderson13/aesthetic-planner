@@ -25,9 +25,9 @@ class ListsContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
+                    <nav id="navContainer"><NavContainer /></nav>
                     <ListsControlsContainer 
                         lists={this.props.lists} />
-                    <nav id="navContainer"><NavContainer /></nav>
                 </aside>
                 <section id="bodyContainer">
                     <ListsBodyContainer 

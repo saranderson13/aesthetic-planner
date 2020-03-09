@@ -155,7 +155,14 @@ SUNDAY 3/8
 [x] make toggle button not visible on uneditable pages
 [x] list of most recent posts
 [x] Add current day highlight to tracker and list pages
-[ ] Beautification & Styling
+[x] Beautification & Styling
+
+
+MONDAY 3/9
+[ ] Add comments
+[ ] Add some seed data for lists/journals (and then re-seed)
+[ ] more Beautification & Styling
+
 
 FUTURE
 [ ] Day Planner page components

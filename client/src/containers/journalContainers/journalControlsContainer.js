@@ -25,10 +25,10 @@ class JournalControlsContainer extends Component {
     render() {
         if (this.props.inputLegal) {
             return (
-                <>
+                <div id="controlsContent">
                     <button onClick={this.props.toggleView}>Toggle!</button>
                     {this.generateRecentEntries()}
-                </>
+                </div>
             )
         } else {
             if (this.props.days.length > 0) {

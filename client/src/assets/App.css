@@ -1,6 +1,7 @@
 html, body, #root {
   width: 100%; height: 100%;
   box-sizing: border-box;
+  font-family: "Sen"
 }
 
 #bodyContainer {
@@ -8,6 +9,7 @@ html, body, #root {
   display: block;
   position: absolute; top: 0px; left: 300px;
   width: calc(100% - 300px); height: inherit;
-  background-color: #a03;
+  padding: 20px;
+  background-color: #FFF;
   overflow: auto;
 }

@@ -42,33 +42,39 @@ class ListsControlsContainer extends Component {
 
         if ( this.state.addToggled === true ) {
             return(
-                <ListForm 
-                    createOrUpdate={this.props.createOrUpdate} 
-                    submitName={"Create List"} 
-                    back={this.backButton.bind(this)} />
+                <div id="controlsContent">
+                    <ListForm 
+                        createOrUpdate={this.props.createOrUpdate} 
+                        submitName={"Create List"} 
+                        back={this.backButton.bind(this)} />
+                </div>
             )
         } else if (this.state.editToggled === true) {
             return(
-                <ListForm 
-                    createOrUpdate={this.props.createOrUpdate} 
-                    deleteList={this.props.deleteList}
-                    submitName={"Edit List"} 
-                    back={this.backButton.bind(this)} 
-                    lists={this.props.lists} />
+                <div id="controlsContent">
+                    <ListForm 
+                        createOrUpdate={this.props.createOrUpdate} 
+                        deleteList={this.props.deleteList}
+                        submitName={"Edit List"} 
+                        back={this.backButton.bind(this)} 
+                        lists={this.props.lists} />
+                </div>
             )
         } else {
             return (
-                <div className="listFormStartButtonsContainer">
-                    <button 
-                        className="listFormStartButton"
-                        onClick={this.toggleAdd.bind(this)} >
-                        Add List
-                    </button>
-                    <button 
-                        className="listFormStartButton"
-                        onClick={this.toggleEdit.bind(this)} >
-                        Edit List
-                    </button>
+                <div id="controlsContent">
+                    <div className="listFormStartButtonsContainer">
+                        <button 
+                            className="listFormStartButton"
+                            onClick={this.toggleAdd.bind(this)} >
+                            Add List
+                        </button>
+                        <button 
+                            className="listFormStartButton"
+                            onClick={this.toggleEdit.bind(this)} >
+                            Edit List
+                        </button>
+                    </div>
                 </div>
             )
         }

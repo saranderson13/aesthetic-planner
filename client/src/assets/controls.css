@@ -5,7 +5,9 @@
     box-sizing: inherit;
     position: absolute; top: 0px; left: 0px;
     width: 300px; height: 100%;
-    background-color: #e8c76b;
+    background-color: #ffffff;
+    border-right: 1px solid rgb(233, 187, 187);
+    /* box-shadow: 4px 0px 4px rgb(216, 216, 216); */
 }
   
 #navContainer {
@@ -13,8 +15,13 @@
     display: block;
     width: inherit; height: 300px;
     position: absolute;
-    bottom: 0px;
-    background-color: #f0b
+    top: 0px;
+    background-color: rgb(240, 214, 221);
+    border-right: 1px solid rgb(233, 187, 187);
+}
+
+#controlsContent {
+    margin-top: 310px
 }
 
 .pageLinksBar {
@@ -32,6 +39,7 @@
 
 .pageLinksBar a:hover {
     color: #f87;
+    cursor: crosshair;
 }
 
 .monthWidget {
@@ -39,27 +47,33 @@
     width: inherit; height: 250px;
     background-color: #fff;
     text-align: center;
+    user-select: none;
 }
 
 .monthWidget a, .monthWidget a:visited {
-    color: rgb(255, 17, 17);
+    color: rgb(138, 152, 255);
+    font-weight: bold;
     text-decoration: none;
+}
+
+.monthWidget a:hover {
+    cursor: crosshair;
 }
 
 .monthWidget table {
     border-collapse: collapse;
     margin: 10px auto;
-    border: 2px solid #f0b;
+    border: 2px solid rgb(231, 188, 220);
 }
 
 .monthWidget th, .monthWidget td {
     width: 30px; height: 20px;
-    border: 1px solid #f0b;
+    border: 1px solid rgb(231, 188, 220);
     text-align: center;
 }
 
 .monthWidget th {
-    border-bottom: 2px solid #f0b;
+    border-bottom: 2px solid rgb(231, 188, 220);
 }
 
 .monthWidgetHeader {
@@ -73,11 +87,39 @@
     min-width: 60px;
 }
 
-.monthWidgetHeader .back { float: left; width: 70px;}
-.monthWidgetHeader .next { float: right; width: 70px; }
-.monthWidgetHeader .current {  font-weight: bold; width: 90px; }
+.monthWidgetHeader .back { 
+    float: left; 
+    width: 70px;
+    cursor: crosshair;
+}
+.monthWidgetHeader .next { 
+    float: right; 
+    width: 70px; 
+    cursor: crosshair;
+}
+.monthWidgetHeader .current {
+    font-family: 'Playball';
+    font-size: 20px;
+    font-weight: bold; 
+    width: 90px; 
+}
 .monthWidgetHeader .disabled { color: #fff; user-select: none;}
-.selectedDayHighlight { background-color: #ed8 }
-.nonselectedDay { background-color: none; }
-.currentDay { border: 1px solid #a76}
-.noJournalEntry { background-color: rgb(212, 212, 212) }
+.selectedDayHighlight { 
+    background-color: rgb(230, 233, 255);
+    border: 2px solid rgb(230, 233, 255);
+}
+.nonselectedDay { 
+    background-color: none;
+    border: 2px solid #FFF 
+}
+.currentDay { border: 2px solid rgb(164, 178, 255)}
+.noJournalEntry { 
+    background-color: rgb(231, 231, 231); 
+    border: 2px solid rgb(231, 231, 231);
+}
+.futureDate { border: 2px solid #fff }
+
+.selectedDayHighlight, .nonselectedDay, .currentDay, .noJournalEntry, .futureDate {
+    font-size: 12px;
+    line-height: 20px;
+}
