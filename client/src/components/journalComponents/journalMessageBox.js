@@ -1,3 +1,5 @@
+// STATELESS COMPONENT / FUNCTIONAL COMPONENT
+
 import React from 'react'
 
 const JournalMessageBox = props => {

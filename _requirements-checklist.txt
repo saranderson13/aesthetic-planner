@@ -28,8 +28,7 @@
     [x] Month Widget Day
     [x] Month Widget Header
     [x] Page Links (also functional)
-    [x] List Box
-    [x] Journal Entry
+    [x] Journal Entry (also functional)
     [x] Journal Message Box (also functional)
     [ ]
     [ ]

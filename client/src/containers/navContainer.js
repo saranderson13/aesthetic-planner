@@ -8,7 +8,7 @@ class NavContainer extends Component {
     render() {
         return (
             <div>
-                <PageLinks days={this.props.days} />
+                <PageLinks currentDayId={this.props.currentDayId} />
                 <MonthWidget dayId={this.props.dayId} />
             </div>
         )
@@ -18,7 +18,7 @@ class NavContainer extends Component {
 
 const mapStateToProps = state => {
     return ({
-        days: state.controls.days
+        currentDayId: state.controls.currentDayId
     })
 }
 

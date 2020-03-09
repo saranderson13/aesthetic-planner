@@ -17,7 +17,9 @@ class MonthWidget extends Component {
 
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate() {
+        // If display month has not been set (so basically on first load), and if the current month
+        // has been retrieved from store, set the local state.
         if (this.state.displayMonth === null && Object.keys(this.props.currentMonth).length !== 0) {
             this.setState({
                 displayMonth: this.props.currentMonth
@@ -34,7 +36,9 @@ class MonthWidget extends Component {
     }
 
     displayWidget() {
-        if (!this.props.loading && this.props.months.length > 0) {
+        // If months have populated, AND days have populated, show the calendar
+        // else show loading wheel.
+        if (this.props.months.length > 0 && this.props.days.length > 0) {
             return (
                 <>
                     <MonthWidgetHeader 
@@ -72,7 +76,6 @@ const mapStateToProps = state => {
     return {
         months: state.controls.months,
         currentMonth: state.controls.currentMonth,
-        loading: state.controls.loading,
         days: state.controls.days,
         currentDayId: state.controls.currentDayId,
         journals: state.journals.journals

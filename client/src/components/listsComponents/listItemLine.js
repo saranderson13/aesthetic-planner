@@ -43,7 +43,7 @@ class ListLineItem extends Component {
         }
     }
 
-    renderBullet = () => {
+    renderListItem = () => {
         if ( this.props.checklist === true ){
             return (
                 <li className="checklistItem" key={this.props.item.id} >
@@ -61,7 +61,7 @@ class ListLineItem extends Component {
     }
 
     render() {
-        return this.renderBullet()
+        return this.renderListItem()
     }
 
 }

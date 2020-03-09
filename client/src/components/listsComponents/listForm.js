@@ -22,9 +22,11 @@ export default class ListForm extends Component {
                 checklist: this.state.checklist
             }
         }
+        // Include list id in packet if in edit mode
         if (!!this.state.currentListId) {
             listPacket["list"]["id"] = this.state.currentListId
         }
+        // Return view to default
         this.props.back()
         this.props.createOrUpdate(listPacket, !!this.state.currentListId ? 'PATCH' : 'POST')
     }
@@ -50,6 +52,7 @@ export default class ListForm extends Component {
 
     populateEditFields = e => {
         const selectedList = Array.from(e.target.children).find( o => o.selected )
+        // If no list is selected / else, populate fields by setting state.
         if (selectedList.value === ""){
             this.setState({
                 name: "",

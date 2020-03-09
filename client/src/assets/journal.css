@@ -25,18 +25,29 @@
     line-height: 20px;
 }
 
+.loadingMod {
+    text-align: center;
+    margin-top: 200px;
+}
+
 .journalFormTextArea {
     width: 600px; 
     height: calc(100% - 100px);
     overflow: auto;
 }
 
+.recentEntriesHeader {
+    margin-top: 25px;
+    padding: 0px 0px 5px 10px;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(233, 187, 187)
+}
 
 .recentPostsList {
     list-style: none;
     padding-left: 35px;
+    margin-top: 5px;
     width: 230px;
-    
 }
 
 .recentPost { margin-bottom: 12px; }

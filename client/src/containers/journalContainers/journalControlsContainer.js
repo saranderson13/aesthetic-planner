@@ -28,12 +28,18 @@ class JournalControlsContainer extends Component {
             return (
                 <div id="controlsContent">
                     <button className="customButton journalEditModeButton" onClick={this.props.toggleView}>{buttonText}</button>
+                    <div className="recentEntriesHeader">>> Recent Entries</div>
                     {this.generateRecentEntries()}
                 </div>
             )
         } else {
             if (this.props.days.length > 0) {
-                return this.generateRecentEntries()
+                return (
+                    <div id="controlsContent">
+                        <div className="recentEntriesHeader">>> Recent Entries</div>
+                        {this.generateRecentEntries()}
+                    </div>
+                ) 
             } else { return "loading"}
         }
     }

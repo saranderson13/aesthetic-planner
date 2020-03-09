@@ -160,7 +160,9 @@ SUNDAY 3/8
 
 MONDAY 3/9
 [x] finish Beautification & Styling
-[ ] Add comments
+[x] Fix double loading of calendar widget
+[x] Fix non UTC date offset in calendar widget
+[x] Add comments
 [ ] Add some seed data for lists/journals (and then re-seed)
 
 

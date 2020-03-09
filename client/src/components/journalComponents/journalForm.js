@@ -7,6 +7,8 @@ export default class JournalForm extends Component {
     }
 
     componentDidMount() {
+        // If entering edit mode instead of create mode, set the existing content
+        // to state so that it populates in the form.
         if(!!this.props.id) {
             this.setState({ content: this.props.content })
         }
@@ -24,10 +26,13 @@ export default class JournalForm extends Component {
                 content: this.state.content
             }
         }
+        // Add the journal id to the packet if in edit mode
         if(!!this.props.id) {
             journalPacket["journal"]["id"] = this.props.id
         }
+        // Set the view back to view mode
         this.props.forceView()
+        // Set the toggleInput to legal
         this.props.enableToggle()
         this.props.submitJournal(journalPacket, !!this.props.id ? 'PATCH' : 'POST')
     }

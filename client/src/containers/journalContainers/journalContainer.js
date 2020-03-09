@@ -32,9 +32,11 @@ class JournalContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        // If all props are loaded
         if (this.props.days.length > 0 && !this.loadingJournals && this.props.journals.length > 0 ) {
             const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
             if ( this.state.selectedDay === this.props.currentDayId && !journal ) {
+            // If viewing the current day but there is no journal entry - toggle to input mode
                 if ( this.state.toggleView ) { 
                     this.setState({
                         toggleView: false,
@@ -43,6 +45,7 @@ class JournalContainer extends Component {
                     })
                 }
             } else if (this.state.selectedDay === this.props.currentDayId && !!journal ) {
+            // If viewing the current day and there IS a journal entry, toggle to view mode
                 if ( this.state.toggleInput ) {
                     this.setState({
                         toggleView: true,
@@ -52,15 +55,17 @@ class JournalContainer extends Component {
                 }
             }
 
+            // If viewing a day prior to the current day that has a journal entry, allow the edit post button.
             if (this.state.selectedDay <= this.props.currentDayId && !!journal && !this.state.inputLegal) {
                 this.setState({
                     inputLegal: true
                 })
             }
         }
-        
+
+        // If the page has been changed, set the selected day in state then force view
+        // This prevents edit mode from being carried from one day to the other.
         if (prevProps.match.params.id !== this.props.match.params.id) {
-            const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
             this.setState({
                 selectedDay: this.props.match.params.id
             }, this.forceView())

@@ -2,13 +2,18 @@ import React, { Component } from 'react'
 import JournalEntry from '../../components/journalComponents/journalEntry'
 import JournalForm from '../../components/journalComponents/journalForm'
 import JournalMessageBox from '../../components/journalComponents/journalMessageBox'
+import LoadingWheel from '../../assets/images/loading-wheel.gif'
 
 class JournalBodyContainer extends Component {
 
     displayJournal = () => {
         if(this.props.status === "loading") {
-            return "loading"
-        } else if (this.props.entry) {
+            return (
+                <div className="journalEntry loadingMod">
+                    <img src={LoadingWheel} alt="Loading" />
+                </div>
+            )
+        } else if (!!this.props.entry) {
             if(this.props.mode === "view") {
                 return (
                     <JournalEntry 
@@ -18,6 +23,7 @@ class JournalBodyContainer extends Component {
                 )
             } else {
                 return (
+                    // Enter Edit Mode
                     <JournalForm 
                             id={this.props.journalId}
                             dayId={this.props.dayId}
@@ -41,6 +47,7 @@ class JournalBodyContainer extends Component {
             } else {
                 // Return input form if current day.
                 return (
+                    // New Entry Mode
                     <JournalForm 
                         dayId={this.props.dayId}
                         formattedDate={this.props.formattedDate}
