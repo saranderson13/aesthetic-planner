@@ -91,7 +91,7 @@ export default class ListForm extends Component {
     render() {
         return (
             <>
-                <div className="listFormBackButtonContainer" ><button onClick={this.props.back}>X</button></div>
+                <div className="listFormBackButtonContainer" ><button className="customButton" onClick={this.props.back}>X</button></div>
                 <form id="listForm" onSubmit={e => this.handleSubmit(e)}>
                     <select
                         id={this.state.currentListId} 
@@ -126,11 +126,12 @@ export default class ListForm extends Component {
                     </label>
                     <input 
                         type="submit" 
+                        className="customButton"
                         value={this.props.submitName} />
                 </form>
                 <button 
                     onClick={e => this.handleDelete(e)}
-                    className="listDeleteButton"
+                    className="customButton listDeleteButton"
                     style={{display: !!this.state.currentListId ? 'block' : 'none' }}>
                     DeleteList
                 </button>

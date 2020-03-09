@@ -159,9 +159,9 @@ SUNDAY 3/8
 
 
 MONDAY 3/9
+[x] finish Beautification & Styling
 [ ] Add comments
 [ ] Add some seed data for lists/journals (and then re-seed)
-[ ] more Beautification & Styling
 
 
 FUTURE

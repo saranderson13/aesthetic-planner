@@ -65,12 +65,12 @@ class ListsControlsContainer extends Component {
                 <div id="controlsContent">
                     <div className="listFormStartButtonsContainer">
                         <button 
-                            className="listFormStartButton"
+                            className="customButton listFormStartButton"
                             onClick={this.toggleAdd.bind(this)} >
                             Add List
                         </button>
                         <button 
-                            className="listFormStartButton"
+                            className="customButton listFormStartButton"
                             onClick={this.toggleEdit.bind(this)} >
                             Edit List
                         </button>

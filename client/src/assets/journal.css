@@ -1,4 +1,61 @@
+#journalContainer {
+    height: 100%;
+}
+
+#journalEntryForm {
+    height: 95%
+}
+
+.journalDate {
+    width: 600px;
+    font-family: "Playball";
+    font-size: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(233, 187, 187);
+}
+
+.journalEntry {
+    width: 600px;
+    height: calc(100% - 100px);
+    padding-right: 10px;
+    overflow: auto;
+    white-space: pre-wrap;
+    text-align: justify;
+    font-size: 13px; 
+    line-height: 20px;
+}
+
 .journalFormTextArea {
-    width: 300px; height: 500px;
-    overflow: auto
+    width: 600px; 
+    height: calc(100% - 100px);
+    overflow: auto;
+}
+
+
+.recentPostsList {
+    list-style: none;
+    padding-left: 35px;
+    width: 230px;
+    
+}
+
+.recentPost { margin-bottom: 12px; }
+
+.entryLink {
+    font-family: "Playball";
+    font-size: 17px;
+}
+
+.entryLink a, .entryLink a:visited {
+    color: rgb(138, 152, 255)
+}
+
+.contentPreview { font-size: 12px; }
+
+.journalSubmitButton {
+    display: block;
+}
+.journalEditModeButton {
+    width: 230px;
+    margin-left: 35px;
 }

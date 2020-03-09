@@ -156,12 +156,14 @@ class JournalContainer extends Component {
 
     render() {
         const recentEntries = this.recentEntries()
+        const mode = this.state.toggleView ? "view" : "edit"
         return (
             <>
                 <aside id="controlsContainer">
                     <JournalControlsContainer 
                         days={this.props.days}
                         inputLegal={this.state.inputLegal}
+                        mode={mode}
                         recentEntries={recentEntries} 
                         formatDate={this.formatDate.bind(this)} 
                         toggleView={this.toggleView.bind(this)} />

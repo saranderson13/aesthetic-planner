@@ -13,3 +13,9 @@ html, body, #root {
   background-color: #FFF;
   overflow: auto;
 }
+
+.customButton {
+  font-family: "Sen";
+  font-size: 11px;
+  text-transform: uppercase;
+}

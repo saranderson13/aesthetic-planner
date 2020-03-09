@@ -1,11 +1,11 @@
 import React from 'react'
 
 const JournalEntry = props => {
+
     return (
-        <div>
-            <h3>{props.formattedDate}</h3>
-            <div>
-                
+        <div id="journalContainer">
+            <div className="journalDate">{props.formattedDate}</div>
+            <div className="journalEntry">
                 {props.content}
             </div>
         </div>

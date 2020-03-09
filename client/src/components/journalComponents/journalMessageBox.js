@@ -3,10 +3,9 @@ import React from 'react'
 const JournalMessageBox = props => {
     return (
         <div>
-            <h3>{props.formattedDate}</h3>
-            <div>
-                
-                {props.content}
+            <div className="journalDate">{props.formattedDate}</div>
+            <div className="journalEntry">
+                Warning: {props.content}
             </div>
         </div>
     )

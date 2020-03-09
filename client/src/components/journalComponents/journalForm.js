@@ -34,8 +34,8 @@ export default class JournalForm extends Component {
 
     render() {
         return (
-            <div>
-                <h3>{this.props.formattedDate}</h3>
+            <div id="journalContainer">
+                <div className="journalDate">{this.props.formattedDate}</div>
                 <form id="journalEntryForm" onSubmit={e => this.handleSubmit(e)}>
                     <textarea
                         id="content"
@@ -43,7 +43,7 @@ export default class JournalForm extends Component {
                         value={this.state.content}
                         onChange={e => this.handleChange(e)}
                         required />
-                    <input type="submit" value="Submit" />
+                    <input className="customButton journalSubmitButton" type="submit" value="Submit" />
                 </form>
             </div>
         )

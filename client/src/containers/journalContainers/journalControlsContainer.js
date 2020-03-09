@@ -6,15 +6,15 @@ class JournalControlsContainer extends Component {
 
     generateRecentEntries = () => {
         return (
-            <ul>
+            <ul className="recentPostsList">
                 {this.props.recentEntries.map( e => {
                     const day = this.props.days.find( d => d.id === e.day_id )
                     const dayObj = new Date(day.date)
                     const prettyDate = this.props.formatDate(dayObj)
                     return (
-                        <li key={uuid()}>
-                            <div><Link to={`/journal/${day.id}`}>{prettyDate}</Link></div>
-                            <div>{e.content.slice(0, 50)}...</div>
+                        <li key={uuid()} className="recentPost">
+                            <div className="entryLink"><Link to={`/journal/${day.id}`}>{prettyDate.slice(0, prettyDate.length - 6)}</Link></div>
+                            <div className="contentPreview">{e.content.slice(0, 70)}...</div>
                         </li>
                     )
                 })}
@@ -23,10 +23,11 @@ class JournalControlsContainer extends Component {
     }
 
     render() {
+        const buttonText = this.props.mode === "view" ? "Edit Post" : "Exit Edit Mode"
         if (this.props.inputLegal) {
             return (
                 <div id="controlsContent">
-                    <button onClick={this.props.toggleView}>Toggle!</button>
+                    <button className="customButton journalEditModeButton" onClick={this.props.toggleView}>{buttonText}</button>
                     {this.generateRecentEntries()}
                 </div>
             )
