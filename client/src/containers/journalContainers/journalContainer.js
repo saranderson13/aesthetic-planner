@@ -75,7 +75,6 @@ class JournalContainer extends Component {
     }
 
     toggleView = e => {
-        console.log(this.state)
         this.setState( prevState => {
             return {
                 toggleView: !prevState.toggleView,
@@ -98,6 +97,14 @@ class JournalContainer extends Component {
             this.setState({
                 inputLegal: true
             })
+        }
+    }
+
+    recentEntries = () => {
+        if (this.props.journals.length > 0 && this.props.journals.length > 5) {
+            return this.props.journals.slice(this.props.journals.length - 5).sort( (a, b) => b.day_id - a.day_id )
+        } else {
+            return this.props.journals.sort( (a, b) => b.day_id - a.day_id )
         }
     }
 
@@ -148,10 +155,16 @@ class JournalContainer extends Component {
     }
 
     render() {
+        const recentEntries = this.recentEntries()
         return (
             <>
                 <aside id="controlsContainer">
-                    <JournalControlsContainer toggleView={this.toggleView.bind(this)} legal={this.state.inputLegal} />
+                    <JournalControlsContainer 
+                        days={this.props.days}
+                        inputLegal={this.state.inputLegal}
+                        recentEntries={recentEntries} 
+                        formatDate={this.formatDate.bind(this)} 
+                        toggleView={this.toggleView.bind(this)} />
                     <nav id="navContainer">
                         <NavContainer 
                             journals={this.props.journals} 

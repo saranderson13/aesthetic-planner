@@ -56,6 +56,14 @@ class MonthWidgetDay extends Component {
             } else {
                 return ( <Link to={dayURL}> {this.setDayDiv()} </Link> )
             }
+        } else if (this.props.currentDayId === this.props.day.id) {
+            return (
+                <div
+                    key={this.props.day.id}
+                    className="currentDay" >
+                    {this.formatStringDate(this.props.day.date)}
+                </div>
+            )
         } else {
             return this.formatStringDate(this.props.day.date);
         }

@@ -149,10 +149,14 @@ SATURDAY 3/7
 [x] transform journal submit to work for both create & edit
 [x] bugfix: exit edit mode after patch request
 [x] bugfix: exit edit mode after post request
-[ ] make toggle button not visible on uneditable pages
-[ ] list of most recent posts
-[ ] Add current day highlight to tracker and list pages
-[ ]
-[ ]
+
+
+SUNDAY 3/8
+[x] make toggle button not visible on uneditable pages
+[x] list of most recent posts
+[x] Add current day highlight to tracker and list pages
+[ ] Beautification & Styling
+
+FUTURE
 [ ] Day Planner page components
 [ ] Tracker page components

@@ -20,9 +20,9 @@
     [x] Lists Container
     [x] Lists Body Container
     [x] Lists Controls Container
-    [ ] Journal Container
-    [ ] Journal Body Container
-    [ ] Journal Controls Container
+    [x] Journal Container
+    [x] Journal Body Container
+    [x] Journal Controls Container
 [x] STATELESS COMPONENTS (5 required)
     [x] Month Widget Calendar
     [x] Month Widget Day
