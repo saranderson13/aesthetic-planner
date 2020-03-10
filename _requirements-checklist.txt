@@ -11,18 +11,16 @@
 [x] CONTAINERS (2 required)
 ****(Only checked off if fully built out.)
     [x] Nav container
+    [x] Lists Container
+    [x] Lists Body Container
+    [x] Lists Controls Container
+    [x] Journal Container
     [ ] Day Planner Container
     [ ] Day Planner Body Container
     [ ] Day Planner Controls Container
     [ ] Trackers Container
     [ ] Trackers Body Container
     [ ] Trackers Controls Container
-    [x] Lists Container
-    [x] Lists Body Container
-    [x] Lists Controls Container
-    [x] Journal Container
-    [x] Journal Body Container
-    [x] Journal Controls Container
 [x] STATELESS COMPONENTS (5 required)
     [x] Month Widget Calendar
     [x] Month Widget Day
@@ -30,6 +28,8 @@
     [x] Page Links (also functional)
     [x] Journal Entry (also functional)
     [x] Journal Message Box (also functional)
+    [x] Journal Body Container
+    [x] Journal Controls Container
     [ ]
     [ ]
 [x] Use react-router

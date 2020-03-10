@@ -164,6 +164,7 @@ MONDAY 3/9
 [x] Fix non UTC date offset in calendar widget
 [x] Add comments
 [ ] Add some seed data for lists/journals (and then re-seed)
+[ ] README
 
 
 FUTURE
