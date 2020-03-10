@@ -23,7 +23,8 @@ class ListsBodyContainer extends Component {
     }
 
     generateListBoxes = () => {
-        return this.props.lists.map ( l => { return <ListBox list={l} /> } )
+        const sortedLists = this.props.lists.sort( (l1, l2) => new Date(l2.updated_at) - new Date(l1.updated_at) )
+        return sortedLists.map ( l => { return <ListBox list={l} /> } )
     }
 
     render() {

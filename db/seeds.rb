@@ -179,8 +179,8 @@ l3 = List.create(name: "Ancient Heroes")
 nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero) }
 l3.save
 
-l4 = List.create(name: "DC Heroines")
-nums.sample.times { l4.list_items.build(name: Faker::DcComics.heroine) }
+l4 = List.create(name: "Middle-earth")
+nums.sample.times { l4.list_items.build(name: Faker::Movies::LordOfTheRings.location) }
 l4.save
 
 l5 = List.create(name: "Cat Breeds", checklist: true)
