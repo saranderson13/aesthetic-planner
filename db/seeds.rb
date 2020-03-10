@@ -1,3 +1,5 @@
+require 'faker'
+
 # [x] Create 5 years.
 # [x] Create all months for all years
 # [x] Create all weeks for all months
@@ -162,3 +164,53 @@ Day.find(65).build_journal(content: "What is it you think I need? Maybe it's too
 Day.find(68).build_journal(content: "It's a godawful small affair, to the girl with the mousey hair. But her mummy is yelling no, and her daddy has told her to go. But her friend is nowhere to be seen, now she walks through her sunken dream to the seat with the clearest view and she's hooked to the silver screen, but the film is a saddening bore cause she's lived it 10 times or more. She could spit in the eyes of fools, as they ask her to focus on sailors fighting in the dance hall oh man, look at those cave men go. It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?\n\nIts on America's tortured brow that Mickey Mouse has grown up a cow. Now the workers have struck for fame cause Lennon's on sale again. See the mice in their million hourdes, from Ibetha to the Norfolk Broads. Royal Brittania is out of bounds to my mother my dog and clowns. But the film is a saddening bore cause I wrote it 10 times or more. It's about to be writ again as I ask you to focus on sailors fighting in the dance hall, oh man, look at those cave men go, It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?").save
 
 Day.find(69).build_journal(content: "Is this the real life, is this just fantasy? Caught in a landslide no escape from reality. Open your eyes, look up to the skies and see. I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go, little high, little low. Any way the wind blows doesn't really matter to me... to me.\n\nMama, just killed a man. Put a gun against his head, pulled my trigger now he's dead. Mama life had just begun. But now I've gone and thrown it all away. Mama, ooooo. Didn't mean to make you cry, if I'm not back again this time tomorrow carry on, carry on, because nothing really matters. Too late, my time has come. Sent shivers down my spine, body's aching all the time. Goodbye everybody, I've got to go. Got to leave you all behind and face the truth. Mama, ooooooo. I don't wanna die, I sometimes wish I'd never been born at all.").save
+
+nums = *(3..15)
+
+l1 = List.create(name: "Artists")
+nums.sample.times { l1.list_items.build(name: Faker::Artist.name) }
+l1.save
+
+l2 = List.create(name: "Coffee Varieties")
+nums.sample.times { l2.list_items.build(name: Faker::Coffee.variety) }
+l2.save
+
+l3 = List.create(name: "Ancient Heroes")
+nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero) }
+l3.save
+
+l4 = List.create(name: "DC Heroines")
+nums.sample.times { l4.list_items.build(name: Faker::DcComics.heroine) }
+l4.save
+
+l5 = List.create(name: "Cat Breeds", checklist: true)
+nums.sample.times { l5.list_items.build(name: Faker::Creature::Cat.breed) }
+l5.save
+
+l6 = List.create(name: "Groceries", checklist: true)
+nums.sample.times { l6.list_items.build(name: Faker::Food.ingredient) }
+l6.save
+
+l7 = List.create(name: "Elder Scrolls Creatures")
+nums.sample.times { l7.list_items.build(name: Faker::Games::ElderScrolls.creature) }
+l7.save
+
+l8 = List.create(name: "Pokemon", checklist: true)
+nums.sample.times { l8.list_items.build(name: Faker::Games::Pokemon.name) }
+l8.save
+
+l9 = List.create(name: "Princess Bride Quotes")
+nums.sample.times { l9.list_items.build(name: Faker::Movies::PrincessBride.quote) }
+l9.save
+
+l10 = List.create(name: "Twin Peaks Characters")
+nums.sample.times { l10.list_items.build(name: Faker::TvShows::TwinPeaks.character) }
+l10.save
+
+l11 = List.create(name: "Quotes from the Hitchhiker's Guide to the Galaxy")
+nums.sample.times { l11.list_items.build(name: Faker::Movies::HitchhikersGuideToTheGalaxy.quote) }
+l11.save
+
+l12 = List.create(name: "Spells of the Potterverse")
+nums.sample.times { l12.list_items.build(name: Faker::Movies::HarryPotter.spell) }
+l12.save
