@@ -19,6 +19,25 @@ class ListsContainer extends Component {
 
     componentDidMount() {
         this.props.fetchLists()
+        window.addEventListener("resize", this.props.resizeAllListBoxes);
+    }
+
+    componentDidUpdate() {
+        this.resizeAllListBoxes()
+    }
+
+    resizeListBox = box => {
+        const contentHeight = 40 + box.children[0].offsetHeight + box.children[1].offsetHeight
+        const rowSpan = Math.ceil( contentHeight / 20 )
+        box.style.gridRowEnd = "span " + rowSpan;
+    }
+    
+    resizeAllListBoxes = () => {
+        const allBoxes = Array.from(document.getElementsByClassName("listBox"));
+        debugger;
+        for( let x = 0; x < allBoxes.length; x++ ) {
+            this.resizeListBox(allBoxes[x]);
+        }
     }
 
     render() {
@@ -34,7 +53,8 @@ class ListsContainer extends Component {
                         style={{maxWidth: window.innerWidth - 300}}
                         pageName="Lists" 
                         loading={this.props.loading} 
-                        lists={this.props.lists} />
+                        lists={this.props.lists} 
+                        resizeBoxes={this.resizeAllListBoxes} />
                 </section>
             </>
         )
