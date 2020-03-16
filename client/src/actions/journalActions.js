@@ -10,7 +10,7 @@ export const fetchJournals = () => {
             body: JSON.stringify(dispatch)
         })
         const json = await resp.json()
-        return await dispatch({ type: 'ADD_JOURNALS', journals: json })
+        dispatch({ type: 'ADD_JOURNALS', journals: json })
     }
 }
 

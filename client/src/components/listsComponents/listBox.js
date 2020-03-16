@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import ListItemLine from './listItemLine'
 
 export default class ListBox extends Component {
+
+    state = {
+        likes: 0,
+        color: 'blue'
+    }
     
     componentDidMount() {
 
@@ -17,9 +22,24 @@ export default class ListBox extends Component {
         }
     }
 
+    handleLike = () => { 
+
+        this.setState(s  => {
+            return ( {
+                likes: s.likes + 1
+            })
+        })
+
+
+        
+
+
+    }
+
     render() {
         return (
             <div key={this.props.list.id} className="listBox" >
+                <span>{this.state.likes} </span><button onClick={ this.handleLike }>Like</button>
                 <div className="listTitle" >
                     {this.props.list.name}
                 </div>

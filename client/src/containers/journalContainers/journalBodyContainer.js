@@ -25,13 +25,13 @@ class JournalBodyContainer extends Component {
                 return (
                     // Enter Edit Mode
                     <JournalForm 
-                            id={this.props.journalId}
-                            dayId={this.props.dayId}
-                            content={this.props.content}
-                            formattedDate={this.props.formattedDate}
-                            forceView={this.props.forceView}
-                            enableToggle={this.props.enableToggle}
-                            submitJournal={this.props.submitJournal} />
+                        id={this.props.journalId}
+                        dayId={this.props.dayId}
+                        content={this.props.content}
+                        formattedDate={this.props.formattedDate}
+                        forceView={this.props.forceView}
+                        enableToggle={this.props.enableToggle}
+                        submitJournal={this.props.submitJournal} />
                 )
             }
         } else {
