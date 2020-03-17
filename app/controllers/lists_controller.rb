@@ -37,8 +37,8 @@ class ListsController < ApplicationController
         list_params["list_items"].each do |i|
             list.list_items.build(name: i)
         end
-
         list.save
+        list.touch
         lists = List.all
         render json: lists.to_json(
             include: json_include()
