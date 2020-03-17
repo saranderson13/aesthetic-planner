@@ -136,7 +136,7 @@ export default class ListForm extends Component {
                     onClick={e => this.handleDelete(e)}
                     className="customButton listDeleteButton"
                     style={{display: !!this.state.currentListId ? 'block' : 'none' }}>
-                    DeleteList
+                    Delete List
                 </button>
             </>
         )
