@@ -29,7 +29,7 @@ class ListsContainer extends Component {
                     <ListsControlsContainer 
                         lists={this.props.lists} />
                 </aside>
-                <section id="bodyContainer">
+                <section id="bodyContainer" className="grid" >
                     <ListsBodyContainer 
                         style={{maxWidth: window.innerWidth - 300}}
                         pageName="Lists" 
