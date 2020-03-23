@@ -26,6 +26,10 @@ class TrackerContainer extends Component {
     // Boxes are clickable. You would click a color (not patterns yet), then click a box to add the color.
     // Will need a clear color - this will uncheck the boxes. Any color will indicate checked.
 
+    state = {
+        chosenColor: "#000"
+    }
+
     render() {
         return (
             <>

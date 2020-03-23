@@ -1,0 +1,2 @@
+class TrackerPalette < ApplicationRecord
+end

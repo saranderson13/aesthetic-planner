@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_062618) do
+ActiveRecord::Schema.define(version: 2020_03_21_195101) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 2020_02_23_062618) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tracker_id"], name: "index_tracker_lines_on_tracker_id"
+  end
+
+  create_table "tracker_palettes", force: :cascade do |t|
+    t.string "color_1", default: "#E7E2B7"
+    t.string "color_2", default: "#EBC2C8"
+    t.string "color_3", default: "#E3C2E5"
+    t.string "color_4", default: "#C3B7E7"
+    t.string "color_5", default: "#9ECEE5"
+    t.string "color_6", default: "#99DDBF"
+    t.string "color_7", default: "#B9E8BF"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "trackers", force: :cascade do |t|
