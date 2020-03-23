@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_195101) do
+ActiveRecord::Schema.define(version: 2020_03_23_230004) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_195101) do
     t.string "color_7", default: "#B9E8BF"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", default: "Untitled"
   end
 
   create_table "trackers", force: :cascade do |t|

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :trackers, only: [:index, :update]
   resources :tracker_lines, only: [:create, :update, :destroy]
   resources :tracker_days, only: [:update]
-  resources :tracker_palettes, only: [:update]
+  resources :tracker_palettes, only: [:index, :update]
 
   resources :journals, except: [:new, :edit]
 
