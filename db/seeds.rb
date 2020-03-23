@@ -8,8 +8,9 @@ require 'faker'
 # [x] Create 1 line for each tracker
 # [x] Create appropriate number of day cells for each line
 # [x] Create Holiday Events
-# [ ] Journal seeds, just for example
-# [ ] List seeds, just for example
+# [x] Create starter tracker palettes
+# [x] Journal seeds, just for example
+# [x] List seeds, just for example
   
 # ONLY seeded Holiday Events
 # NO seeded Goals
@@ -152,6 +153,42 @@ Day.all.each do |d|
     end
 end
 
+palettes = [
+    {
+        name: "Classic Pastel",
+        color_1: "#FBF6C7",
+        color_2: "#FBE1CF",
+        color_3: "#F2CFF5",
+        color_4: "#CCC0F2",
+        color_5: "#A0DCF5",
+        color_6: "#A4EDCD",
+        color_7: "#C1F2C7"
+    },
+    {
+        name: "Moonlight",
+        color_1: "#0F0B23",
+        color_2: "#000C33",
+        color_3: "#002C48",
+        color_4: "#4546B5",
+        color_5: "#E5DCFB",
+        color_6: "#EFEEEA",
+        color_7: "#FEFFF2"
+    },
+    {
+        name: "Sunset",
+        color_1: "#8C5755",
+        color_2: "#B26662",
+        color_3: "#F28262",
+        color_4: "#FFA253",
+        color_5: "#FEC66D",
+        color_6: "#FFE284",
+        color_7: "#FFEFA9"
+    }
+]
+
+palettes.each do |p|
+    TrackerPalette.create(p)
+end
 
 Day.find(60).build_journal(content: "Andromeda's a big wide open galaxy. Nothing in it for me, except a heart, that's lazy. Running from my own life now, I'm really turning some time, looking up to the sky for something I may never find.\n\nStop calling. It's time to let me be. If you think you can save me I dare you try.\n\nLift the heart from the depths it's fallen to. We all want something new, but can't seem to follow through. Something's better than nothing, or so that I thought. Now I know it's just one dream, all these other's gonna tear me apart.\n\nLove is calling. It's time to let it through. Find a love that will make you, I dare you to try.\n\nCrazy guy, think this is deep, think it's meant to be. More than anything I can think of, I'm ready to try.\n\nTreat my right, I'm still a good man's daughter. Let me in if I break and be quiet if I shatter. Gettin tired of looking, you know that I hate the game, don't wanna waste any more time, you know I've been holding out\n\nLove is calling. It's time to give to you, something you can hold onto. I dare you to try.").save
 
