@@ -4,11 +4,16 @@ class TrackerPalettesController < ApplicationController
         render json: TrackerPalette.all.to_json()
     end
 
-    def update
-        palette = TrackerPalette.find(palette_params.id)
-        palette.update(palette_params)
-        render json: TrackerPalette.all.to_json()
-    end
+    # NOT NEEDED UNTIL USERS EXIST
+    # def create
+
+    # end
+
+    # def update
+    #     palette = TrackerPalette.find(palette_params.id)
+    #     palette.update(palette_params)
+    #     render json: TrackerPalette.all.to_json()
+    # end
 
     private
 

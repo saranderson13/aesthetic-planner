@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-
+import { connect } from 'react-redux'
+import { fetchPalettes } from '../../actions/trackerActions'
 import NavContainer from '../navContainer'
 import TrackersControlsContainer from './trackersControlsContainer'
 import TrackersBodyContainer from './trackersBodyContainer'
@@ -9,8 +9,11 @@ class TrackerContainer extends Component {
 
     // DIRECTIVES
     // Controls container:
-    //    Current Month at the top
-    //    Color/Pattern picker to choose which color to fill in boxes with
+    //    Contains color palette selector
+    //    & Color picker
+    // 
+    // 
+    // 
     //    Statistics
     //      Average sleep
     //      Best habit
@@ -30,11 +33,23 @@ class TrackerContainer extends Component {
         chosenColor: "#000"
     }
 
+    componentDidMount() {
+        this.props.fetchPalettes()
+    }
+
+    changeColor = e => {
+        if (e.target.dataset.hex !== this.state.chosenColor) {
+            this.setState({
+                chosenColor: e.target.dataset.hex
+            })
+        }
+    }
+
     render() {
         return (
             <>
                 <aside id="controlsContainer">
-                    <TrackersControlsContainer />
+                    <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                     <nav id="navContainer"><NavContainer /></nav>
                 </aside>
                 <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" /></section>
@@ -44,4 +59,16 @@ class TrackerContainer extends Component {
 
 }
 
-export default TrackerContainer
+const mapDispatchToProps = dispatch => {
+    return ({
+        fetchPalettes: () => dispatch(fetchPalettes())
+    })
+}
+
+const mapStateToProps = state => {
+    return ({
+        palettes: state.trackers.palettes
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackerContainer)

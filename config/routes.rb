@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :lists, except: [:new, :edit]
   resources :list_items, only: [:update]
   
-  resources :trackers, only: [:index, :update]
+  resources :trackers, only: [:index, :create, :update] # Create & Update not used until users are created.
   resources :tracker_lines, only: [:create, :update, :destroy]
   resources :tracker_days, only: [:update]
   resources :tracker_palettes, only: [:index, :update]
