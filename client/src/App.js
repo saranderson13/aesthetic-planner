@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchDays } from './actions/controlsActions'
+import './assets/trackers.css'
 import './assets/lists.css'
 import './assets/journal.css'
 import './assets/controls.css'
-import './assets/App.css';
+import './assets/App.css'
 
 // ONLY NEEDED TO RUN FETCH TEST
 // import { fetchTest } from './actions/_testAction'

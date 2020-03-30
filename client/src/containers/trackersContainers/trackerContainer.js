@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchPalettes } from '../../actions/trackerActions'
+// import { connect } from 'react-redux'
+// import { fetchPalettes } from '../../actions/trackerActions'
 import NavContainer from '../navContainer'
 import TrackersControlsContainer from './trackersControlsContainer'
 import TrackersBodyContainer from './trackersBodyContainer'
@@ -33,9 +33,9 @@ class TrackerContainer extends Component {
         chosenColor: "#000"
     }
 
-    componentDidMount() {
-        this.props.fetchPalettes()
-    }
+    // componentDidMount() {
+    //     this.props.fetchPalettes()
+    // }
 
     changeColor = e => {
         if (e.target.dataset.hex !== this.state.chosenColor) {
@@ -59,16 +59,18 @@ class TrackerContainer extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-    return ({
-        fetchPalettes: () => dispatch(fetchPalettes())
-    })
-}
+// const mapDispatchToProps = dispatch => {
+//     return ({
+//         fetchPalettes: () => dispatch(fetchPalettes())
+//     })
+// }
 
-const mapStateToProps = state => {
-    return ({
-        palettes: state.trackers.palettes
-    })
-}
+// const mapStateToProps = state => {
+//     return ({
+//         palettes: state.trackers.palettes
+//     })
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackerContainer)
+// export default connect(mapStateToProps, mapDispatchToProps)(TrackerContainer)
+
+export default TrackerContainer

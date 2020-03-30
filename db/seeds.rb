@@ -160,19 +160,9 @@ palettes = [
         color_2: "#FBE1CF",
         color_3: "#F2CFF5",
         color_4: "#CCC0F2",
-        color_5: "#A0DCF5",
+        color_5: "#A9DCF5",
         color_6: "#A4EDCD",
         color_7: "#C1F2C7"
-    },
-    {
-        name: "Moonlight",
-        color_1: "#0F0B23",
-        color_2: "#000C33",
-        color_3: "#002C48",
-        color_4: "#4546B5",
-        color_5: "#E5DCFB",
-        color_6: "#EFEEEA",
-        color_7: "#FEFFF2"
     },
     {
         name: "Sunset",
@@ -183,6 +173,116 @@ palettes = [
         color_5: "#FEC66D",
         color_6: "#FFE284",
         color_7: "#FFEFA9"
+    },
+    {
+        name: "Dawn",
+        color_1: "#642F73",
+        color_2: "#7E668D",
+        color_3: "#D7A3C4",
+        color_4: "#E0BBD8",
+        color_5: "#EBCFDC",
+        color_6: "#EAC4C4",
+        color_7: "#E1AAAF"
+    },
+    {
+        name: "Neopolitan",
+        color_1: "#481C0E",
+        color_2: "#733C2C",
+        color_3: "#E38D70",
+        color_4: "#F4BAA6",
+        color_5: "#F7EAD2",
+        color_6: "#E9CBBB",
+        color_7: "#C39D88"
+    },
+    {
+        name: "Santorini",
+        color_1: "#0C3D79",
+        color_2: "#0056A1",
+        color_3: "#1379D0",
+        color_4: "#8DD1D1",
+        color_5: "#FEF8FF",
+        color_6: "#F6CCD1",
+        color_7: "#F37366"
+    },
+    {
+        name: "Aurora",
+        color_1: "#32172E",
+        color_2: "#312251",
+        color_3: "#002F62",
+        color_4: "#0A5060",
+        color_5: "#009071",
+        color_6: "#25D17D",
+        color_7: "#29FF78"
+    },
+    {
+        name: "80's Glam",
+        color_1: "#C8007D",
+        color_2: "#A31895",
+        color_3: "#7F2ABC",
+        color_4: "#4943CE",
+        color_5: "#1963B6",
+        color_6: "#0082BB",
+        color_7: "#0091B1"
+    },
+    {
+        name: "Gemtones",
+        color_1: "#05AED4",
+        color_2: "#3224EC",
+        color_3: "#5200BB",
+        color_4: "#AA006A",
+        color_5: "#FF256A",
+        color_6: "#FF633B",
+        color_7: "#FFA63A"
+    },
+    {
+        name: "Barely There",
+        color_1: "#DD958F",
+        color_2: "#E4A498",
+        color_3: "#EAAF9B",
+        color_4: "#EFB8A0",
+        color_5: "#F5C6AE",
+        color_6: "#FACFB2",
+        color_7: "#FFDBB7"
+    },
+    {
+        name: "Desert Goat",
+        color_1: "#4B3E3B",
+        color_2: "#6C5A56",
+        color_3: "#907B76",
+        color_4: "#B59C96",
+        color_5: "#9F7161",
+        color_6: "#C88B6E",
+        color_7: "#EBD3C9"
+    },
+    {
+        name: "Cloudy Beach",
+        color_1: "#93BABD",
+        color_2: "#5C8E95",
+        color_3: "#3F5D67",
+        color_4: "#5D596A",
+        color_5: "#7F7983",
+        color_6: "#D3AD98",
+        color_7: "#F9DABD"
+    },
+    {
+        name: "Moonlight",
+        color_1: "#002C4B",
+        color_2: "#00124A",
+        color_3: "#281E5C",
+        color_4: "#35368D",
+        color_5: "#AC9DD0",
+        color_6: "#F8F5EA",
+        color_7: "#FFFFFF"
+    },
+    {
+        name: "Palm",
+        color_1: "#461F15",
+        color_2: "#7F3131",
+        color_3: "#BB5E50",
+        color_4: "#46441A",
+        color_5: "#6C6D22",
+        color_6: "#999F3B",
+        color_7: "#C1C15C"
     }
 ]
 
