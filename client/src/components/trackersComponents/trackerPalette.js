@@ -11,16 +11,23 @@ class TrackerPalette extends Component {
 
     componentDidMount() {
         this.props.fetchPalettes()
-        if (this.props.palettes.length > 0) {
+    }
+
+    componentDidUpdate() {
+        if (this.props.palettes.length > 0 && this.state.chosenPalette === undefined) {
             this.setState({
-                chosenPalette: this.props.palettes.first.id
+                chosenPalette: this.props.palettes[0].id
             })
         }
     }
 
     choosePalette = e => {
-        console.log(Array.from(e.target.children).find( c => c.selected ).id)
-        console.log(this)
+        const selectedId = Array.from(e.target.children).find( c => c.selected ).id
+        if (selectedId !== this.state.chosenPalette) {
+            this.setState({
+                chosenPalette: selectedId
+            })
+        }
     }
 
     generatePaletteOptions = () => {
@@ -42,6 +49,7 @@ class TrackerPalette extends Component {
     }
 
     render() {
+        console.log(this.state.chosenPalette)
         return (
             <>
                 <select 
