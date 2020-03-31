@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPalettes } from '../../actions/trackerActions'
-import TrackerPalettePicker from './trackerPalettePicker'
+import PaletteSquare from './paletteSquare'
+import uuid from 'uuid'
 
 class TrackerPalette extends Component {
 
@@ -15,18 +16,14 @@ class TrackerPalette extends Component {
 
     componentDidUpdate() {
         if (this.props.palettes.length > 0 && this.state.chosenPalette === undefined) {
-            this.setState({
-                chosenPalette: this.props.palettes[0].id
-            })
+            this.setState({ chosenPalette: this.props.palettes[0].id })
         }
     }
 
     choosePalette = e => {
         const selectedId = Array.from(e.target.children).find( c => c.selected ).id
         if (selectedId !== this.state.chosenPalette) {
-            this.setState({
-                chosenPalette: selectedId
-            })
+            this.setState({ chosenPalette: selectedId })
         }
     }
 
@@ -35,11 +32,11 @@ class TrackerPalette extends Component {
             return (
                 <>
                     {this.props.palettes.map ( p => {
-                        return (
-                            <option id={p.id}>
-                                {p.name}
-                            </option>
-                        )
+                        if(!!this.state.chosenPalette && p.id.toString() === this.state.chosenPalette.toString()) {
+                            return <option id={p.id} key={uuid()} selected>{p.name}</option>
+                        } else {
+                            return <option id={p.id} key={uuid()}>{p.name}</option>
+                        }
                     })}
                 </>
             )
@@ -48,8 +45,27 @@ class TrackerPalette extends Component {
         }
     }
 
+    generatePalette = () => {
+        if (!!this.state.chosenPalette) {
+            const palette = this.props.palettes.find( p => p.id.toString() === this.state.chosenPalette.toString())
+            const colors = [
+                palette.color_1,
+                palette.color_2,
+                palette.color_3,
+                palette.color_4,
+                palette.color_5,
+                palette.color_6,
+                palette.color_7,
+            ]
+            return (
+                colors.map( c => <PaletteSquare color={c} changeColor={this.props.changeColor.bind(this)} />)
+            )
+        } else {
+            return "Loading"
+        }
+    }
+
     render() {
-        console.log(this.state.chosenPalette)
         return (
             <>
                 <select 
@@ -57,7 +73,9 @@ class TrackerPalette extends Component {
                     onChange={e => this.choosePalette(e)} >
                     {this.generatePaletteOptions()}
                 </select>
-                <TrackerPalettePicker />
+                <div className="paletteBox">
+                    {this.generatePalette()}
+                </div>
             </>
         )
     }
@@ -65,11 +83,6 @@ class TrackerPalette extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-    return ({
-        fetchPalettes: () => dispatch(fetchPalettes())
-    })
-}
 
 const mapStateToProps = state => {
     return ({
@@ -77,4 +90,4 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackerPalette)
+export default connect(mapStateToProps, { fetchPalettes })(TrackerPalette)

@@ -3,3 +3,15 @@
     width: 235px;
     margin: auto;
 }
+
+.paletteBox {
+    display: block;
+    width: 245px;
+    margin: 10px auto;
+}
+
+.paletteSquare {
+    display: inline-block;
+    width: 25px; height: 25px;
+    margin: 5px;
+}

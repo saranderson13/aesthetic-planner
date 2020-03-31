@@ -33,10 +33,6 @@ class TrackerContainer extends Component {
         chosenColor: "#000"
     }
 
-    // componentDidMount() {
-    //     this.props.fetchPalettes()
-    // }
-
     changeColor = e => {
         if (e.target.dataset.hex !== this.state.chosenColor) {
             this.setState({
@@ -46,6 +42,7 @@ class TrackerContainer extends Component {
     }
 
     render() {
+        console.log(this.state.chosenColor)
         return (
             <>
                 <aside id="controlsContainer">
@@ -58,19 +55,5 @@ class TrackerContainer extends Component {
     }
 
 }
-
-// const mapDispatchToProps = dispatch => {
-//     return ({
-//         fetchPalettes: () => dispatch(fetchPalettes())
-//     })
-// }
-
-// const mapStateToProps = state => {
-//     return ({
-//         palettes: state.trackers.palettes
-//     })
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(TrackerContainer)
 
 export default TrackerContainer
