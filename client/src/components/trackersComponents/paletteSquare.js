@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+// STATELESS COMPONENT / FUNCTIONAL COMPONENT
 
-class PaletteSquare extends Component {
+import React from 'react'
 
-    render() {
-        return(
-            <div 
-                className="paletteSquare"
-                style={{backgroundColor: this.props.color}}
-                onClick={e => this.props.changeColor(e)}
-                data-hex={this.props.color} >
-            </div>
-        )
-    }
+const PaletteSquare = props => {
+
+    return(
+        <div 
+            className="paletteSquare"
+            style={{backgroundColor: props.color}}
+            onClick={e => props.changeColor(e)}
+            data-hex={props.color} >
+        </div>
+    )
 
 }
 
