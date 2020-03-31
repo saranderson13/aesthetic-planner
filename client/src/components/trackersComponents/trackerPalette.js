@@ -21,7 +21,7 @@ class TrackerPalette extends Component {
     }
 
     choosePalette = e => {
-        const selectedId = Array.from(e.target.children).find( c => c.selected ).id
+        const selectedId = parseInt(Array.from(e.target.children).find( c => c.selected ).id, 10)
         if (selectedId !== this.state.chosenPalette) {
             this.setState({ chosenPalette: selectedId })
         }
@@ -31,13 +31,7 @@ class TrackerPalette extends Component {
         if (this.props.palettes.length > 0) {
             return (
                 <>
-                    {this.props.palettes.map ( p => {
-                        if(!!this.state.chosenPalette && p.id.toString() === this.state.chosenPalette.toString()) {
-                            return <option id={p.id} key={uuid()} selected>{p.name}</option>
-                        } else {
-                            return <option id={p.id} key={uuid()}>{p.name}</option>
-                        }
-                    })}
+                    {this.props.palettes.map ( p => <option id={p.id} value={p.id} key={uuid()}>{p.name}</option> )}
                 </>
             )
         } else {
@@ -47,7 +41,7 @@ class TrackerPalette extends Component {
 
     generatePalette = () => {
         if (!!this.state.chosenPalette) {
-            const palette = this.props.palettes.find( p => p.id.toString() === this.state.chosenPalette.toString())
+            const palette = this.props.palettes.find( p => p.id === this.state.chosenPalette)
             const colors = [
                 palette.color_1,
                 palette.color_2,
@@ -58,7 +52,7 @@ class TrackerPalette extends Component {
                 palette.color_7,
             ]
             return (
-                colors.map( c => <PaletteSquare color={c} changeColor={this.props.changeColor.bind(this)} />)
+                colors.map( c => <PaletteSquare color={c} changeColor={this.props.changeColor.bind(this)} key={uuid()} />)
             )
         } else {
             return "Loading"
@@ -70,6 +64,7 @@ class TrackerPalette extends Component {
             <>
                 <select 
                     className="paletteSelector"
+                    value={!!this.state.chosenPalette ? this.state.chosenPalette : 0 }
                     onChange={e => this.choosePalette(e)} >
                     {this.generatePaletteOptions()}
                 </select>

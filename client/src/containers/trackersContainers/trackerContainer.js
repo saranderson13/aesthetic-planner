@@ -35,19 +35,16 @@ class TrackerContainer extends Component {
 
     changeColor = e => {
         if (e.target.dataset.hex !== this.state.chosenColor) {
-            this.setState({
-                chosenColor: e.target.dataset.hex
-            })
+            this.setState({ chosenColor: e.target.dataset.hex })
         }
     }
 
     render() {
-        console.log(this.state.chosenColor)
         return (
             <>
                 <aside id="controlsContainer">
-                    <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                     <nav id="navContainer"><NavContainer /></nav>
+                    <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                 </aside>
                 <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" /></section>
             </>

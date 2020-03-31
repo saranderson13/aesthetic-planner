@@ -165,6 +165,11 @@ class JournalContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
+                    <nav id="navContainer">
+                        <NavContainer 
+                            journals={this.props.journals} 
+                            dayId={this.props.match.params.id} />
+                    </nav>
                     <JournalControlsContainer 
                         days={this.props.days}
                         inputLegal={this.state.inputLegal}
@@ -172,11 +177,6 @@ class JournalContainer extends Component {
                         recentEntries={recentEntries} 
                         formatDate={this.formatDate.bind(this)} 
                         toggleView={this.toggleView.bind(this)} />
-                    <nav id="navContainer">
-                        <NavContainer 
-                            journals={this.props.journals} 
-                            dayId={this.props.match.params.id} />
-                    </nav>
                 </aside>
                 <section id="bodyContainer">{this.selectJournal()}</section>
             </>
