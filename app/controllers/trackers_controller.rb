@@ -8,6 +8,14 @@ class TrackersController < ApplicationController
     end
 
 
+    def show
+        tracker = Tracker.find_by(id: params["id"])
+        render json: tracker.to_json(
+            include: json_include()
+        )
+    end
+
+
     def update
         tracker = Tracker.find_by(id: tracker_params["id"])
         tracker.update(tracker_params)

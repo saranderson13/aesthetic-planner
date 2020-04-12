@@ -30,7 +30,7 @@ class TrackerContainer extends Component {
     // Will need a clear color - this will uncheck the boxes. Any color will indicate checked.
 
     state = {
-        chosenColor: "#000"
+        chosenColor: 'none'
     }
 
     changeColor = e => {
@@ -46,7 +46,7 @@ class TrackerContainer extends Component {
                     <nav id="navContainer"><NavContainer /></nav>
                     <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                 </aside>
-                <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" /></section>
+                <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" color={this.state.chosenColor} /></section>
             </>
         )
     }

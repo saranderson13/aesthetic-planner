@@ -1,3 +1,10 @@
+.habitTable {
+    width: 300px; height: 300px;
+}
+
+
+
+/* COLOR PALETTE */
 .paletteSelector {
     display: block;
     width: 235px;
