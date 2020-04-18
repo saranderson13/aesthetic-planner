@@ -15,6 +15,18 @@ class MonthsController < ApplicationController
         )
     end
 
+    def monthTrackers
+        month = Month.find_by(id: params["id"])
+        render json: month.to_json(
+            except: [:id, :year_id, :name, :number, :numDays, :created_at, :updated_at],
+            include: { :trackers => {
+                include: {
+                    :tracker_lines => { include: :tracker_days }
+                }
+            }}
+        )
+    end
+
 
     private
 

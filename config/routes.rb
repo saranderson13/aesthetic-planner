@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # :index, :show, :new, :create, :edit, :update, :destroy
   resources :years, only: [:index, :show]
   resources :months, only: [:index, :show]
+    get 'monthTrackers/:id', to: 'months#monthTrackers'
   resources :weeks, only: [:index, :show]
   resources :days, only: [:index, :show]
   

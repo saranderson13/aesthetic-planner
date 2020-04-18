@@ -17,7 +17,7 @@ export const fetchPalettes = () => {
 export const fetchTrackers = trackerPacket => {
     return async function (dispatch) {
         dispatch( {type: 'LOAD_TRACKERS' } )
-        const resp = await fetch(`/trackers/${trackerPacket.id}`, {
+        const resp = await fetch(`/monthTrackers/${trackerPacket.monthId}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

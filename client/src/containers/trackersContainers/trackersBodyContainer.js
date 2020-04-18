@@ -5,31 +5,18 @@ import { fetchTrackers } from '../../actions/trackerActions'
 
 class TrackersBodyContainer extends Component {
 
-    state = {
-        habit: {},
-        mood: {},
-        sleep: {}
-    }
-
     componentDidMount() {
-        this.props.fetchTrackers({ id: 10 })
+        this.props.fetchTrackers({monthId: this.props.monthId})
     }
 
-    componentDidUpdate() {
-        // debugger;
-        // if(this.props.trackerData.length === 0) {
-        //     // debugger;
-        //     const tracker = this.props.trackersForMonth.find( t => t.kind === "habit" )
-        //     const trackerPacket = {
-        //         id: tracker.id
-        //     }
-        //     debugger;
-        //     this.props.fetchTrackers(trackerPacket)
-        // }
-        // debugger;
+    componentDidUpdate(prevProps) {
+        if (prevProps.monthId !== this.props.monthId) {
+            this.props.fetchTrackers({monthId: this.props.monthId})
+        }
     }
 
     render() {
+        console.log(this.props.trackerData)
         return (
             <>
                 <h1>{this.props.pageName}</h1>
@@ -47,7 +34,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    console.log(state.trackers)
     return({
         numDays: state.controls.currentMonth.numDays,
         trackersForMonth: state.controls.currentMonth.trackers,

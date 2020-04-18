@@ -46,7 +46,7 @@ class TrackerContainer extends Component {
                     <nav id="navContainer"><NavContainer /></nav>
                     <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                 </aside>
-                <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" color={this.state.chosenColor} /></section>
+                <section id="bodyContainer"><TrackersBodyContainer pageName="Trackers" monthId={this.props.match.params.monthId} color={this.state.chosenColor} /></section>
             </>
         )
     }

@@ -13,9 +13,7 @@ export default class MonthWidgetHeader extends Component {
             } else {
                 return (
                     <span className="back" onClick={this.props.back} >
-                        <Link to={`/trackers/${parseInt(this.props.month.number, 10) - 1}`}> 
-                            back
-                        </Link>
+                        <Link to={`/trackers/${parseInt(this.props.month.number, 10) - 1}`}>back</Link>
                     </span>
                 )
             }
@@ -30,9 +28,7 @@ export default class MonthWidgetHeader extends Component {
             } else {
                 return (
                     <span className="next" onClick={this.props.next} >
-                        <Link to={`/trackers/${parseInt(this.props.month.number, 10) + 1}`}> 
-                            next
-                        </Link>
+                        <Link to={`/trackers/${parseInt(this.props.month.number, 10) + 1}`}>next</Link>
                     </span>
                 )
             }
