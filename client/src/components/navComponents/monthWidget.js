@@ -13,14 +13,10 @@ class MonthWidget extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchMonthsForWidget()   
-
-    }
-
-    componentDidUpdate() {
         // If display month has not been set (so basically on first load), and if the current month
         // has been retrieved from store, set the local state.
         if (this.state.displayMonth === null && Object.keys(this.props.currentMonth).length !== 0) {
+            // debugger;
             this.setState({
                 displayMonth: this.props.currentMonth
             })
@@ -43,6 +39,7 @@ class MonthWidget extends Component {
                 <>
                     <MonthWidgetHeader 
                         month={this.state.displayMonth === null ? this.props.currentMonth : this.state.displayMonth} 
+                        page={this.state.page}
                         back={this.navToPrevMonth.bind(this)} 
                         next={this.navToNextMonth.bind(this)} />
                     <MonthWidgetCalendar 

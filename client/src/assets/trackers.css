@@ -1,5 +1,41 @@
 .habitTable {
-    width: 300px; height: 300px;
+    width: 100%; height: auto;
+    /* height: 300px; */
+}
+
+.habitLine {
+    box-sizing: border-box;
+    width: inherit;
+    height: 30px;
+    border: 1px solid #fff;
+}
+
+.habitName {
+    box-sizing: border-box;
+    float: left;
+    width: 150px; height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+.habitDayContainer {
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: column; 
+    width: calc(100% - 150px); height: 30px;
+}
+
+.habitDayComplete {
+    box-sizing: border-box;
+    margin: 0px 1px;
+    background-color: #000
+}
+
+.habitDayIncomplete {
+    box-sizing: border-box;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    margin: 0px 1px;
 }
 
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import HabitLine from './habitLine'
 
-class HabitTable extends Component {
+export default class HabitDay extends Component {
 
     state = {
         color: 'none'
@@ -23,16 +22,8 @@ class HabitTable extends Component {
 
     render() {
         return (
-            <div 
-                className="habitTable"
-                style={{ backgroundColor: this.state.color }} 
-                onClick={this.changeBackground} >
-                    <HabitLine />
-                    <HabitLine />
-                </div>
+            <div className="habitDayIncomplete"></div>
         )
-    } 
+    }
 
 }
-
-export default HabitTable

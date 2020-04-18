@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchDays } from './actions/controlsActions'
+import { fetchDays, fetchMonthsForWidget } from './actions/controlsActions'
 import './assets/trackers.css'
 import './assets/lists.css'
 import './assets/journal.css'
@@ -23,6 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchDays()
+    this.props.fetchMonthsForWidget() 
   }
 
   getCurrentPlannerLink = () => {
@@ -30,6 +31,14 @@ class App extends Component {
         return <Redirect to={`/day-planner/${this.props.currentDayId}`} />
     } else {
         return "Loading..."
+    }
+  }
+
+  getCurrentTrackersLink = () => {
+    if (!!this.props.currentMonthId) {
+      return <Redirect to={`/trackers/${this.props.currentMonthId}`} />
+    } else {
+      return "Loading..."
     }
   }
   
@@ -41,9 +50,9 @@ class App extends Component {
             path="/day-planner/:id" 
             component={ ({match}) => (<DayPlannerContainer match={match} />)} />
 
-          <Route path="/trackers">
-            <TrackerContainer />
-          </Route>
+          <Route 
+            path="/trackers/:monthId"
+            component={ ({match}) => (<TrackerContainer match={match} />)} />
 
           <Route path="/lists">
             <ListsContainer />
@@ -53,6 +62,10 @@ class App extends Component {
             path="/journal/:id" 
             component={ ({match}) => (<JournalContainer match={match} />)} />
           
+          <Route path="/trackers">
+            { this.getCurrentTrackersLink() }
+          </Route>
+
           <Route path="/">
             { this.getCurrentPlannerLink() }
           </Route>
@@ -67,13 +80,15 @@ const mapStateToProps = state => {
   return({
     days: state.controls.days,
     loadingDays: state.controls.loadingDays,
-    currentDayId: state.controls.currentDayId
+    currentDayId: state.controls.currentDayId,
+    currentMonthId: state.controls.currentMonth.id
   })
 }
 
 const mapDispatchToProps = dispatch => {
   return ({
-      fetchDays: () => dispatch(fetchDays())
+      fetchDays: () => dispatch(fetchDays()),
+      fetchMonthsForWidget: () => dispatch(fetchMonthsForWidget())
   })
 }
 

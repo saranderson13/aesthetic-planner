@@ -10,7 +10,7 @@ export const fetchLists = () => {
             body: JSON.stringify(dispatch)
         })
         const json = await resp.json()
-        return await dispatch({ type: 'ADD_LISTS', lists: json })
+        await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
 
@@ -26,7 +26,7 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
             body: JSON.stringify(listPacket)
         })
         const json = await resp.json()
-        return await dispatch({ type: 'ADD_LISTS', lists: json })
+        await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
 
@@ -40,7 +40,7 @@ export const deleteList = id => {
             }
         })
         const json = await resp.json()
-        return await dispatch({ type: 'ADD_LISTS', lists: json })
+        await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
 

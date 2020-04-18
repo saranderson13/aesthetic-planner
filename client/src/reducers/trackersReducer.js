@@ -1,7 +1,9 @@
 const trackersReducer = (
     state = {
         palettes: [],
-        loadingPalettes: false
+        loadingPalettes: false,
+        trackers: [],
+        loadingTrackers: false
     }, action ) => {
         switch (action.type) {
 
@@ -17,6 +19,20 @@ const trackersReducer = (
                     ...state,
                     palettes: action.palettes,
                     loadingPalettes: false
+                }
+
+            case 'LOAD_TRACKERS':
+                return {
+                    ...state,
+                    trackers: state.trackers,
+                    loadingTrackers: true
+                }
+
+            case 'ADD_TRACKERS':
+                return {
+                    ...state,
+                    trackers: action.trackers,
+                    loadingTrackers: false
                 }
 
             default:
