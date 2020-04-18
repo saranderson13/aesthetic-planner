@@ -167,6 +167,7 @@ class JournalContainer extends Component {
                 <aside id="controlsContainer">
                     <nav id="navContainer">
                         <NavContainer 
+                            pageName="non-tracker"
                             journals={this.props.journals} 
                             dayId={this.props.match.params.id} />
                     </nav>

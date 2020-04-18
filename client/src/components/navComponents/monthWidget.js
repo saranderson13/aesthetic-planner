@@ -17,9 +17,13 @@ class MonthWidget extends Component {
         // has been retrieved from store, set the local state.
         if (this.state.displayMonth === null && Object.keys(this.props.currentMonth).length !== 0) {
             // debugger;
-            this.setState({
-                displayMonth: this.props.currentMonth
-            })
+            console.log(this.props.pageName)
+            if(this.props.pageName === "trackers") {
+                const viewingMonth = this.props.months.find( m => m.id === parseInt(this.props.monthId, 10) )
+                this.setState({ displayMonth: viewingMonth })
+            } else {
+                this.setState({ displayMonth: this.props.currentMonth })
+            }
         }
     }
 

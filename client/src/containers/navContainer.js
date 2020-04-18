@@ -9,7 +9,7 @@ class NavContainer extends Component {
         return (
             <div>
                 <PageLinks currentDayId={this.props.currentDayId} />
-                <MonthWidget dayId={this.props.dayId} />
+                <MonthWidget dayId={this.props.dayId} pageName={this.props.pageName} monthId={this.props.monthId} />
             </div>
         )
     }

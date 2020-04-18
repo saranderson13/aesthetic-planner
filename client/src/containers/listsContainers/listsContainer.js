@@ -25,7 +25,7 @@ class ListsContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
-                    <nav id="navContainer"><NavContainer /></nav>
+                    <nav id="navContainer"><NavContainer pageName="non-tracker" /></nav>
                     <ListsControlsContainer 
                         lists={this.props.lists} />
                 </aside>

@@ -66,6 +66,7 @@ class DayPlannerContainer extends Component {
                     <DayPlannerControlsContainer />
                     <nav id="navContainer">
                         <NavContainer 
+                            pageName="non-tracker"
                             dayId={this.props.match.params.id} />
                     </nav>
                 </aside>
