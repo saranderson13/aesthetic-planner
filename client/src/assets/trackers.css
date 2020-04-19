@@ -1,13 +1,16 @@
 .habitTable {
+    box-sizing: border-box;
     width: 100%; height: auto;
-    /* height: 300px; */
+    padding: 10px; margin-bottom: 20px;
+    border: 2px solid rgb(233, 187, 187);
 }
 
 .habitLine {
     box-sizing: border-box;
     width: inherit;
     height: 30px;
-    border: 1px solid #fff;
+    margin-bottom: 2px;
+    box-shadow: 2px 2px 4px rgb(221, 221, 221);
 }
 
 .habitName {
@@ -28,14 +31,15 @@
 .habitDayComplete {
     box-sizing: border-box;
     margin: 0px 1px;
-    background-color: #000
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
 
 .habitDayIncomplete {
     box-sizing: border-box;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
-    margin: 0px 1px;
+    border-left: 1px solid #000;
+    margin: 2px 0px 0px;
+    font-size: 8px;
 }
 
 

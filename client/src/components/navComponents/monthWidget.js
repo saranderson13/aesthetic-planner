@@ -16,8 +16,6 @@ class MonthWidget extends Component {
         // If display month has not been set (so basically on first load), and if the current month
         // has been retrieved from store, set the local state.
         if (this.state.displayMonth === null && Object.keys(this.props.currentMonth).length !== 0) {
-            // debugger;
-            console.log(this.props.pageName)
             if(this.props.pageName === "trackers") {
                 const viewingMonth = this.props.months.find( m => m.id === parseInt(this.props.monthId, 10) )
                 this.setState({ displayMonth: viewingMonth })

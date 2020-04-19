@@ -3,24 +3,22 @@ import HabitDay from './habitDay'
 
 class HabitLine extends Component {
 
-    renderDays = () => {
-        
+    generateDays = () => {
+        console.log(this)
+        return (
+            this.props.days.map ( d => {
+                return <HabitDay color={this.props.color} id={d.id} />
+            })
+        )
     }
 
     render() {
         return(
         <>
-            <div className="habitLine">
-                <div className="habitName">
-                    Name
-                </div>
+            <div className="habitLine" >
+                <div className="habitName">{this.props.name}</div>
                 <div className="habitDayContainer">
-                    <HabitDay />
-                    <HabitDay />
-                    <HabitDay />
-                    <HabitDay />
-                    <HabitDay />
-                    <HabitDay />
+                    {this.generateDays()}
                 </div>
             </div>
         </>

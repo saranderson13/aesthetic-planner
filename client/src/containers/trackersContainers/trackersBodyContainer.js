@@ -15,12 +15,20 @@ class TrackersBodyContainer extends Component {
         }
     }
 
+    habitTableGenerator = (kind) => {
+        if(this.props.trackerData.length > 0) {
+            const tracker = this.props.trackerData.find( t => t.kind === kind )
+            return <HabitTable lines={tracker.tracker_lines} color={this.props.color} />
+        }
+    }
+
     render() {
-        console.log(this.props.trackerData)
         return (
             <>
                 <h1>{this.props.pageName}</h1>
-                <HabitTable color={this.props.color} />
+                {this.habitTableGenerator("habit")}
+                {this.habitTableGenerator("sleep")}
+                {this.habitTableGenerator("mood")}
             </>
         )
     }

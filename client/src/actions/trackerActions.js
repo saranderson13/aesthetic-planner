@@ -26,7 +26,6 @@ export const fetchTrackers = trackerPacket => {
             body: JSON.stringify(dispatch)
         })
         const json = await resp.json()
-        console.log(json)
         await dispatch({type: 'ADD_TRACKERS', trackers: json})
     }
 }

@@ -3,33 +3,24 @@ import HabitLine from './habitLine'
 
 class HabitTable extends Component {
 
-    state = {
-        color: 'none'
-    }
-
-    compontentDidMount() {
-        this.setState({
-            color: this.props.color
-        })
-    }
-
-    changeBackground = () => {
-        if(this.props.color !== this.state.color) {
-            this.setState({
-                color: this.props.color
+    generateHabitLines = () => {
+        return (
+            this.props.lines.map( l => {
+                console.log(l)
+                return <HabitLine days={l.tracker_days} name={l.name} color={this.props.color} />
             })
-        }
+        )
     }
 
     render() {
         return (
+            <>
             <div 
                 className="habitTable"
-                style={{ backgroundColor: this.state.color }} 
                 onClick={this.changeBackground} >
-                    <HabitLine />
-                    <HabitLine />
-                </div>
+                {this.generateHabitLines()}
+            </div>
+            </>
         )
     } 
 

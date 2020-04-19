@@ -31,7 +31,7 @@ const trackersReducer = (
             case 'ADD_TRACKERS':
                 return {
                     ...state,
-                    trackers: action.trackers,
+                    trackers: action.trackers.trackers,
                     loadingTrackers: false
                 }
 
