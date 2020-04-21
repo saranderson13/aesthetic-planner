@@ -10,6 +10,7 @@ class TrackersBodyContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        // debugger;
         if (prevProps.monthId !== this.props.monthId) {
             this.props.fetchTrackers({monthId: this.props.monthId})
         }

@@ -13,21 +13,11 @@ class HabitDay extends Component {
             this.setState({ dayColor: this.props.nativeColor })
         }
     }
-
-    // componentDidUpdate() {
-    //     debugger;
-    //     if(this.state.dayColor !== this.props.nativeColor) {
-    //         this.setState({ dayColor: this.props.nativeColor })
-    //     }
-    // }
-
-    // changeBackground = () => {
-    //     if(this.props.paintColor !== this.state.paintColor) {
-    //         this.setState({ paintColor: this.props.paintColor })
-    //     } else {
-    //         this.setState({ paintColor: 'transparent' })
-    //     }
-    // }
+    componentDidUpdate() {
+        if(this.state.dayColor !== this.props.nativeColor) {
+            this.setState({ dayColor: this.props.nativeColor })
+        }
+    }
 
     updateStatus = e => {
         e.preventDefault()
@@ -62,14 +52,6 @@ class HabitDay extends Component {
 
 }
 
-// const mapStateToProps = state => {
-//     debugger;
-//     return ({
-//         dayStatus: "incomplete",
-//         statusColor: "#ff0099"
-//     })
-// }
-
 const mapDispatchToProps = dispatch => {
     return ({
         updateStatus: dayPacket => dispatch(updateStatus(dayPacket))
@@ -78,4 +60,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(HabitDay)
 
-// export default HabitDay

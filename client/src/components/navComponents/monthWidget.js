@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchMonthsForWidget } from '../../actions/controlsActions'
 import MonthWidgetHeader from './monthWidgetHeader'
 import MonthWidgetCalendar from './monthWidgetCalendar'
 import LoadingWheel from '../../assets/images/loading-wheel.gif'
@@ -81,4 +80,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps, { fetchMonthsForWidget })(MonthWidget)
+export default connect(mapStateToProps, null)(MonthWidget)

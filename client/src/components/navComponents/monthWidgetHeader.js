@@ -1,6 +1,6 @@
 // STATELESS COMPONENT
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export default class MonthWidgetHeader extends Component {
@@ -32,8 +32,6 @@ export default class MonthWidgetHeader extends Component {
                     </span>
                 )
             }
-
-
         } else { return <span className="next disabled">-</span> }
     }
 
@@ -48,3 +46,4 @@ export default class MonthWidgetHeader extends Component {
     }
 
 }
+

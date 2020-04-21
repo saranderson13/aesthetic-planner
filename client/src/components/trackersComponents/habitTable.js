@@ -4,6 +4,7 @@ import HabitLine from './habitLine'
 class HabitTable extends Component {
 
     generateHabitLines = () => {
+        console.log(this.props.lines)
         return (
             this.props.lines.map( l => {
                 return <HabitLine days={l.tracker_days} name={l.name} paintColor={this.props.paintColor} />
