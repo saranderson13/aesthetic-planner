@@ -29,3 +29,18 @@ export const fetchTrackers = trackerPacket => {
         await dispatch({type: 'ADD_TRACKERS', trackers: json})
     }
 }
+
+export const updateHabitDayStatus = habitDayPacket => {
+    return async function (dispatch) {
+        const resp = await fetch(`/tracker_days/${habitDayPacket.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(habitDayPacket)
+        })
+        const json = await resp.json()
+        await dispatch({type: 'UPDATE_TRACKERS', trackers: json})
+    }
+}

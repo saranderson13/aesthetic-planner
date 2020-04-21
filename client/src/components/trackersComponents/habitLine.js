@@ -4,10 +4,13 @@ import HabitDay from './habitDay'
 class HabitLine extends Component {
 
     generateDays = () => {
-        console.log(this)
         return (
             this.props.days.map ( d => {
-                return <HabitDay color={this.props.color} id={d.id} />
+                return <HabitDay 
+                    paintColor={this.props.paintColor} 
+                    id={d.id}
+                    complete={d.complete}
+                    nativeColor={d.color} />
             })
         )
     }

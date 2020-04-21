@@ -1,11 +1,14 @@
 class TrackerDaysController < ApplicationController
 
     def update
-        t_days = TrackerDays.find_by(id: t_days_params["id"])
-        t_days.update(t_days_params)
-        trackers = Tracker.all
-        render json: trackers.to_json(
-            include: json_include()
+        tracker_day = TrackerDay.find_by(id: t_days_params["id"])
+        tracker_day.update(t_days_params)
+        monthTrackers = tracker_day.tracker_line.tracker.month.trackers
+
+        render json: monthTrackers.to_json(
+            include: {
+                :tracker_lines => { include: :tracker_days }
+            }
         )
     end
 

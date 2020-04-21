@@ -16,9 +16,9 @@ class TrackersBodyContainer extends Component {
     }
 
     habitTableGenerator = (kind) => {
-        if(this.props.trackerData.length > 0) {
+        if(!!this.props.trackerData && this.props.trackerData.length > 0) {
             const tracker = this.props.trackerData.find( t => t.kind === kind )
-            return <HabitTable lines={tracker.tracker_lines} color={this.props.color} />
+            return <HabitTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} />
         }
     }
 

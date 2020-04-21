@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_230004) do
+ActiveRecord::Schema.define(version: 2020_04_20_223742) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_230004) do
     t.integer "tracker_line_id", null: false
     t.integer "day_id", null: false
     t.boolean "complete", default: false
-    t.string "color"
-    t.integer "duration"
+    t.string "color", default: "transparent"
+    t.integer "duration", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["day_id"], name: "index_tracker_days_on_day_id"

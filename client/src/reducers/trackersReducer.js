@@ -35,6 +35,13 @@ const trackersReducer = (
                     loadingTrackers: false
                 }
 
+            case 'UPDATE_TRACKERS':
+                return {
+                    ...state,
+                    trackers: action.trackers,
+                    loadingTrackers: false
+                }
+
             default:
                 return state
         }

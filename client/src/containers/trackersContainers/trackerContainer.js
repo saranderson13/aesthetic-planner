@@ -30,12 +30,12 @@ class TrackerContainer extends Component {
     // Will need a clear color - this will uncheck the boxes. Any color will indicate checked.
 
     state = {
-        chosenColor: 'none'
+        paintColor: 'transparent'
     }
 
     changeColor = e => {
-        if (e.target.dataset.hex !== this.state.chosenColor) {
-            this.setState({ chosenColor: e.target.dataset.hex })
+        if (e.target.dataset.hex !== this.state.paintColor) {
+            this.setState({ paintColor: e.target.dataset.hex })
         }
     }
 
@@ -43,10 +43,19 @@ class TrackerContainer extends Component {
         return (
             <>
                 <aside id="controlsContainer">
-                    <nav id="navContainer"><NavContainer pageName="trackers" monthId={this.props.match.params.monthId} /></nav>
+                    <nav id="navContainer">
+                        <NavContainer 
+                            pageName="trackers" 
+                            monthId={this.props.match.params.monthId} />
+                    </nav>
                     <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
                 </aside>
-                <section id="bodyContainer"><TrackersBodyContainer pageName="trackers" monthId={this.props.match.params.monthId} color={this.state.chosenColor} /></section>
+                <section id="bodyContainer">
+                    <TrackersBodyContainer 
+                        pageName="trackers" 
+                        monthId={this.props.match.params.monthId} 
+                        paintColor={this.state.paintColor} />
+                </section>
             </>
         )
     }
