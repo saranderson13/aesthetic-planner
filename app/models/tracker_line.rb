@@ -6,6 +6,9 @@ class TrackerLine < ApplicationRecord
   validates :tracker_id, :name, presence: true
   validate :validate_line_count, on: :create
 
+  def days
+    self.tracker.month.days
+  end
 
   private
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HabitLine from './habitLine'
 
-class HabitTable extends Component {
+class SleepTable extends Component {
 
     generateHabitLines = () => {
         return (
@@ -11,17 +11,10 @@ class HabitTable extends Component {
         )
     }
 
-    tableTitle = () => {
-        return this.props.kind === "habit" ? "Habits" : this.props.kind === "sleep" ? "Sleep" : "Mood"
-    }
-
     render() {
         return (
             <>
-            <div>
-                Habits
-                <button className="addHabitLineButton">Add Line</button>
-            </div>
+            <div>Sleep</div>
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >
@@ -33,4 +26,4 @@ class HabitTable extends Component {
 
 }
 
-export default HabitTable
+export default SleepTable

@@ -12,8 +12,8 @@ class TrackerDay < ApplicationRecord
   private
 
   def validate_not_duplicate_day
-    tracker = self.tracker_line.tracker
-    existing_dates = tracker.tracker_days.map { |d| d.day }
+    line = self.tracker_line
+    existing_dates = line.tracker_days.map { |d| d.day }
     errors.add(:day, "Day already has a cell.") if existing_dates.include?(self.day)
   end
 

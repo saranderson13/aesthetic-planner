@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import HabitTable from '../../components/trackersComponents/habitTable'
+import SleepTable from '../../components/trackersComponents/sleepTable'
+import MoodTable from '../../components/trackersComponents/moodTable'
 import { connect } from 'react-redux'
 import { fetchTrackers } from '../../actions/trackerActions'
 
@@ -19,7 +21,16 @@ class TrackersBodyContainer extends Component {
     habitTableGenerator = (kind) => {
         if(!!this.props.trackerData && this.props.trackerData.length > 0) {
             const tracker = this.props.trackerData.find( t => t.kind === kind )
-            return <HabitTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} />
+            switch (kind) {
+                case "habit":
+                    return <HabitTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+
+                case "sleep":
+                    return <SleepTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+
+                case "mood":
+                    return <MoodTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+            }
         }
     }
 
