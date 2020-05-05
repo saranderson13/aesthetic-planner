@@ -1,15 +1,42 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import HabitLine from './habitLine'
+import { addHabitLine as addLine } from '../../actions/trackerActions'
+import uuid from 'uuid'
 
 class HabitTable extends Component {
+
+    state = {
+        newLineContent: ""
+    }
 
     generateHabitLines = () => {
         return (
             this.props.lines.map( l => {
-                return <HabitLine days={l.tracker_days} name={l.name} paintColor={this.props.paintColor} />
+                return (
+                    <HabitLine 
+                        key={uuid()}
+                        days={l.tracker_days} 
+                        name={l.name} 
+                        paintColor={this.props.paintColor} />
+                )
             })
         )
+    }
+
+    addLine = e => {
+        e.preventDefault()
+        // console.log(this.props)
+        // debugger;
+        const linePacket = {
+            tracker_id: this.props.trackerId,
+            name: this.state.newLineContent
+        }
+        this.props.addLine(linePacket)
+    }
+
+    handleNewLineTitleChange = e => {
+        this.setState({ newLineContent: e.target.value })
     }
 
     render() {
@@ -17,9 +44,16 @@ class HabitTable extends Component {
             <>
             <div className="tableTitleBox">
                 HABITS
-                <form className="addLineForm">
-                    <input type="text" className="lineTitle" placeholder="Line Name" />
-                    <input type="submit" className="addHabitLineButton" value="Add Line" />
+                <form className="addLineForm" onSubmit={e => this.addLine(e)}>
+                    <input 
+                        type="text" 
+                        className="lineTitle" 
+                        placeholder="Line Name" 
+                        onChange={e => this.handleNewLineTitleChange(e)} />
+                    <input 
+                        type="submit" 
+                        className="addHabitLineButton" 
+                        value="Add Line" />
                 </form>
             </div>
             <div 
@@ -35,7 +69,7 @@ class HabitTable extends Component {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        
+        addLine: linePacket => dispatch(addLine(linePacket))
     })
 }
 
@@ -45,6 +79,6 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(null, null)(HabitTable)
+export default connect(null, mapDispatchToProps)(HabitTable)
 
 // export default HabitTable

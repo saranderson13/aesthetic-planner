@@ -42,6 +42,13 @@ const trackersReducer = (
                     loadingTrackers: false
                 }
 
+            case 'ADD_HABIT_LINE':
+                return {
+                    ...state,
+                    trackers: action.trackers,
+                    loadingTrackers: false
+                }
+
             default:
                 return state
         }

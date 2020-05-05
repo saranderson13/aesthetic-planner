@@ -10,6 +10,14 @@ class TrackerLine < ApplicationRecord
     self.tracker.month.days
   end
 
+  def month
+    self.tracker.month
+  end
+
+  def all_trackers_for_month
+    self.month.trackers
+  end
+
   private
 
   def validate_line_count

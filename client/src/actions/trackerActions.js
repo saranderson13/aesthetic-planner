@@ -44,3 +44,20 @@ export const updateHabitDayStatus = habitDayPacket => {
         await dispatch({type: 'UPDATE_TRACKERS', trackers: json})
     }
 }
+
+export const addHabitLine = linePacket => {
+    return async function (dispatch) {
+        const resp = await fetch('/tracker_lines', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(linePacket)
+        })
+        debugger;
+        const json = await resp.json()
+        debugger;
+        await dispatch({ type: 'ADD_HABIT_LINE', trackers: json })
+    }
+}

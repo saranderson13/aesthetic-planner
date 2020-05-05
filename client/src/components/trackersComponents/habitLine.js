@@ -9,6 +9,7 @@ class HabitLine extends Component {
                 return <HabitDay 
                     paintColor={this.props.paintColor} 
                     id={d.id}
+                    key={d.id}
                     complete={d.complete}
                     nativeColor={d.color} />
             })

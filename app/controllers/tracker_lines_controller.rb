@@ -1,13 +1,14 @@
 class TrackerLinesController < ApplicationController
 
     def create
+        # binding.pry
         line = TrackerLine.create(t_line_params)
 
         # Create tracker days
         days = line.days
-        days.each { |d| d.tracker_days.build(tracker_line_id: l.id).save }
+        days.each { |d| d.tracker_days.build(tracker_line_id: line.id).save }
 
-        trackers = Tracker.all
+        trackers = line.all_trackers_for_month
         render json: trackers.to_json(
             include: json_include()
         )

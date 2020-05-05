@@ -22,13 +22,29 @@ class TrackersBodyContainer extends Component {
             const tracker = this.props.trackerData.find( t => t.kind === kind )
             switch (kind) {
                 case "habit":
-                    return <HabitTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+                    return (
+                        <HabitTable 
+                            lines={tracker.tracker_lines} 
+                            paintColor={this.props.paintColor} 
+                            kind={kind} 
+                            trackerId={tracker.id} />
+                    )
 
                 case "sleep":
-                    return <SleepTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+                    return (
+                        <SleepTable 
+                            lines={tracker.tracker_lines} 
+                            paintColor={this.props.paintColor} 
+                            kind={kind} />
+                    )
 
                 case "mood":
-                    return <MoodTable lines={tracker.tracker_lines} paintColor={this.props.paintColor} kind={kind} />
+                    return (
+                        <MoodTable 
+                            lines={tracker.tracker_lines} 
+                            paintColor={this.props.paintColor} 
+                            kind={kind} />
+                    )
             }
         }
     }
