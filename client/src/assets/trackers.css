@@ -43,11 +43,26 @@
 }
 
 button.addHabitLineButton {
-    margin: 0px 8px 10px;
+    align-items: flex-start;
+    margin: 7px 18px;
     font-size: 8px;
     text-transform: uppercase;
-    text-rendering: none;
-    /* -webkit-appearance: none; */
+    font-weight: bold;
+    border: 1px solid rgb(233, 187, 187);
+    background-color: #fff;
+    box-shadow: #c2c2c2 1px 1px 2px;
+    border-radius: 3px;
+    transition: ease-in-out all .25s;
+}
+
+button.addHabitLineButton:hover {
+    box-shadow: none;
+}
+
+.tableTitleBox {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
 }
 
 

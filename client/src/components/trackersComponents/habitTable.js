@@ -11,14 +11,10 @@ class HabitTable extends Component {
         )
     }
 
-    tableTitle = () => {
-        return this.props.kind === "habit" ? "Habits" : this.props.kind === "sleep" ? "Sleep" : "Mood"
-    }
-
     render() {
         return (
             <>
-            <div>
+            <div className="tableTitleBox">
                 Habits
                 <button className="addHabitLineButton">Add Line</button>
             </div>
