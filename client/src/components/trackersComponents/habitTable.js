@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import HabitLine from './habitLine'
 
 class HabitTable extends Component {
@@ -15,8 +16,11 @@ class HabitTable extends Component {
         return (
             <>
             <div className="tableTitleBox">
-                Habits
-                <button className="addHabitLineButton">Add Line</button>
+                HABITS
+                <form className="addLineForm">
+                    <input type="text" className="lineTitle" placeholder="Line Name" />
+                    <input type="submit" className="addHabitLineButton" value="Add Line" />
+                </form>
             </div>
             <div 
                 className="habitTable"
@@ -29,4 +33,18 @@ class HabitTable extends Component {
 
 }
 
-export default HabitTable
+const mapDispatchToProps = dispatch => {
+    return ({
+        
+    })
+}
+
+const mapStateToProps = state => {
+    return ({
+
+    })
+}
+
+export default connect(null, null)(HabitTable)
+
+// export default HabitTable
