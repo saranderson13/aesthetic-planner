@@ -40,13 +40,14 @@ class HabitDay extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div 
-                className="habitDayIncomplete"
+                className="habitDay"
                 onClick={this.updateStatus}
                 style={{backgroundColor: this.state.dayColor}}>
-                    {this.props.id}
-                </div>
+                    {this.props.complete.toString().slice(0,1).toUpperCase()}
+            </div>
         )
     }
 

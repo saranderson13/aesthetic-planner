@@ -26,13 +26,13 @@ class HabitTable extends Component {
 
     addLine = e => {
         e.preventDefault()
-        // console.log(this.props)
-        // debugger;
+        
         const linePacket = {
             tracker_id: this.props.trackerId,
             name: this.state.newLineContent
         }
         this.props.addLine(linePacket)
+        this.setState({newLineContent: ""})
     }
 
     handleNewLineTitleChange = e => {
@@ -49,6 +49,7 @@ class HabitTable extends Component {
                         type="text" 
                         className="lineTitle" 
                         placeholder="Line Name" 
+                        value={this.state.newLineContent}
                         onChange={e => this.handleNewLineTitleChange(e)} />
                     <input 
                         type="submit" 
@@ -80,5 +81,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(null, mapDispatchToProps)(HabitTable)
-
-// export default HabitTable

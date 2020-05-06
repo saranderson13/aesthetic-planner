@@ -55,9 +55,7 @@ export const addHabitLine = linePacket => {
             },
             body: JSON.stringify(linePacket)
         })
-        debugger;
         const json = await resp.json()
-        debugger;
         await dispatch({ type: 'ADD_HABIT_LINE', trackers: json })
     }
 }
