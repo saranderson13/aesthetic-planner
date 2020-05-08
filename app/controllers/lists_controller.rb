@@ -32,11 +32,26 @@ class ListsController < ApplicationController
     def update
         list = List.find_by(id: list_params["id"])
         list.update(name: list_params["name"], checklist: list_params["checklist"])
-        list.list_items.delete_all
 
-        list_params["list_items"].each do |i|
-            list.list_items.build(name: i)
+        # Find items that have been added. Then build new items from that list.
+        newItems = list_params["list_items"].select { |l| !list.list_items.find_by(name: l) }
+        newItems.each { |i| list.list_items.build(name: i) }
+
+        # list.save
+
+        # Generate array of all names on the original list, then extrapolate a list of item names that have been deleted.
+        item_names = list.list_items.map { |i| i.name }
+        deleted_items = item_names.select { |l| !list_params["list_items"].include?(l) }
+
+        # Generate array of the objects to be deleted. Then destroy them.
+        deletable_objects = list.list_items.select do |i|
+            deleted_items.find { |ei| ei === i.name }
         end
+        deletable_objects.each { |o| o.destroy }
+
+        # Save and touch. 
+        # Touch updates the 'updated time' if items have been updated, but not the list name.
+        # This ensures that the list will be moved to the front of the queue.
         list.save
         list.touch
         lists = List.all

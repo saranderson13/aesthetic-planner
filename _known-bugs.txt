@@ -1,0 +1,2 @@
+[x] Lists: if a list is edited, checkboxes will be reset.
+[ ] Tracker: if a paint color has not been selected, clicking on a square will remove the color but will not toggle the 'completed' property.
