@@ -46,6 +46,9 @@ class JournalBodyContainer extends Component {
                 message="There is no journal present for the selected date."
             } else {
                 // Return input form if current day.
+                // Force disable toggle to remove edit button if navigating to current day
+                // from a day where editing was legal.
+                this.props.disableToggle()
                 return (
                     // New Entry Mode
                     <JournalForm 

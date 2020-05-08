@@ -105,6 +105,14 @@ class JournalContainer extends Component {
         }
     }
 
+    disableToggle = () => {
+        if(this.state.inputLegal) {
+            this.setState({
+                inputLegal: false
+            })
+        }
+    }
+
     recentEntries = () => {
         if (this.props.journals.length > 0 && this.props.journals.length > 5) {
             return this.props.journals.slice(this.props.journals.length - 5).sort( (a, b) => b.day_id - a.day_id )
@@ -152,6 +160,7 @@ class JournalContainer extends Component {
                             pastDate={!!(parseInt(this.state.selectedDay, 10) < this.props.currentDayId)} 
                             forceView={this.forceView}
                             enableToggle={this.enableToggle}
+                            disableToggle={this.disableToggle}
                             submitJournal={this.props.submitJournal} />
                     )
                 }
