@@ -1,2 +1,3 @@
 [x] Lists: if a list is edited, checkboxes will be reset.
+[x] Lists: Won't delete repeats? (Only allowed to add repeats on create. Will not update with a repeat.)
 [ ] Tracker: if a paint color has not been selected, clicking on a square will remove the color but will not toggle the 'completed' property.

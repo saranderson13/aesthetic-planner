@@ -18,7 +18,7 @@ class ListsController < ApplicationController
 
     def create
         list = List.create(name: list_params["name"], checklist: list_params["checklist"])
-        list_params["list_items"].each do |i|
+        list_params["list_items"].uniq.each do |i|
             list.list_items.build(name: i)
         end
         list.save
