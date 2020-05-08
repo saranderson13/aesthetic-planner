@@ -168,10 +168,77 @@ MONDAY 3/9
 
 TUESDAY 3/10
 [x] Blog post - imitation masonry
-[ ] Walk through
-[ ] README
+[x] Walk through
+[x] README
 
 
-FUTURE
-[ ] Day Planner page components
-[ ] Tracker page components
+MONDAY 3/16
+[x] Move most recently updated lists to top of page (update list timestamp even on item-only edits)
+[x] List page - fix event listener for list box resize on window resize
+
+
+TUESDAY 3/17
+[x] List page - remove window event listener before unmount.
+
+
+MONDAY 3/23
+[x] Create tracker palette model
+[x] Add tracker palette seed data
+
+
+SATURDAY 3/28
+[x] Add successful palette fetch
+
+
+MONDAY 3/30
+[x] Add palette sector
+[X] Set initial palette on page load
+
+
+TUESAY 3/31
+[x] Add color selection functionality
+[x] Fix tracker palette dropdown. (set selected palette by value not by rendering with 'selected')
+[x] Change PaletteSquare from component to functional component
+
+
+SUNDAY 4/12
+[x] Add color change test (whole table, not individual day)
+
+
+SATURDAY 4/18
+[x] Add month navigation from calendar widget on tracker page
+[x] Add fetch to retrieve trackers for correct month
+[x] Change widget month viewed month, not current month, on page reload (match)
+
+
+SUNDAY 4/19
+[x] Fetch tracker days
+[x] Render tracker days
+
+
+MONDAY 4/20
+[x] Add color update for habit day (not yet sustained on month toggle)
+
+
+TUESDAY 4/21
+[x] Sustain habit day color on month toggle
+
+
+TUESDAY 5/5
+[x] Revise back end for habit line creation
+[x] Separate habit tables into individual components by kind
+[x] Styling for 'add line' button
+[x] Add (non functional) 'add line' form
+[x] Add functionality for 'add line' form
+
+
+WEDNESDAY 5/6
+[x] Update habit day design
+[x] Change habit day content to 'complete' property for troubleshooting purposes.
+
+
+THURSDAY 5/8
+[x] Bugfix: Items do not become unchecked when list is edited
+[x] Bugfix: Repeat items are not generated on list creation
+[x] Update log checklist and db planning
+

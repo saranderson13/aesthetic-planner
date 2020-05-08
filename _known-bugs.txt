@@ -1,3 +1,15 @@
-[x] Lists: if a list is edited, checkboxes will be reset.
-[x] Lists: Won't delete repeats? (Only allowed to add repeats on create. Will not update with a repeat.)
-[ ] Tracker: if a paint color has not been selected, clicking on a square will remove the color but will not toggle the 'completed' property.
+Lists: 
+    [x] if a list is edited, checkboxes will be reset. 
+        **SOLVED BY NOT REGENERATING FULL LIST ON EDIT
+    [x] won't delete repeats? (Only allowed to add repeats on create. Will not update with a repeat.) 
+        **SOLVED BY NEVER ALLOWING REPEATS.
+
+
+Tracker: 
+    [ ] if a paint color has not been selected, clicking on a square will remove the color but will not toggle the 'completed' property.
+
+    [ ] sometimes toggling by month doesn't work?
+
+
+Journal: 
+    [ ] 'edit' button is visible on current day journal even when there is no existing post if you navigate to an existing post and then back

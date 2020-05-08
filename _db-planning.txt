@@ -1,6 +1,8 @@
 [x] YEAR:
     Has Many MONTHS
-    Has Many WEEKS Through MONTHS
+    Has Many WEEKS
+    Has Many DAYS
+    Has Many EVENTS through DAYS
     Has Many :goals, as :goalable POLYMORPHIC 
     - id
     - year
@@ -8,9 +10,6 @@
     - startDay
 
 [x] MONTH:
-    Has Many WEEKS
-    Has Many DAYS Through WEEKS
-    Has Many EVENTS Through DAYS
     Has Many TRACKERS
     Has Many :goals, as :goalable POLYMORPHIC
     Belongs To YEAR
@@ -21,33 +20,31 @@
     - numDays
 
 [x] WEEK:
-    Has Many DAYS
-    Has Many EVENTS Through DAYS
     Has Many :goals, as :goalable POLYMORPHIC
-    Belongs To MONTH
+    Belongs To YEAR
     - id
-    - MONTH id
+    - YEAR id
     - start-date
     - end-date
 
 [x] DAY:
     Has Many EVENTS
-    Has One JOURNAL
-    Has One TRACKABLE-DAY
+    Has Many TRACKER-DAYS
     Has Many :goals, as :goalable POLYMORPHIC
-    Belongs To WEEK
+    Has One JOURNAL
+    Belongs To YEAR
     - id
-    - WEEK id
+    - YEAR id
     - date
 
 [x] EVENTS:
     Belongs To DAY
     - id
     - DAY id 
-    - type: must be included in
+    - kind: must be included in
         - timed
         - untimed
-    - subtype: must be included in
+    - subkind: must be included in
         - UNTIMED: task
         - UNTIMED: deadline
         - UNTIMED: allDay
@@ -56,8 +53,7 @@
         - TIMED: appointment
     - start: (nil if untimed)
     - end: (nil if untimed)
-[x]   ** ADD NAME COLUMN
-        - name
+    - name
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -72,18 +68,18 @@
 
 [x] TRACKER:
     Has Many TRACKER-LINES
-    Has Many TRACKER-DAYS Through TRACKABLES
+    Has Many TRACKER-DAYS Through TRACKER-LINES
     Belongs To MONTH
     - id
     - MONTH id
-    - type: must be included in
+    - kind: must be included in
         - habit
         - mood
         - sleep
 
 [x] TRACKER-LINE:
     Belongs To TRACKER
-    Has Many TRACKER-LINE-DAYS
+    Has Many TRACKER-DAYS
     - id
     - TRACKER id
     - name
@@ -97,6 +93,11 @@
     - completed (default: false)
     - color (nil if not mood)
     - duration (nil if not sleep)
+
+[x] TRACKER-PALETTES:
+    - id
+    - name
+    - color_1 through color_7
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
