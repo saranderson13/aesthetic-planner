@@ -6,6 +6,14 @@ import LoadingWheel from '../../assets/images/loading-wheel.gif'
 
 class JournalBodyContainer extends Component {
 
+    componentDidUpdate() {
+        if(this.props.status !== "loading" && !this.props.entry) {
+            // Force disable toggle to remove edit button if navigating to current day
+            // from a day where editing was legal.
+            this.props.disableToggle()
+        }
+    }
+
     displayJournal = () => {
         if(this.props.status === "loading") {
             return (
@@ -24,7 +32,8 @@ class JournalBodyContainer extends Component {
             } else {
                 return (
                     // Enter Edit Mode
-                    <JournalForm 
+                    <JournalForm
+                            entry={this.props.entry}
                             id={this.props.journalId}
                             dayId={this.props.dayId}
                             content={this.props.content}
@@ -46,12 +55,10 @@ class JournalBodyContainer extends Component {
                 message="There is no journal present for the selected date."
             } else {
                 // Return input form if current day.
-                // Force disable toggle to remove edit button if navigating to current day
-                // from a day where editing was legal.
-                this.props.disableToggle()
                 return (
                     // New Entry Mode
                     <JournalForm 
+                        entry={this.props.entry}
                         dayId={this.props.dayId}
                         formattedDate={this.props.formattedDate}
                         forceView={this.props.forceView}

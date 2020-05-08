@@ -242,4 +242,7 @@ THURSDAY 5/8
 [x] Bugfix: Repeat items are not generated on list creation
 [x] Update log checklist and db planning
 [x] Merge dependabot pull requests
-[ ] Bugfix: Edit button visibility for new journal entry on nav from existing entry.
+[x] Bugfix: Edit button visibility for new journal entry on nav from existing entry.
+[x] Correct the bugfix above to not be fired during a render. (move to componentDidUpdate)
+[x] Bugfix: Text area not cleared when navigating from a previous entry in edit mode to the current day if no journal entry exists.
+[ ] Fix console warnings for list boxes. (unique keys)

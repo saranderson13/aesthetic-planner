@@ -14,4 +14,5 @@ Tracker:
 Journal: 
     [x] 'edit' button is visible on current day journal even when there is no existing post if you navigate to an existing post and then back
         **SOLVED; ADD FORCE DISABLE TOGGLE WHEN VIEWING CURRENT DAY WITH NO JOURNAL ENTRY
-    [ ] If current day has no journal entry, navigating from a previous entry in edit mode will keep previous entry's content in text area.
+    [x] If current day has no journal entry, navigating from a previous entry in edit mode will keep previous entry's content in text area.
+        **SOLVED; ADD CHECK IN componentDidUpdate() FOR CHANGE IN ENTRY EXISTENCE. CLEAR CONTENT IF FALSE.

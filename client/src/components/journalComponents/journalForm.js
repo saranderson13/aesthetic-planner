@@ -14,6 +14,14 @@ export default class JournalForm extends Component {
         }
     }
 
+    componentDidUpdate(prevprops) {
+        // Clears content in text area if navigating to current day without post
+        // from previous day while in edit mode.
+        if(prevprops.entry === true && this.props.entry === false) {
+            this.setState({ content: "" })
+        }
+    }
+
     handleChange = e => {
         this.setState({ content: e.target.value })
     }
