@@ -21,10 +21,11 @@ class MoodTable extends Component {
     render() {
         return (
             <>
-            <div>Mood</div>
+            <div>MOOD</div>
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >
+                {this.props.generateDatesLine()}
                 {this.generateHabitLines()}
             </div>
             </>

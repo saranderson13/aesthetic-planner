@@ -245,4 +245,11 @@ THURSDAY 5/8
 [x] Bugfix: Edit button visibility for new journal entry on nav from existing entry.
 [x] Correct the bugfix above to not be fired during a render. (move to componentDidUpdate)
 [x] Bugfix: Text area not cleared when navigating from a previous entry in edit mode to the current day if no journal entry exists.
+
+
+NEXT:
 [ ] Fix console warnings for list boxes. (unique keys)
+[ ] Fix console warning for list checkbox (uncontrolled input)
+[ ] Bugfix: in Trackers, decoloring with transparent brush does not change 'complete' property
+[ ] Add dates & days row at top of tracker tables
+[ ] Edit table button 

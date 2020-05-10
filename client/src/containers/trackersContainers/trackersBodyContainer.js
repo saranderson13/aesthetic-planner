@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import HabitTable from '../../components/trackersComponents/habitTable'
 import SleepTable from '../../components/trackersComponents/sleepTable'
 import MoodTable from '../../components/trackersComponents/moodTable'
+import DatesLine from '../../components/trackersComponents/datesLine'
 import { connect } from 'react-redux'
 import { fetchTrackers } from '../../actions/trackerActions'
 
@@ -17,6 +18,16 @@ class TrackersBodyContainer extends Component {
         }
     }
 
+    generateDatesLine = () => {
+        console.log(this.props)
+        if(this.props.months.length > 0) {
+            const month = this.props.months.find( m => m.id === parseInt(this.props.monthId, 10) )
+            return <DatesLine days={month.days} />
+        } else {
+            return <DatesLine days="Loading" />
+        }
+    }
+
     habitTableGenerator = (kind) => {
         if(!!this.props.trackerData && this.props.trackerData.length > 0) {
             const tracker = this.props.trackerData.find( t => t.kind === kind )
@@ -27,7 +38,9 @@ class TrackersBodyContainer extends Component {
                             lines={tracker.tracker_lines} 
                             paintColor={this.props.paintColor} 
                             kind={kind} 
-                            trackerId={tracker.id} />
+                            monthId = {this.props.monthId}
+                            trackerId={tracker.id} 
+                            generateDatesLine = {this.generateDatesLine} />
                     )
 
                 case "sleep":
@@ -35,7 +48,8 @@ class TrackersBodyContainer extends Component {
                         <SleepTable 
                             lines={tracker.tracker_lines} 
                             paintColor={this.props.paintColor} 
-                            kind={kind} />
+                            kind={kind} 
+                            generateDatesLine = {this.generateDatesLine} />
                     )
 
                 case "mood":
@@ -43,7 +57,8 @@ class TrackersBodyContainer extends Component {
                         <MoodTable 
                             lines={tracker.tracker_lines} 
                             paintColor={this.props.paintColor} 
-                            kind={kind} />
+                            kind={kind} 
+                            generateDatesLine = {this.generateDatesLine} />
                     )
             }
         }
@@ -52,7 +67,6 @@ class TrackersBodyContainer extends Component {
     render() {
         return (
             <>
-                <h1>{this.props.pageName}</h1>
                 {this.habitTableGenerator("habit")}
                 {this.habitTableGenerator("sleep")}
                 {this.habitTableGenerator("mood")}
@@ -72,7 +86,8 @@ const mapStateToProps = state => {
     return({
         numDays: state.controls.currentMonth.numDays,
         trackersForMonth: state.controls.currentMonth.trackers,
-        trackerData: state.trackers.trackers
+        trackerData: state.trackers.trackers,
+        months: state.controls.months
     })
 }
 

@@ -60,6 +60,7 @@ class HabitTable extends Component {
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >
+                {this.props.generateDatesLine()}
                 {this.generateHabitLines()}
             </div>
             </>
@@ -71,12 +72,6 @@ class HabitTable extends Component {
 const mapDispatchToProps = dispatch => {
     return ({
         addLine: linePacket => dispatch(addLine(linePacket))
-    })
-}
-
-const mapStateToProps = state => {
-    return ({
-
     })
 }
 

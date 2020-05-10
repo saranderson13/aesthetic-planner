@@ -21,10 +21,11 @@ class SleepTable extends Component {
     render() {
         return (
             <>
-            <div>Sleep</div>
+            <div>SLEEP</div>
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >
+                {this.props.generateDatesLine()}
                 {this.generateHabitLines()}
             </div>
             </>
