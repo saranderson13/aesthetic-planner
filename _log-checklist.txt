@@ -237,7 +237,7 @@ WEDNESDAY 5/6
 [x] Change habit day content to 'complete' property for troubleshooting purposes.
 
 
-THURSDAY 5/8
+FRIDAY 5/8
 [x] Bugfix: Items do not become unchecked when list is edited
 [x] Bugfix: Repeat items are not generated on list creation
 [x] Update log checklist and db planning
@@ -247,9 +247,15 @@ THURSDAY 5/8
 [x] Bugfix: Text area not cleared when navigating from a previous entry in edit mode to the current day if no journal entry exists.
 
 
+SUNDAY 5/10
+[x] Add dates & days row at top of tracker tables
+
+
+MONDAY 5/11
+[x] Bugfix: in Trackers, decoloring with transparent brush does not change 'complete' property
+
+
 NEXT:
 [ ] Fix console warnings for list boxes. (unique keys)
 [ ] Fix console warning for list checkbox (uncontrolled input)
-[ ] Bugfix: in Trackers, decoloring with transparent brush does not change 'complete' property
-[ ] Add dates & days row at top of tracker tables
 [ ] Edit table button 

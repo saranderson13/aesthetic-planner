@@ -24,7 +24,7 @@ class HabitDay extends Component {
         const dayPacket = {
             id: this.props.id
         }
-        if (this.props.paintColor !== this.props.nativeColor) {
+        if (this.props.paintColor !== this.props.nativeColor && this.props.paintColor !== 'transparent') {
             dayPacket['complete'] = true
             dayPacket['color'] = this.props.paintColor
 

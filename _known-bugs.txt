@@ -6,8 +6,8 @@ Lists:
 
 
 Tracker: 
-    [ ] if a paint color has not been selected (so, on load), clicking on a square will remove the color but will not toggle the 'completed' property.
-
+    [x] if a paint color has not been selected (so, on load), clicking on a square will remove the color but will not toggle the 'completed' property.
+        **SOLVED BY ADDING EXCEPTION TO IF STATEMENT FOR PAINT COLOR === 'transparent'
     [ ] sometimes toggling by month doesn't work?
 
 
