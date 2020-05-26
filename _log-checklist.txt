@@ -259,3 +259,5 @@ NEXT:
 [ ] Fix console warnings for list boxes. (unique keys)
 [ ] Fix console warning for list checkbox (uncontrolled input)
 [ ] Edit table button 
+[ ] Add color key for mood table (same location as add line feature)
+[ ] Possibly add key for sleep table. Or incoorporate duration. 

@@ -21,7 +21,7 @@ class MoodTable extends Component {
     render() {
         return (
             <>
-            <div>MOOD</div>
+            <div className="tableTitleBox">Mood</div>
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >

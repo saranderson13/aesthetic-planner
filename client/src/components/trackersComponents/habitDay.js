@@ -44,9 +44,7 @@ class HabitDay extends Component {
             <div 
                 className="habitDay"
                 onClick={this.updateStatus}
-                style={{backgroundColor: this.state.dayColor}}>
-                    {this.props.complete.toString().slice(0,1).toUpperCase()}
-            </div>
+                style={{backgroundColor: this.state.dayColor}} />           
         )
     }
 

@@ -21,7 +21,7 @@ class SleepTable extends Component {
     render() {
         return (
             <>
-            <div>SLEEP</div>
+            <div className="tableTitleBox">Sleep</div>
             <div 
                 className="habitTable"
                 onClick={this.changeBackground} >

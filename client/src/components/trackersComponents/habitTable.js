@@ -43,7 +43,7 @@ class HabitTable extends Component {
         return (
             <>
             <div className="tableTitleBox">
-                HABITS
+                Habits
                 <form className="addLineForm" onSubmit={e => this.addLine(e)}>
                     <input 
                         type="text" 
