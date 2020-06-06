@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_230130) do
+ActiveRecord::Schema.define(version: 2020_06_06_233743) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 2020_06_06_230130) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.integer "user_id"
     t.index ["day_id"], name: "index_events_on_day_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -38,7 +40,9 @@ ActiveRecord::Schema.define(version: 2020_06_06_230130) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["goalable_type", "goalable_id"], name: "index_goals_on_goalable_type_and_goalable_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "holidays", force: :cascade do |t|
@@ -80,6 +84,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_230130) do
     t.boolean "checklist", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "months", force: :cascade do |t|
@@ -130,7 +136,9 @@ ActiveRecord::Schema.define(version: 2020_06_06_230130) do
     t.string "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["month_id"], name: "index_trackers_on_month_id"
+    t.index ["user_id"], name: "index_trackers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
