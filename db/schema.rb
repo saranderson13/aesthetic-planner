@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_203353) do
+ActiveRecord::Schema.define(version: 2020_06_06_225305) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -41,12 +41,21 @@ ActiveRecord::Schema.define(version: 2020_06_06_203353) do
     t.index ["goalable_type", "goalable_id"], name: "index_goals_on_goalable_type_and_goalable_id"
   end
 
-  create_table "journals", force: :cascade do |t|
+  create_table "journal_entries", force: :cascade do |t|
+    t.integer "journal_id", null: false
     t.integer "day_id", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["day_id"], name: "index_journals_on_day_id"
+    t.index ["day_id"], name: "index_journal_entries_on_day_id"
+    t.index ["journal_id"], name: "index_journal_entries_on_journal_id"
+  end
+
+  create_table "journals", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_journals_on_user_id"
   end
 
   create_table "list_items", force: :cascade do |t|
@@ -144,7 +153,8 @@ ActiveRecord::Schema.define(version: 2020_06_06_203353) do
   end
 
   add_foreign_key "events", "days"
-  add_foreign_key "journals", "days"
+  add_foreign_key "journal_entries", "days"
+  add_foreign_key "journal_entries", "journals"
   add_foreign_key "list_items", "lists"
   add_foreign_key "months", "years"
   add_foreign_key "tracker_days", "days"

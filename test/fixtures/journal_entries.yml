@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  journal: one
+  day: one
+  content: MyText
+
+two:
+  journal: two
+  day: two
+  content: MyText

@@ -3,12 +3,13 @@ class User < ApplicationRecord
     has_secure_password
 
     # ASSOCIATIONS
-    has_many :goals
-    has_many :events
-    has_many :trackers
+    has_many :goals, dependent: :destroy
+    has_many :events, dependent: :destroy
+    has_many :trackers, dependent: :destroy
     has_many :tracker_lines, through: :trackers
-    has_many :lists
-    has_one :journal
+    has_many :lists, dependent: :destroy
+    has_one :journal, dependent: :destroy
+    has_many :journal_entries, through: :journal
 
     # VALIDATIONS
     validates :email, presence: true, email: true, uniqueness: true

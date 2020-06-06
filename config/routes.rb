@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :journal_entries
   resources :users
   # :index, :show, :new, :create, :edit, :update, :destroy
   resources :years, only: [:index, :show]

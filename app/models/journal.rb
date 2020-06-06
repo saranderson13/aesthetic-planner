@@ -1,9 +1,8 @@
 class Journal < ApplicationRecord
 
-  belongs_to :day
+  belongs_to :user
+  has_many :journal_entries, dependent: :destroy
 
-  validates :day_id, :content, presence: true
-  validates :content, length: { maximum: 10000, 
-    too_long: "Journal entry must not exceed %{count} characters." }
+  validates :user, presence: true
 
 end
