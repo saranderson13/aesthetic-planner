@@ -1,6 +1,7 @@
 class Day < ApplicationRecord
 
   has_many :events
+  has_many :holidays
   has_many :goals, as: :goalable
   has_many :tracker_days
   has_one :journal, dependent: :destroy

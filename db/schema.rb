@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_225305) do
+ActiveRecord::Schema.define(version: 2020_06_06_230130) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2020_06_06_225305) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["goalable_type", "goalable_id"], name: "index_goals_on_goalable_type_and_goalable_id"
+  end
+
+  create_table "holidays", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_holidays_on_day_id"
   end
 
   create_table "journal_entries", force: :cascade do |t|
@@ -153,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_225305) do
   end
 
   add_foreign_key "events", "days"
+  add_foreign_key "holidays", "days"
   add_foreign_key "journal_entries", "days"
   add_foreign_key "journal_entries", "journals"
   add_foreign_key "list_items", "lists"

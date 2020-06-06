@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :holidays
   resources :journal_entries
   resources :users
   # :index, :show, :new, :create, :edit, :update, :destroy
