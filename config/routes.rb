@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   # :index, :show, :new, :create, :edit, :update, :destroy
   resources :years, only: [:index, :show]
   resources :months, only: [:index, :show]

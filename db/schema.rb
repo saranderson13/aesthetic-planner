@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_223742) do
+ActiveRecord::Schema.define(version: 2020_06_06_203353) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
@@ -114,6 +114,16 @@ ActiveRecord::Schema.define(version: 2020_04_20_223742) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["month_id"], name: "index_trackers_on_month_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "username"
+    t.string "name"
+    t.boolean "admin", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "weeks", force: :cascade do |t|
