@@ -1,10 +1,11 @@
 class Tracker < ApplicationRecord
 
+  belongs_to :month
+  belongs_to :user
   has_many :tracker_lines, dependent: :destroy
   has_many :tracker_days, through: :tracker_lines
-  belongs_to :month
 
-  validates :month_id, :kind, presence: true
+  validates :month_id, :user, :kind, presence: true
   validates :kind, inclusion: { in: ["habit", "mood", "sleep"] }
   validate :validates_not_duplicate_kind, on: :create
   

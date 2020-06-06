@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   
   belongs_to :day
+  belongs_to :user
 
   KINDS = ["timed", "untimed"]
   KIND_SUBKINDS = {
@@ -9,16 +10,14 @@ class Event < ApplicationRecord
       "task",
       "deadline",
       "all day",
-      "birthday",
-      "holiday"
+      "birthday"
     ]
   }
 
-  validates :day_id, :kind, :subkind, :name, presence: true
+  validates :day_id, :user, :kind, :subkind, :name, presence: true
   validates :kind, inclusion: { in: KINDS }
   validates :subkind, inclusion: { in: KIND_SUBKINDS.values.flatten }
   validate :validate_kind_subkind_compatibility, :validate_time_compatibility
-
 
   private
 

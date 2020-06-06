@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+    has_secure_password
+
     # ASSOCIATIONS
     has_many :goals
     has_many :events
@@ -9,7 +12,8 @@ class User < ApplicationRecord
 
     # VALIDATIONS
     validates :email, presence: true, email: true, uniqueness: true
-    validates :password_digest, presence: true
+    validates :password, length: {in: 8...20}, presence: true, on: :create
+    # validates :password_digest, presence: true
     validates :username, presence: true, uniqueness: true
     validates :name, presence: true
     validates :admin, presence: true, inclusion: {in: [true, false]}
