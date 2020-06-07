@@ -22,6 +22,7 @@ class DaysController < ApplicationController
             :events,
             :goals,
             :tracker_days,
+            :holidays
             # :journal
         ]
     end

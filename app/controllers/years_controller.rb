@@ -21,7 +21,8 @@ class YearsController < ApplicationController
     def json_include
         return [
             :months,
-            :goals
+            :goals,
+            :holidays
         ]
     end
 

@@ -22,7 +22,8 @@ class WeeksController < ApplicationController
         return [
             :days,
             :events,
-            :goals
+            :goals,
+            :holidays
         ]
     end
 

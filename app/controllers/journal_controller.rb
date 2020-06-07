@@ -1,14 +1,14 @@
-class JournalsController < ApplicationController
+class JournalController < ApplicationController
 
     def index
-        journals = Journal.all
-        render json: journals.to_json()
+        user = User.find(params["user_id"])
+        render json: user.journal.to_json(
+            include: :journal_entries
+        )
     end
 
 
     def show
-        entry = Journal.find_by(id: params["id"])
-        render json: entry.to_json()
     end
 
     
