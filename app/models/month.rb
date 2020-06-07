@@ -40,6 +40,15 @@ class Month < ApplicationRecord
     self.days().map { |d| d.events }.flatten
   end
 
+  def holidays
+    holidays = []
+    self.days.each do |d|
+      day_holidays = d.holidays
+      day_holidays.each { |h| holidays.push(h) }
+    end
+    return holidays
+  end
+
 
   private
 

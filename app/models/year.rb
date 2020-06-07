@@ -12,4 +12,14 @@ class Year < ApplicationRecord
     validates :startDay, inclusion: { in: [0, 1, 2, 3, 4, 5, 6] }
     validates :leap, inclusion: { in: [ true, false] }
 
+
+    def holidays
+        holidays = []
+        self.days.each do |d|
+            day_holidays = d.holidays
+            day_holidays.each { |h| holidays.push(h) }
+        end
+        return holidays
+    end
+
 end
