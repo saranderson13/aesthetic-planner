@@ -19,7 +19,7 @@ class TrackersBodyContainer extends Component {
     }
 
     generateDatesLine = () => {
-        console.log(this.props)
+        // console.log(this.props)
         if(this.props.months.length > 0) {
             const month = this.props.months.find( m => m.id === parseInt(this.props.monthId, 10) )
             return <DatesLine days={month.days} />

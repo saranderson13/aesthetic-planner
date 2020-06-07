@@ -25,7 +25,7 @@ class JournalContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchJournals()
+        // this.props.fetchJournals()
         this.setState({
             selectedDay: this.props.match.params.id
         })

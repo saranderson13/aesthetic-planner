@@ -5,7 +5,7 @@ class DatesLine extends Component {
 
     generateDays = () => {
         if(this.props.days === "Loading") {
-            return <div class="datesLine">Loading Dates</div>
+            return <div className="datesLine">Loading Dates</div>
         } else {
             return (
                 this.props.days.map ( d => {

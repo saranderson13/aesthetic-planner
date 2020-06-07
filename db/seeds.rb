@@ -91,16 +91,28 @@ year.each do |y|
 end
 
 
+# CREATE TEST USER ACCOUNT
+User.create(
+    email: "test@email.com",
+    username: "test_account",
+    name: "Testy McTesterson",
+    admin: true
+)
+
+test_user = User.last
+test_user.create_journal()
+
+
 # CREATE TRACKERS & ASSOCIATED RESOURCES
 months = Month.all
 months.each do |mo|
-    h = Tracker.create(month_id: mo.id, kind: "habit")
+    h = Tracker.create(month_id: mo.id, kind: "habit", user: test_user)
     htl = TrackerLine.create(tracker: h, name: "Example Line")
 
-    m = Tracker.create(month_id: mo.id, kind: "mood")
+    m = Tracker.create(month_id: mo.id, kind: "mood", user: test_user)
     mtl = TrackerLine.create(tracker: m, name: "mood line")
 
-    s = Tracker.create(month_id: mo.id, kind: "sleep")
+    s = Tracker.create(month_id: mo.id, kind: "sleep", user: test_user)
     stl = TrackerLine.create(tracker: s, name: "sleep line")
 
     days = mo.days()
@@ -149,7 +161,7 @@ HOLIDAYS_2020 = {
 Day.all.each do |d|
     holidates = HOLIDAYS_2020.keys
     if holidates.include?(d.date)
-        Event.create(day: d, kind: "untimed", subkind: "holiday", name: HOLIDAYS_2020[d.date])
+        Holiday.create(day: d, name: HOLIDAYS_2020[d.date])
     end
 end
 
@@ -290,64 +302,64 @@ palettes.each do |p|
     TrackerPalette.create(p)
 end
 
-Day.find(60).build_journal(content: "Andromeda's a big wide open galaxy. Nothing in it for me, except a heart, that's lazy. Running from my own life now, I'm really turning some time, looking up to the sky for something I may never find.\n\nStop calling. It's time to let me be. If you think you can save me I dare you try.\n\nLift the heart from the depths it's fallen to. We all want something new, but can't seem to follow through. Something's better than nothing, or so that I thought. Now I know it's just one dream, all these other's gonna tear me apart.\n\nLove is calling. It's time to let it through. Find a love that will make you, I dare you to try.\n\nCrazy guy, think this is deep, think it's meant to be. More than anything I can think of, I'm ready to try.\n\nTreat my right, I'm still a good man's daughter. Let me in if I break and be quiet if I shatter. Gettin tired of looking, you know that I hate the game, don't wanna waste any more time, you know I've been holding out\n\nLove is calling. It's time to give to you, something you can hold onto. I dare you to try.").save
+Day.find(157).journal_entries.build(journal: test_user.journal, content: "Andromeda's a big wide open galaxy. Nothing in it for me, except a heart, that's lazy. Running from my own life now, I'm really turning some time, looking up to the sky for something I may never find.\n\nStop calling. It's time to let me be. If you think you can save me I dare you try.\n\nLift the heart from the depths it's fallen to. We all want something new, but can't seem to follow through. Something's better than nothing, or so that I thought. Now I know it's just one dream, all these other's gonna tear me apart.\n\nLove is calling. It's time to let it through. Find a love that will make you, I dare you to try.\n\nCrazy guy, think this is deep, think it's meant to be. More than anything I can think of, I'm ready to try.\n\nTreat my right, I'm still a good man's daughter. Let me in if I break and be quiet if I shatter. Gettin tired of looking, you know that I hate the game, don't wanna waste any more time, you know I've been holding out\n\nLove is calling. It's time to give to you, something you can hold onto. I dare you to try.").save
 
-Day.find(62).build_journal(content: "John met me down on the boulevard. Cry on his shoulder cause life is hard. The waves came in over my head. What you been up to my baby? Haven't seen you round here lately. All of the guys tell me lies but you don't, you just crack another beer and pretend that you're still here.\n\nThis is how to disappear. This is how to disappear.\n\nJoe met me down at the training yard. Cuts on his face cause he fought to hard. I know he's in over his head. But I love that man, like nobody can. He moves mountains and pounds them to ground again. I watch the guys getting high as they fight for the things that they hold dear, to forget the things they fear.\n\nThis is how to disappear. This is how to disappear.\n\nNow it's been years since I left New York. I've got a kid and two cats in the yard. The California sun and the movie stars. I watch the skies getting light as I write as I think about those years, as I whisper in your ear... I'm always gon' to be right here. No one's goin anywhere.").save
+Day.find(153).journal_entries.build(journal: test_user.journal, content: "John met me down on the boulevard. Cry on his shoulder cause life is hard. The waves came in over my head. What you been up to my baby? Haven't seen you round here lately. All of the guys tell me lies but you don't, you just crack another beer and pretend that you're still here.\n\nThis is how to disappear. This is how to disappear.\n\nJoe met me down at the training yard. Cuts on his face cause he fought to hard. I know he's in over his head. But I love that man, like nobody can. He moves mountains and pounds them to ground again. I watch the guys getting high as they fight for the things that they hold dear, to forget the things they fear.\n\nThis is how to disappear. This is how to disappear.\n\nNow it's been years since I left New York. I've got a kid and two cats in the yard. The California sun and the movie stars. I watch the skies getting light as I write as I think about those years, as I whisper in your ear... I'm always gon' to be right here. No one's goin anywhere.").save
 
-Day.find(63).build_journal(content: "I miss long beach and I miss you babe. I miss dancin with you the most of all. I miss the bar where the beach boys would go - Dennis' last stop before Kokomo. Those nights were on fire, we couldn't get higher, we didn't know that we had it all, but nobody warns you before the fall.\n\nAnd I'm wasted. Don't leave I just need a wake up call. I'm facing the greatest - the greatest loss of them all. The culture is lit and I had a ball. I guess I'm signing off afterall.\n\nI miss New York and I miss the music. Me and my friends we miss rock and roll. I want you to feel just like you used to, when baby I was doing nothin the most of all.\n\nThe culture is lit and if this is it, I had a ball. I guess that I'm burned out afterall. I'm wasted. Don't leave I just need a wakeup call. I'm facing the greatest - the greatest loss of them all. The culture is lit and I had a ball. I guess that I'm burned out afterall. If this is it I'm signing off. Miss doing nothing the most of all.\n\nOh I just missed a fire ball.\n\nLA's in flames it's getting hot.\n\nKanye West is blonde and gone.\n\nLife on Mars ain't just a song.\n\nOh the life streams almost gone.").save
+Day.find(147).journal_entries.build(journal: test_user.journal, content: "I miss long beach and I miss you babe. I miss dancin with you the most of all. I miss the bar where the beach boys would go - Dennis' last stop before Kokomo. Those nights were on fire, we couldn't get higher, we didn't know that we had it all, but nobody warns you before the fall.\n\nAnd I'm wasted. Don't leave I just need a wake up call. I'm facing the greatest - the greatest loss of them all. The culture is lit and I had a ball. I guess I'm signing off afterall.\n\nI miss New York and I miss the music. Me and my friends we miss rock and roll. I want you to feel just like you used to, when baby I was doing nothin the most of all.\n\nThe culture is lit and if this is it, I had a ball. I guess that I'm burned out afterall. I'm wasted. Don't leave I just need a wakeup call. I'm facing the greatest - the greatest loss of them all. The culture is lit and I had a ball. I guess that I'm burned out afterall. If this is it I'm signing off. Miss doing nothing the most of all.\n\nOh I just missed a fire ball.\n\nLA's in flames it's getting hot.\n\nKanye West is blonde and gone.\n\nLife on Mars ain't just a song.\n\nOh the life streams almost gone.").save
 
-Day.find(65).build_journal(content: "What is it you think I need? Maybe it's too hard to see... I don't want it all. I've had enough. I don't want it all. I've had a love. Worst feeling I ever had is gone. It's gone. I know how it all comes back I know too well, now I'm done. I'm leaving once again, makin my own plans. I'm not looking for the answer. Or anything like that. I just wanna see some beauty. Try and understand. If we got to know each other, how rare is that? All that space in between, where we stand could be our chance. Could be our chance.\n\nI'm walking through the scene. I'm sayin all the lines. I wish I could unsee some things that gave me life. I wish I could unknow some things that told me so. I wish I could believe all that's been promised me.\n\nIt's hard to say forever love. Forever's just so far. It's hard to say forever love. Forever's just so far. It's hard to say forever love. Forever's just so far. Why don't you say you're with me now, with all of your heart. With all of your heart. With all of your heart.").save
+Day.find(146).journal_entries.build(journal: test_user.journal, content: "What is it you think I need? Maybe it's too hard to see... I don't want it all. I've had enough. I don't want it all. I've had a love. Worst feeling I ever had is gone. It's gone. I know how it all comes back I know too well, now I'm done. I'm leaving once again, makin my own plans. I'm not looking for the answer. Or anything like that. I just wanna see some beauty. Try and understand. If we got to know each other, how rare is that? All that space in between, where we stand could be our chance. Could be our chance.\n\nI'm walking through the scene. I'm sayin all the lines. I wish I could unsee some things that gave me life. I wish I could unknow some things that told me so. I wish I could believe all that's been promised me.\n\nIt's hard to say forever love. Forever's just so far. It's hard to say forever love. Forever's just so far. It's hard to say forever love. Forever's just so far. Why don't you say you're with me now, with all of your heart. With all of your heart. With all of your heart.").save
 
-Day.find(68).build_journal(content: "It's a godawful small affair, to the girl with the mousey hair. But her mummy is yelling no, and her daddy has told her to go. But her friend is nowhere to be seen, now she walks through her sunken dream to the seat with the clearest view and she's hooked to the silver screen, but the film is a saddening bore cause she's lived it 10 times or more. She could spit in the eyes of fools, as they ask her to focus on sailors fighting in the dance hall oh man, look at those cave men go. It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?\n\nIts on America's tortured brow that Mickey Mouse has grown up a cow. Now the workers have struck for fame cause Lennon's on sale again. See the mice in their million hourdes, from Ibetha to the Norfolk Broads. Royal Brittania is out of bounds to my mother my dog and clowns. But the film is a saddening bore cause I wrote it 10 times or more. It's about to be writ again as I ask you to focus on sailors fighting in the dance hall, oh man, look at those cave men go, It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?").save
+Day.find(145).journal_entries.build(journal: test_user.journal, content: "It's a godawful small affair, to the girl with the mousey hair. But her mummy is yelling no, and her daddy has told her to go. But her friend is nowhere to be seen, now she walks through her sunken dream to the seat with the clearest view and she's hooked to the silver screen, but the film is a saddening bore cause she's lived it 10 times or more. She could spit in the eyes of fools, as they ask her to focus on sailors fighting in the dance hall oh man, look at those cave men go. It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?\n\nIts on America's tortured brow that Mickey Mouse has grown up a cow. Now the workers have struck for fame cause Lennon's on sale again. See the mice in their million hourdes, from Ibetha to the Norfolk Broads. Royal Brittania is out of bounds to my mother my dog and clowns. But the film is a saddening bore cause I wrote it 10 times or more. It's about to be writ again as I ask you to focus on sailors fighting in the dance hall, oh man, look at those cave men go, It's the freakiest show. Take a look at the law man beating up the wrong guy, oh man wonder if he'll ever know he's in the best selling show. Is there life on Mars?").save
 
-Day.find(69).build_journal(content: "Is this the real life, is this just fantasy? Caught in a landslide no escape from reality. Open your eyes, look up to the skies and see. I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go, little high, little low. Any way the wind blows doesn't really matter to me... to me.\n\nMama, just killed a man. Put a gun against his head, pulled my trigger now he's dead. Mama life had just begun. But now I've gone and thrown it all away. Mama, ooooo. Didn't mean to make you cry, if I'm not back again this time tomorrow carry on, carry on, because nothing really matters. Too late, my time has come. Sent shivers down my spine, body's aching all the time. Goodbye everybody, I've got to go. Got to leave you all behind and face the truth. Mama, ooooooo. I don't wanna die, I sometimes wish I'd never been born at all.").save
+Day.find(140).journal_entries.build(journal: test_user.journal, content: "Is this the real life, is this just fantasy? Caught in a landslide no escape from reality. Open your eyes, look up to the skies and see. I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go, little high, little low. Any way the wind blows doesn't really matter to me... to me.\n\nMama, just killed a man. Put a gun against his head, pulled my trigger now he's dead. Mama life had just begun. But now I've gone and thrown it all away. Mama, ooooo. Didn't mean to make you cry, if I'm not back again this time tomorrow carry on, carry on, because nothing really matters. Too late, my time has come. Sent shivers down my spine, body's aching all the time. Goodbye everybody, I've got to go. Got to leave you all behind and face the truth. Mama, ooooooo. I don't wanna die, I sometimes wish I'd never been born at all.").save
 
 nums = *(3..15)
 
 l1 = List.create(name: "Artists")
-nums.sample.times { l1.list_items.build(name: Faker::Artist.name) }
+nums.sample.times { l1.list_items.build(name: Faker::Artist.name, user: test_user) }
 l1.save
 
 l2 = List.create(name: "Coffee Varieties")
-nums.sample.times { l2.list_items.build(name: Faker::Coffee.variety) }
+nums.sample.times { l2.list_items.build(name: Faker::Coffee.variety, user: test_user) }
 l2.save
 
 l3 = List.create(name: "Ancient Heroes")
-nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero) }
+nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero, user: test_user) }
 l3.save
 
 l4 = List.create(name: "Middle-earth")
-nums.sample.times { l4.list_items.build(name: Faker::Movies::LordOfTheRings.location) }
+nums.sample.times { l4.list_items.build(name: Faker::Movies::LordOfTheRings.location, user: test_user) }
 l4.save
 
 l5 = List.create(name: "Cat Breeds", checklist: true)
-nums.sample.times { l5.list_items.build(name: Faker::Creature::Cat.breed) }
+nums.sample.times { l5.list_items.build(name: Faker::Creature::Cat.breed, user: test_user) }
 l5.save
 
 l6 = List.create(name: "Groceries", checklist: true)
-nums.sample.times { l6.list_items.build(name: Faker::Food.ingredient) }
+nums.sample.times { l6.list_items.build(name: Faker::Food.ingredient, user: test_user) }
 l6.save
 
 l7 = List.create(name: "Elder Scrolls Creatures")
-nums.sample.times { l7.list_items.build(name: Faker::Games::ElderScrolls.creature) }
+nums.sample.times { l7.list_items.build(name: Faker::Games::ElderScrolls.creature, user: test_user) }
 l7.save
 
 l8 = List.create(name: "Pokemon", checklist: true)
-nums.sample.times { l8.list_items.build(name: Faker::Games::Pokemon.name) }
+nums.sample.times { l8.list_items.build(name: Faker::Games::Pokemon.name, user: test_user) }
 l8.save
 
 l9 = List.create(name: "Princess Bride Quotes")
-nums.sample.times { l9.list_items.build(name: Faker::Movies::PrincessBride.quote) }
+nums.sample.times { l9.list_items.build(name: Faker::Movies::PrincessBride.quote, user: test_user) }
 l9.save
 
 l10 = List.create(name: "Twin Peaks Characters")
-nums.sample.times { l10.list_items.build(name: Faker::TvShows::TwinPeaks.character) }
+nums.sample.times { l10.list_items.build(name: Faker::TvShows::TwinPeaks.character, user: test_user) }
 l10.save
 
 l11 = List.create(name: "Quotes from the Hitchhiker's Guide to the Galaxy")
-nums.sample.times { l11.list_items.build(name: Faker::Movies::HitchhikersGuideToTheGalaxy.quote) }
+nums.sample.times { l11.list_items.build(name: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, user: test_user) }
 l11.save
 
 l12 = List.create(name: "Spells of the Potterverse")
-nums.sample.times { l12.list_items.build(name: Faker::Movies::HarryPotter.spell) }
+nums.sample.times { l12.list_items.build(name: Faker::Movies::HarryPotter.spell, user: test_user) }
 l12.save

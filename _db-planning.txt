@@ -29,6 +29,7 @@
 
 [x] DAY:
     Has Many EVENTS
+    Has Many HOLIDAYS
     Has Many TRACKER-DAYS
     Has Many :goals, as :goalable POLYMORPHIC
     Has One JOURNAL
@@ -38,26 +39,25 @@
     - date
 
 [x] EVENTS:
-    [ ] Belongs to USER
+    Belongs to USER
     Belongs To DAY
-     -  id
-    [ ] USER id
-     -  DAY id 
-     -  kind: must be included in
+    - id
+    - USER id
+    - DAY id 
+    - kind: must be included in
         - timed
         - untimed
-     -  subkind: must be included in
+    - subkind: must be included in
         - UNTIMED: task
         - UNTIMED: deadline
         - UNTIMED: allDay
         - UNTIMED: birthday
-        - [ ] REMOVE: [UNTIMED: holiday]
         - TIMED: appointment
-     -  start: (nil if untimed)
-     -  end: (nil if untimed)
-     -  name
+    - start: (nil if untimed)
+    - end: (nil if untimed)
+    - name
 
-[ ] HOLIDAYS:
+[x] HOLIDAYS:
     Belongs to DAY
     - id
     - DAY id
@@ -66,13 +66,13 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 [x] GOALS:
-    [ ] Belongs to USER
+    Belongs to USER
     Belongs To :goalable, polymorphic: true
-     -  id
-    [ ] USER id
-     -  goalable_id
-     -  goalable_type
-     -  content 
+    - id
+    - USER id
+    - goalable_id
+    - goalable_type
+    - content 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -80,11 +80,11 @@
     Has Many TRACKER-LINES
     Has Many TRACKER-DAYS Through TRACKER-LINES
     Belongs To MONTH
-    [ ] Belongs to USER
-     -  id
-    [ ] USER id
-     -  MONTH id
-     -  kind: must be included in
+    - Belongs to USER
+    - id
+    - USER id
+    - MONTH id
+    - kind: must be included in
         - habit
         - mood
         - sleep
@@ -107,7 +107,7 @@
     - duration (nil if not sleep)
 
 [x] TRACKER-PALETTES:
-    Belongs to USER
+    [ ] Belongs to USER
      -  id
     [ ] USER id (shared palettes belong to ADMIN)
      -  name
@@ -116,12 +116,12 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 [x] LIST:
-    [ ] Belongs to USER
+    Belongs to USER
     Has Many LIST-ITEMS
-     -  id
-    [ ] USER id
-     -  name
-     -  checklist (default: false)
+    - id
+    - USER id
+    - name
+    - checklist (default: false)
 
 [x] LIST-ITEM:
     Belongs To LIST
@@ -132,26 +132,16 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-*** NEEDS COMPLETE RE-WORK ***
-
-[ ] JOURNAL:
+[x] JOURNAL:
     Belongs to USER
     Has_Many ENTRIES
     - id
     - USER id
 
-[ ] ENTRIES
+[x] ENTRIES
     Belongs to JOURNAL
     Belongs to DAY
     - id
     - JOURNAL id
-    - DAY id
-    - content
-
-
-*** OLD STRUCTURE ***
-[x] JOURNAL:
-    Belongs To DAY
-    - id
     - DAY id
     - content

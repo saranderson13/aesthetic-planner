@@ -4,7 +4,7 @@ class Day < ApplicationRecord
   has_many :holidays
   has_many :goals, as: :goalable
   has_many :tracker_days
-  has_one :journal, dependent: :destroy
+  has_many :journal_entries
   belongs_to :year
 
   validates :year_id, :date, presence: true

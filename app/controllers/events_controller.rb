@@ -52,7 +52,7 @@ class EventsController < ApplicationController
             :events,
             :goals,
             :tracker_days,
-            :journal
+            # :journal
         ]
     end
 
