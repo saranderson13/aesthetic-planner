@@ -40,7 +40,7 @@ class JournalBodyContainer extends Component {
                             formattedDate={this.props.formattedDate}
                             forceView={this.props.forceView}
                             enableToggle={this.props.enableToggle}
-                            submitJournal={this.props.submitJournal} />
+                            submitEntry={this.props.submitEntry} />
                 )
             }
         } else {
@@ -63,7 +63,7 @@ class JournalBodyContainer extends Component {
                         formattedDate={this.props.formattedDate}
                         forceView={this.props.forceView}
                         enableToggle={this.props.enableToggle}
-                        submitJournal={this.props.submitJournal} />
+                        submitEntry={this.props.submitEntry} />
                 )
             }
             return (

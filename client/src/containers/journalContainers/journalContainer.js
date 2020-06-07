@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchJournal, submitJournal } from '../../actions/journalActions'
+import { fetchJournal, submitEntry } from '../../actions/journalActions'
 import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
@@ -147,7 +147,7 @@ class JournalContainer extends Component {
                             pastDate={!!(parseInt(entry.dayId, 10) < this.props.currentDayId)} 
                             forceView={this.forceView}
                             enableToggle={this.enableToggle}
-                            submitJournal={this.props.submitJournal} />
+                            submitEntry={this.props.submitEntry} />
                     )
                 } else {
                     return (
@@ -161,7 +161,7 @@ class JournalContainer extends Component {
                             forceView={this.forceView}
                             enableToggle={this.enableToggle}
                             disableToggle={this.disableToggle}
-                            submitJournal={this.props.submitJournal} />
+                            submitEntry={this.props.submitEntry} />
                     )
                 }
             }
@@ -208,7 +208,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         fetchJournal: () => dispatch(fetchJournal()),
-        submitJournal: (journalPacket, method) => dispatch(submitJournal(journalPacket, method))
+        submitEntry: (entryPacket, method) => dispatch(submitEntry(entryPacket, method))
     })
 }
 

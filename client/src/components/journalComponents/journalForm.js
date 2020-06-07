@@ -28,21 +28,21 @@ export default class JournalForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const journalPacket = {
-            journal: {
+        const entryPacket = {
+            entry: {
                 day_id: this.props.dayId,
                 content: this.state.content
             }
         }
         // Add the journal id to the packet if in edit mode
         if(!!this.props.id) {
-            journalPacket["journal"]["id"] = this.props.id
+            entryPacket["entry"]["id"] = this.props.id
         }
         // Set the view back to view mode
         this.props.forceView()
         // Set the toggleInput to legal
         this.props.enableToggle()
-        this.props.submitJournal(journalPacket, !!this.props.id ? 'PATCH' : 'POST')
+        this.props.submitEntry(entryPacket, !!this.props.id ? 'PATCH' : 'POST')
     }
 
     render() {
