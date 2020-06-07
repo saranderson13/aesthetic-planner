@@ -50,7 +50,8 @@ class MonthWidgetDay extends Component {
             // Determine whether there should be a link. Days without journals should not have a link.
             // If it is not the current day, and it's a journal page, and an entry for the day being rendered does not have an entry,
             // style with "noJournalEntry" (grey background), and do not include a link
-            let noJournal = !!(this.props.day.id !== this.props.currentDayId && this.props.page === "journal" && !this.props.journals.find( j => j.day_id === this.props.day.id ))
+            // debugger;
+            let noJournal = !!(this.props.day.id !== this.props.currentDayId && this.props.page === "journal" && !this.props.entries.find( j => j.day_id === this.props.day.id ))
             if (noJournal) {
                 return (
                     <div 

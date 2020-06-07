@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchJournals, submitJournal } from '../../actions/journalActions'
+import { fetchJournal, submitJournal } from '../../actions/journalActions'
 import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
@@ -25,7 +25,7 @@ class JournalContainer extends Component {
     }
 
     componentDidMount() {
-        // this.props.fetchJournals()
+        this.props.fetchJournal()
         this.setState({
             selectedDay: this.props.match.params.id
         })
@@ -33,9 +33,9 @@ class JournalContainer extends Component {
 
     componentDidUpdate(prevProps) {
         // If all props are loaded
-        if (this.props.days.length > 0 && !this.loadingJournals && this.props.journals.length > 0 ) {
-            const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
-            if ( this.state.selectedDay === this.props.currentDayId && !journal ) {
+        if (this.props.days.length > 0 && !this.loadingJournal && this.props.entries.length > 0 ) {
+            const entries = this.props.entries.find( j => j.day_id.toString() === this.state.selectedDay )
+            if ( this.state.selectedDay === this.props.currentDayId && !entries ) {
             // If viewing the current day but there is no journal entry - toggle to input mode
                 if ( this.state.toggleView ) { 
                     this.setState({
@@ -44,7 +44,7 @@ class JournalContainer extends Component {
                         inputLegal: false
                     })
                 }
-            } else if (this.state.selectedDay === this.props.currentDayId && !!journal ) {
+            } else if (this.state.selectedDay === this.props.currentDayId && !!entries ) {
             // If viewing the current day and there IS a journal entry, toggle to view mode
                 if ( this.state.toggleInput ) {
                     this.setState({
@@ -56,7 +56,7 @@ class JournalContainer extends Component {
             }
 
             // If viewing a day prior to the current day that has a journal entry, allow the edit post button.
-            if (this.state.selectedDay <= this.props.currentDayId && !!journal && !this.state.inputLegal) {
+            if (this.state.selectedDay <= this.props.currentDayId && !!entries && !this.state.inputLegal) {
                 this.setState({
                     inputLegal: true
                 })
@@ -114,37 +114,37 @@ class JournalContainer extends Component {
     }
 
     recentEntries = () => {
-        if (this.props.journals.length > 0 && this.props.journals.length > 5) {
-            return this.props.journals.slice(this.props.journals.length - 5).sort( (a, b) => b.day_id - a.day_id )
+        if (this.props.entries.length > 0 && this.props.entries.length > 5) {
+            return this.props.entries.slice(this.props.entries.length - 5).sort( (a, b) => b.day_id - a.day_id )
         } else {
-            return this.props.journals.sort( (a, b) => b.day_id - a.day_id )
+            return this.props.entries.sort( (a, b) => b.day_id - a.day_id )
         }
     }
 
-    selectJournal = () => {
+    selectEntry = () => {
         let mode = this.state.toggleView ? "view" : "edit"
-        if (this.props.loadingJournals || this.props.days.length <= 0) {
+        if (this.props.loadingJournal || this.props.days.length <= 0) {
             return (
                 <JournalBodyContainer 
                     status="loading" />
             )
         } else {
             if(this.props.days.length > 0) {
-                const journal = this.props.journals.find( j => j.day_id.toString() === this.state.selectedDay )
+                const entry = this.props.entries.find( j => j.day_id.toString() === this.state.selectedDay )
                 const day = this.props.days.find( d => d.id.toString() === this.state.selectedDay)
                 const dateObj = !!day ? new Date(day.date) : null
                 const formattedDate = this.formatDate(dateObj)
-                if (!!journal) {
+                if (!!entry) {
                     return (
                         <JournalBodyContainer 
-                            entry={true} 
+                            entryExists={true} 
                             mode={mode}
-                            journalId={journal.id}
+                            entryId={entry.id}
                             dayId={this.state.selectedDay}
                             formattedDate = {formattedDate}
-                            content={journal.content} 
-                            futureDate={!!(parseInt(journal.dayId, 10) > this.props.currentDayId)}
-                            pastDate={!!(parseInt(journal.dayId, 10) < this.props.currentDayId)} 
+                            content={entry.content} 
+                            futureDate={!!(parseInt(entry.dayId, 10) > this.props.currentDayId)}
+                            pastDate={!!(parseInt(entry.dayId, 10) < this.props.currentDayId)} 
                             forceView={this.forceView}
                             enableToggle={this.enableToggle}
                             submitJournal={this.props.submitJournal} />
@@ -152,7 +152,7 @@ class JournalContainer extends Component {
                 } else {
                     return (
                         <JournalBodyContainer 
-                            entry={false}
+                            entryExists={false}
                             mode={mode}
                             dayId={this.state.selectedDay}
                             formattedDate = {formattedDate}
@@ -177,7 +177,7 @@ class JournalContainer extends Component {
                     <nav id="navContainer">
                         <NavContainer 
                             pageName="non-tracker"
-                            journals={this.props.journals} 
+                            journal={this.props.journal} 
                             dayId={this.props.match.params.id} />
                     </nav>
                     <JournalControlsContainer 
@@ -188,7 +188,7 @@ class JournalContainer extends Component {
                         formatDate={this.formatDate.bind(this)} 
                         toggleView={this.toggleView.bind(this)} />
                 </aside>
-                <section id="bodyContainer">{this.selectJournal()}</section>
+                <section id="bodyContainer">{this.selectEntry()}</section>
             </>
         )
     }
@@ -198,15 +198,16 @@ class JournalContainer extends Component {
 const mapStateToProps = state => {
     return ({
         days: state.controls.days,
-        journals: state.journals.journals,
-        loadingJournals: state.journals.loadingJournals,
+        journal: state.journals.journal,
+        entries: state.journals.entries,
+        loadingJournal: state.journals.loadingJournal,
         currentDayId: state.controls.currentDayId
     })
 }
 
 const mapDispatchToProps = dispatch => {
     return ({
-        fetchJournals: () => dispatch(fetchJournals()),
+        fetchJournal: () => dispatch(fetchJournal()),
         submitJournal: (journalPacket, method) => dispatch(submitJournal(journalPacket, method))
     })
 }

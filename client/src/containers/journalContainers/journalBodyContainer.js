@@ -7,7 +7,7 @@ import LoadingWheel from '../../assets/images/loading-wheel.gif'
 class JournalBodyContainer extends Component {
 
     componentDidUpdate() {
-        if(this.props.status !== "loading" && !this.props.entry) {
+        if(this.props.status !== "loading" && !this.props.entryExists) {
             // Force disable toggle to remove edit button if navigating to current day
             // from a day where editing was legal.
             this.props.disableToggle()
@@ -21,11 +21,11 @@ class JournalBodyContainer extends Component {
                     <img src={LoadingWheel} alt="Loading" />
                 </div>
             )
-        } else if (!!this.props.entry) {
+        } else if (!!this.props.entryExists) {
             if(this.props.mode === "view") {
                 return (
                     <JournalEntry 
-                        entry={this.props.entry} 
+                        entryExists={this.props.entryExists} 
                         content={this.props.content} 
                         formattedDate={this.props.formattedDate} />
                 )
@@ -33,8 +33,8 @@ class JournalBodyContainer extends Component {
                 return (
                     // Enter Edit Mode
                     <JournalForm
-                            entry={this.props.entry}
-                            id={this.props.journalId}
+                            entryExists={this.props.entryExists}
+                            id={this.props.entryId}
                             dayId={this.props.dayId}
                             content={this.props.content}
                             formattedDate={this.props.formattedDate}
@@ -58,7 +58,7 @@ class JournalBodyContainer extends Component {
                 return (
                     // New Entry Mode
                     <JournalForm 
-                        entry={this.props.entry}
+                        entryExists={this.props.entryExists}
                         dayId={this.props.dayId}
                         formattedDate={this.props.formattedDate}
                         forceView={this.props.forceView}

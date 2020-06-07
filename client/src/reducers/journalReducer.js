@@ -1,23 +1,24 @@
 const journalReducer = (
     state = {
-        journals: [],
-        loadingJournals: false
+        journal: null,
+        entries: [],
+        loadingJournal: false
     }, action ) => {
 
         switch (action.type) {
 
-            case 'LOAD_JOURNALS':
+            case 'LOAD_JOURNAL':
                 return {
                     ...state,
-                    journals: [...state.journals],
-                    loadingJournals: true
+                    loadingJournal: true
                 }
 
-            case 'ADD_JOURNALS':
+            case 'ADD_JOURNAL':
                 return {
                     ...state,
-                    journals: action.journals,
-                    loadingJournals: false 
+                    journal: action.journal,
+                    entries: [...action.journal.journal_entries],
+                    loadingJournal: false 
                 }
 
             default:

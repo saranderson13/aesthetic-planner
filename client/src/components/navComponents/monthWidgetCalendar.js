@@ -73,12 +73,13 @@ export default class MonthWidgetCalendar extends Component {
                         rowVals.push("")
                     } else {
                     // for a real day, create a MonthWidgetDay component.
+                    debugger;
                         rowVals.push(
                             <MonthWidgetDay 
                                 day={weeks[i][n]} 
                                 page={this.props.page} 
                                 currentDayId={this.props.currentDayId} 
-                                journals={this.props.journals} />
+                                entries={this.props.entries} />
                         )
                     }
                 }
