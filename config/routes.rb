@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :lists, except: [:new, :edit]
     resources :goals, except: [:new, :edit]
     resources :trackers, only: [:index, :show, :create, :update]
-    resources :journal, only: :index
+    resources :journal, only: [:index, :create, :destroy]
     resources :tracker_palettes, only: [:index, :update]
 
     # To get the user's trackers within a specific month.
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :tracker_lines, only: [:create, :update, :destroy]
   resources :tracker_days, only: [:update]
   resources :tracker_palettes, only: [:index]
+  resources :journal_entries, only: [:create, :edit, :destroy]
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

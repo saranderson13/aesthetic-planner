@@ -17,17 +17,17 @@ export const fetchJournal = () => {
 
 export const submitEntry = (entryPacket, fetchMethod) => {
     debugger;
-    const url = !!entryPacket.entry.id ? `/user/4/journal/${entryPacket.entry.id}` : '/user/4/journal'
-    // return async function (dispatch) {
-    //     const resp = await fetch(url, {
-    //         method: fetchMethod,
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(entryPacket)
-    //     })
-    //     const json = await resp.json()
-    //     return await dispatch({ type: 'ADD_JOURNALS', journal: json })
-    // }
+    const url = !!entryPacket.entry.id ? `/journal_entries/${entryPacket.entry.id}` : '/journal_entries'
+    return async function (dispatch) {
+        const resp = await fetch(url, {
+            method: fetchMethod,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entryPacket)
+        })
+        const json = await resp.json()
+        return await dispatch({ type: 'ADD_JOURNALS', journal: json })
+    }
 }

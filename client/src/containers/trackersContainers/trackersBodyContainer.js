@@ -83,6 +83,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
+    // debugger;
     return({
         numDays: state.controls.currentMonth.numDays,
         trackersForMonth: state.controls.currentMonth.trackers,
