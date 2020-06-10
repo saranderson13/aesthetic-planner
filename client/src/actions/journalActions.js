@@ -16,8 +16,7 @@ export const fetchJournal = () => {
 
 
 export const submitEntry = (entryPacket, fetchMethod) => {
-    debugger;
-    const url = !!entryPacket.entry.id ? `/journal_entries/${entryPacket.entry.id}` : '/journal_entries'
+    const url = !!entryPacket.journal_entry.id ? `/journal_entries/${entryPacket.journal_entry.id}` : '/journal_entries'
     return async function (dispatch) {
         const resp = await fetch(url, {
             method: fetchMethod,
@@ -28,6 +27,6 @@ export const submitEntry = (entryPacket, fetchMethod) => {
             body: JSON.stringify(entryPacket)
         })
         const json = await resp.json()
-        return await dispatch({ type: 'ADD_JOURNALS', journal: json })
+        await dispatch({ type: 'ADD_JOURNAL', journal: json })
     }
 }

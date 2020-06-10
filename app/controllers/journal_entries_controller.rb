@@ -8,13 +8,15 @@ class JournalEntriesController < ApplicationController
         # Need journal_id, day_id, content
 
         # Get current user from session
-        # Make sure journal belongs to user
+        # Get journal from current user
 
-        new_entry = JournalEntry.new(entry_params)
+        user = User.find(4)
+        journal = user.journal
+        new_entry = journal.journal_entries.build(entry_params)
+
         if new_entry.valid?
             new_entry.save
-            
-            journal = Journal.find(entry_params["journal_id"])
+
             render json: journal.to_json(
                 include: :journal_entries
             )
@@ -25,6 +27,20 @@ class JournalEntriesController < ApplicationController
 
 
     def update
+        user = User.find(4)
+        journal = user.journal
+        entry = JournalEntry.find(entry_params["id"])
+
+        if (journal === entry.journal) 
+            entry.update(entry_params)
+            
+            render json: journal.to_json(
+                include: :journal_entries
+            )
+        else
+            # Throw error
+        end
+
 
     end
 
@@ -37,7 +53,7 @@ class JournalEntriesController < ApplicationController
     private
 
     def entry_params
-        params.require(:journal_entry).permit(:journal_id, :day_id, :content)
+        params.require(:journal_entry).permit(:id, :day_id, :content)
     end
 
 end

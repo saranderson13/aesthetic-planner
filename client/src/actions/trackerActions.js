@@ -26,7 +26,6 @@ export const fetchTrackers = trackerPacket => {
             body: JSON.stringify(dispatch)
         })
         const json = await resp.json()
-        // debugger;
 
         await dispatch({type: 'ADD_TRACKERS', trackers: json})
     }
@@ -43,7 +42,6 @@ export const updateHabitDayStatus = habitDayPacket => {
             body: JSON.stringify(habitDayPacket)
         })
         const json = await resp.json()
-        debugger;
         await dispatch({type: 'UPDATE_TRACKERS', trackers: json})
     }
 }
