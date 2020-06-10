@@ -7,11 +7,6 @@ class JournalController < ApplicationController
         )
     end
 
-
-    # def show
-
-    # end
-
     
     def create
         entry = Journal.create(journal_params)
@@ -21,10 +16,7 @@ class JournalController < ApplicationController
 
 
     # def update
-    #     entry = Journal.find_by(id: journal_params["id"])
-    #     entry.update(journal_params)
-    #     journals = Journal.all
-    #     render json: journals.to_json()
+        # May bring back if settings are implemented for journals.
     # end
 
 

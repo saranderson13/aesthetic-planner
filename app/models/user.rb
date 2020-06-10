@@ -18,6 +18,6 @@ class User < ApplicationRecord
     # validates :password_digest, presence: true
     validates :username, presence: true, uniqueness: true
     validates :name, presence: true
-    validates :admin, presence: true, inclusion: {in: [true, false]}
+    validates :admin, inclusion: {in: [true, false]}
 
 end

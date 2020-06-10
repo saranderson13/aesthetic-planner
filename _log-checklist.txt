@@ -255,7 +255,48 @@ MONDAY 5/11
 [x] Bugfix: in Trackers, decoloring with transparent brush does not change 'complete' property
 
 
+TUESDAY 5/26
+[x] Improved styling on tracker page.
+
+
+SATURDAY 6/6
+[x] User model & controller
+[x] User validations and associations
+[x] Update associations for other models
+[x] Restructure journals - (add entries; user has 1 journal)
+[x] Add Holiday model
+[x] Add User foreign keys to goals, events, trackers, lists
+[x] Update seed file to reflect user ownership
+
+
+SUNDAY 6/7
+[x] Add Holiday access method to year, month, week
+[x] Namespace routes on the back end (ex: user/4/journal, or user/4/lists)
+[x] Repair journal references in components (update components to have one journal and many entries)
+[x] Repair journal GET request (hardcoded user)
+
+
+MONDAY 6/8
+[x] Repair tracker GET request (hardcoded user)
+[x] Repair tracker day PATCH request (hardcoded user)
+
+
+WEDNESDAY 6/10
+[x] Repair List GET request (hardcoded user)
+[x] Repair List POST and PATCH requests (hardcoded user)
+[x] Repair journal entry POST and PATCH requests (hardcoded user)
+
+
 NEXT:
+[ ] Sessions controller
+[ ] Login page
+[ ] Signup page
+[ ] Cookies
+[ ] User authentication for requests
+[ ] User authorization for requests and navigation
+
+
+EVENTUALLY:
 [ ] Fix console warnings for list boxes. (unique keys)
 [ ] Fix console warning for list checkbox (uncontrolled input)
 [ ] Edit table button 

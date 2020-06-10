@@ -45,9 +45,11 @@ class JournalEntriesController < ApplicationController
     end
 
 
-    def destroy
-
-    end
+    # USERS WON'T BE ABLE TO DELETE THEIR JOURNAL ENTRIES, JUST RE-WRITE THEM.
+    # def destroy
+    #     entry = JournalEntry.find(entry_params["id"])
+    #     entry.delete
+    # end
 
 
     private

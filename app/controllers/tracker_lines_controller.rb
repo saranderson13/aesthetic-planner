@@ -1,7 +1,6 @@
 class TrackerLinesController < ApplicationController
 
     def create
-        # binding.pry
         line = TrackerLine.create(t_line_params)
 
         # Create tracker days
