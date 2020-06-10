@@ -1,7 +1,7 @@
 export const fetchLists = () => {
     return async function (dispatch) {
         dispatch({ type: 'LOAD_LISTS' })
-        const resp = await fetch('./lists', {
+        const resp = await fetch('/user/4/lists', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -10,12 +10,13 @@ export const fetchLists = () => {
             body: JSON.stringify(dispatch)
         })
         const json = await resp.json()
+        // debugger;
         await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }
 
 export const createOrUpdateList = (listPacket, fetchMethod) => {
-    const url = !!listPacket.list.id  ? `./lists/${listPacket.list.id}` : './lists'
+    const url = !!listPacket.list.id  ? `/user/4/lists/${listPacket.list.id}` : '/user/4/lists'
     return async function (dispatch) {
         const resp = await fetch(url, {
             method: fetchMethod,
@@ -26,6 +27,7 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
             body: JSON.stringify(listPacket)
         })
         const json = await resp.json()
+        debugger;
         await dispatch({ type: 'ADD_LISTS', lists: json })
     }
 }

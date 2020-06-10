@@ -17,7 +17,10 @@ class ListsController < ApplicationController
 
 
     def create
-        list = List.create(name: list_params["name"], checklist: list_params["checklist"])
+        # Grab current user
+        # (hardcoded user for now.)
+
+        list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: User.find(4))
         list_params["list_items"].uniq.each do |i|
             list.list_items.build(name: i)
         end
