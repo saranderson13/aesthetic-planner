@@ -1,0 +1,53 @@
+#userNotLoggedIn .userFormBodyContainer {
+    height: 100%;
+    background-color: rgb(233, 187, 187);
+}
+
+#userFormHeader {
+    font-family: "Playball";
+    font-size: 40px;
+    text-align: center;
+    margin: 20px 0px 10px;
+}
+
+#alternateUserLink {
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#alternateUserLink a, a:visited, a:active {
+    color: rgb(138, 152, 255);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#alternateUserLink a:hover {
+    cursor: crosshair;
+    text-decoration: underline;
+}
+
+.userForm {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+.userForm .formLabel {
+    width: 165px;
+    font-size: 11px;
+    margin: auto;
+    text-align: left;
+    display: block;
+}
+
+.userForm .formInput {
+    margin: 5px auto 20px auto;
+
+}
+
+.userForm .userFormButton {
+    display: block;
+    margin: auto;
+}

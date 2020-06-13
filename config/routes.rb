@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :holidays, only: :index
   end
 
-  resources :user do
+  resources :user, only: [:index, :create, :update, :destroy] do
     resources :events, except: [:new, :edit]
     resources :lists, except: [:new, :edit]
     resources :goals, except: [:new, :edit]

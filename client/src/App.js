@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchDays, fetchMonthsForWidget } from './actions/controlsActions'
+
+// STYLE SHEETS
+import './assets/userForms.css'
 import './assets/trackers.css'
 import './assets/lists.css'
 import './assets/journal.css'
@@ -12,8 +15,11 @@ import './assets/App.css'
 // import { fetchTest } from './actions/_testAction'
 
 
+// MAIN PAGE CONTAINERS
 // PlannerContainer IS FOR FUTURE IMPLEMENTATION OF WEEKLY AND MONTHLY CALENDAR PAGES
 // import PlannerContainer from './containers/plannerContainer'
+import SignupPageContainer from './containers/signupPageContainer'
+import LoginPageContainer from './containers/loginPageContainer'
 import TrackerContainer from './containers/trackersContainers/trackerContainer'
 import ListsContainer from './containers/listsContainers/listsContainer'
 import JournalContainer from './containers/journalContainers/journalContainer'
@@ -46,6 +52,14 @@ class App extends Component {
     return (
       <Router>      
         <Switch>
+          <Route
+            path="/signup"
+            component={ SignupPageContainer } />
+
+          <Route 
+            path="/login"
+            component={ LoginPageContainer } />
+
           <Route 
             path="/day-planner/:id" 
             component={ ({match}) => (<DayPlannerContainer match={match} />)} />
