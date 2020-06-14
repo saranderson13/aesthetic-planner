@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
         else
             render json{
                 logged_in: false,
-                message: 'log in or sign up to continue'
             }
         end
     end
