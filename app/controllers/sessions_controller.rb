@@ -2,34 +2,54 @@ class SessionsController < ApplicationController
 
 
     def create
-        user = currently_logging_in
-        
-        if !!user && user.authenticate(login_params[:password])
-            session[:user_id] = user.id
-            render json: user.to_json(
-                include: json_include()
-            )
+
+        @user = User.find_by(email: session_params[:email])
+
+        if @user && @user.authenticate(session_params[:password])
+            login!
+            render json: {
+                logged_in: true,
+                user: @user.to_json(
+                    include: json_include()
+                )
+            }
         else
-
+            render json{
+                status: 401,
+                errors: ['user credentials incorrect', 'verify credentials and try again, or sign up']
+            }
         end
-
     end
 
+    def is_logged_in?
+        if logged_in? && current_user
+            render json: {
+                logged_in: true,
+                user: current_user.to_json(
+                    include: json_include()
+                )
+            }
+        else
+            render json{
+                logged_in: false,
+                message: 'log in or sign up to continue'
+            }
+        end
+    end
 
     def destroy
-        
+        logout!
+        render json: {
+            status: 200,
+            logged_in: false,
+            message: 'successful logout'
+        }
     end
-
 
     private
 
-    def currently_logging_in
-        User.find_by(login_params[:email])
-    end
-
-
-    def login_params
-        params.permit(:email, :password, :password_confirmation)
+    def sessions_params
+        params.require(:user).permit(:email, :password)
     end
 
 
