@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchDays, fetchMonthsForWidget } from './actions/controlsActions'
+import { fetchUser } from './actions/userActions'
 
 // STYLE SHEETS
 import './assets/userForms.css'
@@ -28,7 +29,7 @@ import DayPlannerContainer from './containers/dayPlannerContainers/dayPlannerCon
 class App extends Component {
 
   componentDidMount() {
-    // this.props.fetchUser()
+    this.props.fetchUser()
     this.props.fetchDays()
     this.props.fetchMonthsForWidget() 
   }
@@ -113,6 +114,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+      fetchUser: () => dispatch(fetchUser()),
       fetchDays: () => dispatch(fetchDays()),
       fetchMonthsForWidget: () => dispatch(fetchMonthsForWidget())
   })
