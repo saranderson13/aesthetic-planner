@@ -1,7 +1,7 @@
 export const fetchJournal = () => {
     return async function (dispatch) {
         dispatch({ type: 'LOAD_JOURNAL' })
-        const resp = await fetch('/user/4/journal', {
+        const resp = await fetch('/users/4/journal', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

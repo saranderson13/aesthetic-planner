@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import userReducer from './userReducer'
 import dayPlannerReducer from './dayPlannerReducer'
 import trackersReducer from './trackersReducer'
 import listsReducer from './listsReducer'
@@ -8,10 +9,11 @@ import controlsReducer from './controlsReducer'
 
 const rootReducer = combineReducers({
     dayPlanner: dayPlannerReducer,
+    user: userReducer, 
     trackers: trackersReducer,
     lists: listsReducer,
     journals: journalReducer,
-    controls: controlsReducer
+    controls: controlsReducer,
 })
 
 export default rootReducer;

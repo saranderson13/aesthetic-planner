@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         return [
             :events,
             :goals,
-            :trackers,
+            # :trackers,
             :journal
         ]
     end

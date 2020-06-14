@@ -16,8 +16,8 @@ import './assets/App.css'
 
 
 // MAIN PAGE CONTAINERS
-// PlannerContainer IS FOR FUTURE IMPLEMENTATION OF WEEKLY AND MONTHLY CALENDAR PAGES
-// import PlannerContainer from './containers/plannerContainer'
+  // PlannerContainer IS FOR FUTURE IMPLEMENTATION OF WEEKLY AND MONTHLY CALENDAR PAGES
+  // import PlannerContainer from './containers/plannerContainer'
 import SignupPageContainer from './containers/signupPageContainer'
 import LoginPageContainer from './containers/loginPageContainer'
 import TrackerContainer from './containers/trackersContainers/trackerContainer'
@@ -28,8 +28,20 @@ import DayPlannerContainer from './containers/dayPlannerContainers/dayPlannerCon
 class App extends Component {
 
   componentDidMount() {
+    // this.props.fetchUser()
     this.props.fetchDays()
     this.props.fetchMonthsForWidget() 
+  }
+
+  initialRedirect = () => {
+    if (this.props.loadingUser) {
+      return "Loading..."
+    } else if (this.props.userLoggedIn) {
+      this.getCurrentPlannerLink()
+    } else {
+      return <Redirect to={"/login"} />
+    }
+    // return <Redirect to={"/login"} />
   }
 
   getCurrentPlannerLink = () => {
@@ -81,7 +93,7 @@ class App extends Component {
           </Route>
 
           <Route path="/">
-            { this.getCurrentPlannerLink() }
+            { this.initialRedirect() }
           </Route>
         </Switch>
       </Router>

@@ -1,7 +1,7 @@
 export const fetchLists = () => {
     return async function (dispatch) {
         dispatch({ type: 'LOAD_LISTS' })
-        const resp = await fetch('/user/4/lists', {
+        const resp = await fetch('/users/4/lists', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -15,7 +15,7 @@ export const fetchLists = () => {
 }
 
 export const createOrUpdateList = (listPacket, fetchMethod) => {
-    const url = !!listPacket.list.id  ? `/user/4/lists/${listPacket.list.id}` : '/user/4/lists'
+    const url = !!listPacket.list.id  ? `/users/4/lists/${listPacket.list.id}` : '/user/4/lists'
     return async function (dispatch) {
         const resp = await fetch(url, {
             method: fetchMethod,

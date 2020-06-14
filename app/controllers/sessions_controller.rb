@@ -1,11 +1,17 @@
 class SessionsController < ApplicationController
 
-    def new
-
-    end
-
 
     def create
+        user = currently_logging_in
+        
+        if !!user && user.authenticate(login_params[:password])
+            session[:user_id] = user.id
+            render json: user.to_json(
+                include: json_include()
+            )
+        else
+
+        end
 
     end
 
@@ -18,7 +24,7 @@ class SessionsController < ApplicationController
     private
 
     def currently_logging_in
-
+        User.find_by(login_params[:email])
     end
 
 
@@ -26,5 +32,14 @@ class SessionsController < ApplicationController
         params.permit(:email, :password, :password_confirmation)
     end
 
+
+    def json_include
+        return [
+            :events,
+            :goals,
+            # :trackers,
+            :journal
+        ]
+    end
 
 end
