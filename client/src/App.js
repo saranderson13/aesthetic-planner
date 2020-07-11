@@ -34,22 +34,18 @@ class App extends Component {
     this.props.fetchMonthsForWidget() 
   }
 
-  initialRedirect = () => {
-    if (this.props.loadingUser) {
-      return "Loading..."
-    } else if (this.props.userLoggedIn) {
-      this.getCurrentPlannerLink()
-    } else {
+  allFetchesComplete = () => {
+    console.log(this)
+    // If statement checks:
+    // - has user data return, by checking for a logged in user
+    // - has day data returned, by checking for currentDayId
+    // - has month data returned, but checking for currentMonthId
+    if( this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId ) {
+      return <Redirect to={`/day-planner/${this.props.currentDayId}`} />
+    } else if ( !this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId ) {
       return <Redirect to={"/login"} />
-    }
-    // return <Redirect to={"/login"} />
-  }
-
-  getCurrentPlannerLink = () => {
-    if (!!this.props.currentDayId) {
-        return <Redirect to={`/day-planner/${this.props.currentDayId}`} />
     } else {
-        return "Loading..."
+      return "Loading..."
     }
   }
 
@@ -62,6 +58,7 @@ class App extends Component {
   }
   
   render() {
+    console.log(this.props.user)
     return (
       <Router>      
         <Switch>
@@ -94,7 +91,7 @@ class App extends Component {
           </Route>
 
           <Route path="/">
-            { this.initialRedirect() }
+            { this.allFetchesComplete() }
           </Route>
         </Switch>
       </Router>
@@ -105,6 +102,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return({
+    user: state.user,
     days: state.controls.days,
     loadingDays: state.controls.loadingDays,
     currentDayId: state.controls.currentDayId,
@@ -114,7 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-      fetchUser: () => dispatch(fetchUser()),
+      fetchUser: (userInfo) => dispatch(fetchUser(userInfo)),
       fetchDays: () => dispatch(fetchDays()),
       fetchMonthsForWidget: () => dispatch(fetchMonthsForWidget())
   })

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createUser } from '../actions/userActions'
 
 class SignupForm extends Component {
 
@@ -7,7 +9,8 @@ class SignupForm extends Component {
         password: "",
         passwordConfirmation: "",
         username: "",
-        name: ""
+        name: "",
+        registrationErrors: []
     }
 
     handleChange = e => {
@@ -34,7 +37,9 @@ class SignupForm extends Component {
                         id="email" 
                         name="email" 
                         className="formInput" 
-                        onChange={ e => this.handleChange(e) }></input>
+                        onChange={ e => this.handleChange(e) }
+                        value={this.state.email} 
+                        required ></input>
                 </label>
 
                 <label className="formLabel">
@@ -44,7 +49,9 @@ class SignupForm extends Component {
                         id="password" 
                         name="password" 
                         className="formInput" 
-                        onChange={ e => this.handleChange(e) }></input>
+                        onChange={ e => this.handleChange(e) }
+                        value={this.state.password}
+                        required ></input>
                 </label>
 
                 <label className="formLabel">
@@ -54,7 +61,9 @@ class SignupForm extends Component {
                         id="passwordConfirmation" 
                         name="passwordConfirmation" 
                         className="formInput" 
-                        onChange={ e => this.handleChange(e) }></input>
+                        onChange={ e => this.handleChange(e) }
+                        value={this.state.passwordConfirmation}
+                        required ></input>
                 </label>
 
                 <label className="formLabel">
@@ -64,7 +73,9 @@ class SignupForm extends Component {
                         id="username" 
                         name="username" 
                         className="formInput" 
-                        onChange={ e => this.handleChange(e) }></input>
+                        onChange={ e => this.handleChange(e) }
+                        value={this.state.username}
+                        required></input>
                 </label>
 
                 <label className="formLabel">
@@ -74,7 +85,9 @@ class SignupForm extends Component {
                         id="name" 
                         name="name" 
                         className="formInput" 
-                        onChange={ e => this.handleChange(e) }></input>
+                        onChange={ e => this.handleChange(e) }
+                        value={this.state.name}
+                        required></input>
                 </label>
 
                 <input 
@@ -88,4 +101,18 @@ class SignupForm extends Component {
 
 }
 
-export default SignupForm
+// const mapStateToProps = state => {
+//     return({
+
+//     })
+// }
+
+const mapDispatchToProps = dispatch => {
+    return({
+        createUser: signupPacket => dispatch(createUser(signupPacket))
+    })
+}
+
+export default connect(null, mapDispatchToProps)(SignupForm)
+
+// export default SignupForm

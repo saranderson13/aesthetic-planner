@@ -1,38 +1,37 @@
 class SessionsController < ApplicationController
 
 
-    def create
+    # def create
 
-        @user = User.find_by(email: session_params[:email])
+    #     @user = User.find_by(email: session_params[:email])
 
-        if @user && @user.authenticate(session_params[:password])
-            login!
-            render json: {
-                logged_in: true,
-                user: @user.to_json(
-                    include: json_include()
-                )
-            }
-        else
-            render json{
-                status: 401,
-                errors: ['user credentials incorrect', 'verify credentials and try again, or sign up']
-            }
-        end
-    end
+    #     if @user && @user.authenticate(session_params[:password])
+    #         login!
+    #         render json: {
+    #             logged_in: true,
+    #             user: @user.to_json(
+    #                 include: json_include()
+    #             )
+    #         }
+    #     else
+    #         render json{
+    #             status: 401,
+    #             errors: ['user credentials incorrect', 'verify credentials and try again, or sign up']
+    #         }
+    #     end
+    # end
 
     def is_logged_in?
+        session[:user_id] = 4
         if logged_in? && current_user
             render json: {
                 logged_in: true,
-                user: current_user.to_json(
-                    include: json_include()
-                )
+                user_info: current_user.to_json()
             }
         else
-            render json{
+            render json: {
                 logged_in: false,
-                message: 'log in or sign up to continue'
+                user_info: nil
             }
         end
     end
@@ -61,5 +60,6 @@ class SessionsController < ApplicationController
             :journal
         ]
     end
+
 
 end
