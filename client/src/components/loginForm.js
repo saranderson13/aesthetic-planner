@@ -4,7 +4,8 @@ class LoginForm extends Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        loginErrors: []
     }
 
     handleChange = e => {
@@ -28,7 +29,9 @@ class LoginForm extends Component {
                             id="email" 
                             name="email" 
                             className="formInput" 
-                            onChange={ e => this.handleChange(e) }></input>
+                            onChange={ e => this.handleChange(e) } 
+                            value={this.state.email} 
+                            required></input>
                     </label>
 
                     <label className="formLabel">
@@ -38,7 +41,9 @@ class LoginForm extends Component {
                             id="password" 
                             name="password" 
                             className="formInput" 
-                            onChange={ e => this.handleChange(e) }></input>
+                            onChange={ e => this.handleChange(e) }
+                            value={this.state.password}
+                            required ></input>
                     </label>
 
                     <input type="submit" className="customButton userFormButton" value="Log In"></input>
