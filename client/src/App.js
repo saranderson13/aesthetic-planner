@@ -25,6 +25,7 @@ import TrackerContainer from './containers/trackersContainers/trackerContainer'
 import ListsContainer from './containers/listsContainers/listsContainer'
 import JournalContainer from './containers/journalContainers/journalContainer'
 import DayPlannerContainer from './containers/dayPlannerContainers/dayPlannerContainer'
+import LoadingPage from './containers/loadingPageContainer'
 
 class App extends Component {
 
@@ -34,64 +35,107 @@ class App extends Component {
     this.props.fetchMonthsForWidget() 
   }
 
-  allFetchesComplete = () => {
-    console.log(this)
-    // If statement checks:
-    // - has user data return, by checking for a logged in user
-    // - has day data returned, by checking for currentDayId
-    // - has month data returned, but checking for currentMonthId
-    if( this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId ) {
+  confirmAllFetchesAndLoggedIn = () => {
+    return this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId
+  }
+
+  confirmAllFetchesAndNotLoggedIn = () => {
+    return !this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId
+  }
+
+  redirectFromEmptyPath = () => {
+    if( this.confirmAllFetchesAndLoggedIn() ) {
       return <Redirect to={`/day-planner/${this.props.currentDayId}`} />
-    } else if ( !this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId ) {
+    } else if ( this.confirmAllFetchesAndNotLoggedIn() ) {
       return <Redirect to={"/login"} />
     } else {
-      return "Loading..."
+      return <LoadingPage />
     }
+  }
+
+  redirectIfLoggedIn = (destination, componentName) => {
+    const Component = componentName
+    if(this.confirmAllFetchesAndNotLoggedIn()) {
+      return (
+        <Route 
+            path = {`${destination}`}
+            component={ Component } />
+      )
+    } else if (this.confirmAllFetchesAndLoggedIn()) {
+      return (
+        <Redirect to={`/day-planner/${this.props.currentDayId}`} />
+      )
+    } else return <LoadingPage />
+  }
+
+  redirectIfNotLoggedIn = (destination, componentName) => {
+    const Component = componentName
+    if (this.confirmAllFetchesAndLoggedIn()) {
+      // NOTE: '/lists' route does not use match, but it is harmlessly passed.
+      return (
+        <Route 
+            path = {`${destination}`}
+            component={ ({match}) => (<Component match={match} />)} />
+      )
+    } else if (this.confirmAllFetchesAndNotLoggedIn()) {
+      return <Redirect to={"/login"} />
+    } 
   }
 
   getCurrentTrackersLink = () => {
     if (!!this.props.currentMonthId) {
-      return <Redirect to={`/trackers/${this.props.currentMonthId}`} />
+      return this.props.user.logged_in ? <Redirect to={`/trackers/${this.props.currentMonthId}`} /> : <Redirect to={'/login'} />
     } else {
-      return "Loading..."
+      return <LoadingPage />
     }
   }
   
   render() {
-    console.log(this.props.user)
     return (
       <Router>      
         <Switch>
           <Route
             path="/signup"
-            component={ SignupPageContainer } />
+            component={ LoadingPage } >
+            { this.redirectIfLoggedIn("/signup", SignupPageContainer) }
+          </Route>
 
-          <Route 
+          <Route
             path="/login"
-            component={ LoginPageContainer } />
-
-          <Route 
-            path="/day-planner/:id" 
-            component={ ({match}) => (<DayPlannerContainer match={match} />)} />
-
-          <Route 
-            path="/trackers/:monthId"
-            component={ ({match}) => (<TrackerContainer match={match} />)} />
-
-          <Route path="/lists">
-            <ListsContainer />
+            component={ LoadingPage } >
+            { this.redirectIfLoggedIn("/login", LoginPageContainer) }
           </Route>
 
           <Route 
-            path="/journal/:id" 
-            component={ ({match}) => (<JournalContainer match={match} />)} />
+            path="/day-planner/:id"
+            component={ LoadingPage } >
+            { this.redirectIfNotLoggedIn("/day-planner/:id", DayPlannerContainer) }
+          </Route>
+
+          <Route 
+            path="/trackers/:monthId"
+            component={ LoadingPage } >
+            { this.redirectIfNotLoggedIn("/trackers/:monthId", TrackerContainer) }
+          </Route>
+
+          <Route 
+            path="/lists"
+            component={ LoadingPage } >
+            { this.redirectIfNotLoggedIn("/lists", ListsContainer) }
+          </Route>
+
+          <Route 
+            path="/journal/:id"
+            component={ LoadingPage } >
+            { this.redirectIfNotLoggedIn("/journal/:id", JournalContainer) }
+          </Route>
           
           <Route path="/trackers">
             { this.getCurrentTrackersLink() }
           </Route>
 
           <Route path="/">
-            { this.allFetchesComplete() }
+            { this.redirectFromEmptyPath() }
           </Route>
         </Switch>
       </Router>
