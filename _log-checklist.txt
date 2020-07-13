@@ -287,10 +287,49 @@ WEDNESDAY 6/10
 [x] Repair journal entry POST and PATCH requests (hardcoded user)
 
 
+SATURDAY 6/13
+[x] Login routes (front)
+[x] Signup routes (front)
+[x] Login form
+[x] Signup form
+[x] Login/Signup styling
+
+
+SUNDAY 6/14
+[x] Add node_modules to .gitignore
+[x] Fix cors origin (to 3000)
+[x] Sessions controller (with draft actions)
+[x] User controller (with draft actions)
+[x] Add bcrypt
+
+
+MONDAY 6/15
+[x] Fix cors.rb & other backend bugfixes
+
+
+SATURDAY 7/11
+[x] 'logged_in?' fetch request 
+[x] 'logged_in?' action in sessions controller (hardcoded user)
+[x] Fix helper_method access
+[x] User reducer 
+
+
+SUNDAY 7/12
+[x] Fix package.json (re-add 'react-router-dom', add acorn & generate node_modules)
+[x] Create LoadingPage component (functional)
+[x] Alter front end routing to check for logged in user, then redirect as necessary.
+[x] Prevent initial load until all fetches are complete.
+[x] Login request (not sustained, but successful login)
+
+
+MONDAY 7/13
+[ ] Logout request
+[ ] cookie token? (how to sustain login)
+
+- - - - - -
+
+
 NEXT:
-[ ] Sessions controller
-[ ] Login page
-[ ] Signup page
 [ ] Cookies
 [ ] User authentication for requests
 [ ] User authorization for requests and navigation

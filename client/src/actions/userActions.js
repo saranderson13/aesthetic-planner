@@ -35,6 +35,7 @@ export const createUser = signupPacket => {
 }
 
 export const loginUser = loginPacket => {
+    // debugger;
     return async function (dispatch) {
         dispatch({ type: 'LOGGING_IN' })
         const resp = await fetch('/login', {

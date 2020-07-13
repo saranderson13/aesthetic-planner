@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { loginUser } from '../actions/userActions'
 
 class LoginForm extends Component {
 
@@ -9,12 +11,29 @@ class LoginForm extends Component {
     }
 
     handleChange = e => {
-        this.setState({ [e.target.id]: [e.target.value]  })
+        this.setState({ [e.target.id]: e.target.value  })
     }
 
     handleSubmit = e => {
         e.preventDefault()
         console.log("Submitting Form")
+        // assemble packet
+        // call #loginUser
+        // reset form
+        // handle login errors?
+        // debugger;
+        const loginPacket = {
+            user: { 
+                email: this.state.email,
+                password: this.state.password
+            }
+        }
+
+        this.props.loginUser(loginPacket)
+        this.setState({
+            email: "",
+            password: ""
+        })
     }
 
     render() {
@@ -54,4 +73,20 @@ class LoginForm extends Component {
 
 }
 
-export default LoginForm
+
+// const mapStateToProps = state => {
+//     return ({
+
+//     })
+// }
+
+const mapDispatchToProps = dispatch => {
+    return ({
+        loginUser: loginPacket => dispatch(loginUser(loginPacket))
+    })
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)
+
+
+// export default LoginForm
