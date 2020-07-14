@@ -1,7 +1,7 @@
-export const fetchLists = () => {
+export const fetchLists = infoPacket => {
     return async function (dispatch) {
         dispatch({ type: 'LOAD_LISTS' })
-        const resp = await fetch('/users/4/lists', {
+        const resp = await fetch(`/users/${infoPacket.userId}/lists`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

@@ -18,7 +18,7 @@ class ListsContainer extends Component {
     //    Lists are clickable - upon click, they show up in the controls container to be edited
 
     componentDidMount() {
-        this.props.fetchLists()
+        this.props.fetchLists({ userId: this.props.userId })
     }
 
     render() {
@@ -45,13 +45,14 @@ class ListsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
+        userId: state.user.userId,
         lists: state.lists.lists,
         loading: state.lists.loading
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchLists: () => dispatch(fetchLists())
+    fetchLists: infoPacket => dispatch(fetchLists(infoPacket))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListsContainer)
