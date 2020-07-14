@@ -17,6 +17,7 @@ export default class ListForm extends Component {
         e.preventDefault()
         const listPacket = {
             list: {
+                userId: this.props.userId,
                 name: this.state.name,
                 list_items: this.removeBadCharacters(this.state.listItems.split(";")),
                 checklist: this.state.checklist

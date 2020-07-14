@@ -15,7 +15,7 @@ export const fetchLists = () => {
 }
 
 export const createOrUpdateList = (listPacket, fetchMethod) => {
-    const url = !!listPacket.list.id  ? `/users/4/lists/${listPacket.list.id}` : '/user/4/lists'
+    const url = !!listPacket.list.id  ? `/users/${listPacket.userId}/lists/${listPacket.list.id}` : '/user/4/lists'
     return async function (dispatch) {
         const resp = await fetch(url, {
             method: fetchMethod,

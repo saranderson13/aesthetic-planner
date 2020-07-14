@@ -44,6 +44,7 @@ class ListsControlsContainer extends Component {
             return(
                 <div id="controlsContent">
                     <ListForm 
+                        userId={this.props.userId}
                         createOrUpdate={this.props.createOrUpdate} 
                         submitName={"Create List"} 
                         back={this.backButton.bind(this)} />
@@ -53,6 +54,7 @@ class ListsControlsContainer extends Component {
             return(
                 <div id="controlsContent">
                     <ListForm 
+                        userId={this.props.userId}
                         createOrUpdate={this.props.createOrUpdate} 
                         deleteList={this.props.deleteList}
                         submitName={"Edit List"} 
@@ -86,9 +88,15 @@ class ListsControlsContainer extends Component {
 
 }
 
+const mapStateToProps = state => {
+    return ({
+        userId: state.user.user_id
+    })
+}
+
 const mapDispatchToProps = dispatch => ({
     createOrUpdate: (listPacket, method) => dispatch(createOrUpdateList(listPacket, method)),
     deleteList: id => dispatch(deleteList(id)),
 })
 
-export default connect(null, mapDispatchToProps)(ListsControlsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ListsControlsContainer)
