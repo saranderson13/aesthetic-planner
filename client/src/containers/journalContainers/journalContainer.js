@@ -25,7 +25,7 @@ class JournalContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchJournal()
+        this.props.fetchJournal({ userId: this.props.userId })
         this.setState({
             selectedDay: this.props.match.params.id
         })
@@ -197,6 +197,7 @@ class JournalContainer extends Component {
 
 const mapStateToProps = state => {
     return ({
+        userId: state.user.user_id,
         days: state.controls.days,
         journal: state.journals.journal,
         entries: state.journals.entries,
@@ -207,7 +208,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        fetchJournal: () => dispatch(fetchJournal()),
+        fetchJournal: infoPacket => dispatch(fetchJournal(infoPacket)),
         submitEntry: (entryPacket, method) => dispatch(submitEntry(entryPacket, method))
     })
 }
