@@ -9,12 +9,12 @@ import { fetchTrackers } from '../../actions/trackerActions'
 class TrackersBodyContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchTrackers({monthId: this.props.monthId})
+        this.props.fetchTrackers({ monthId: this.props.monthId, userId: this.props.userId })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.monthId !== this.props.monthId) {
-            this.props.fetchTrackers({monthId: this.props.monthId})
+            this.props.fetchTrackers({ monthId: this.props.monthId, userId: this.props.userId })
         }
     }
 
@@ -83,6 +83,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return({
+        userId: state.user.user_id,
         numDays: state.controls.currentMonth.numDays,
         trackersForMonth: state.controls.currentMonth.trackers,
         trackerData: state.trackers.trackers,
