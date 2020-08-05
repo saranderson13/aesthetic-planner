@@ -19,4 +19,10 @@ class User < ApplicationRecord
     validates :admin, inclusion: {in: [true, false]}
     validates :password, confirmation: true, unless: -> { password.blank? }
 
+
+
+    def list_trackers_in_month(month_id)
+        return self.trackers.select { |t| t.month_id === month_id }
+    end
+
 end

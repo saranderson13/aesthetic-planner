@@ -49,7 +49,7 @@ const userReducer = (
                 return {
                     ...state,
                     loading_user: false,
-                    logged_in: action.user.logged_in,
+                    logged_in: false,
                     user_id: null,
                     email: null,
                     username: null,

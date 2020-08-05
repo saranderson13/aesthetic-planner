@@ -95,6 +95,8 @@ end
 User.create(
     email: "test@email.com",
     username: "test_account",
+    password: "password",
+    password_confirmation: "password"
     name: "Testy McTesterson",
     admin: true
 )

@@ -1,5 +1,6 @@
 #userNotLoggedIn .userFormBodyContainer {
     height: 100%;
+    padding: 0px;
     background-color: rgb(233, 187, 187);
 }
 

@@ -61,6 +61,6 @@ export const logoutUser = () => {
             }
         })
         const json = await resp.json()
-        await dispatch({ type: 'SET_NO_USER'})
+        await dispatch({ type: 'SET_NO_USER', action: json})
     }
 }

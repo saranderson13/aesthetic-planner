@@ -12,6 +12,7 @@ class UserControls extends Component {
 
     render() {
         return (
+            // Link for profile or account settings or something.
             <form 
                 id="logoutForm"
                 onSubmit = { e => this.handleLogout(e) }>

@@ -14,12 +14,31 @@ class SignupForm extends Component {
     }
 
     handleChange = e => {
-        this.setState({ [e.target.id]: [e.target.value]  })
+        this.setState({ [e.target.id]: e.target.value  })
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log("Submitting Form")
+
+        const signupPacket = {
+            user: {
+                email: this.state.email,
+                password: this.state.password,
+                passwordConfirmation: this.state.passwordConfirmation,
+                username: this.state.username,
+                name: this.state.name
+            }
+        }
+
+        this.props.createUser(signupPacket)
+
+        this.setState({
+            email: "",
+            password: "",
+            passwordConfirmation: "",
+            username: "",
+            name: ""
+        })
     }
 
 

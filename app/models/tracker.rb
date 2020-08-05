@@ -13,10 +13,10 @@ class Tracker < ApplicationRecord
   private
 
   def validates_not_duplicate_kind
-    if (!!self.month)
-      if (self.month.trackers.map { |t| t.kind }.include?(self.kind))
-        errors.add(:kind, "Cannot duplicate trackers within the assigned month.")
-      end
+    user_trackers_in_month = self.user.list_trackers_in_month(self.month_id)
+    existing_trackers_in_month = user_trackers_in_month.map { |t| t.kind }
+    if ( existing_trackers_in_month.include?(self.kind) )
+      errors.add(:kind, "Cannot duplicate trackers within the assigned month.")
     end
   end
 
