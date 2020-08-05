@@ -45,7 +45,7 @@ class ListsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        userId: state.user.userId,
+        userId: state.user.user_id,
         lists: state.lists.lists,
         loading: state.lists.loading
     }

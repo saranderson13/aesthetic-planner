@@ -1,7 +1,8 @@
 class ListsController < ApplicationController
 
     def index
-        lists = List.all
+        # Shows all lists for a specified user.
+        lists = User.find(params["user_id"]).lists
         render json: lists.to_json(
             include: json_include()
         )
@@ -17,10 +18,15 @@ class ListsController < ApplicationController
 
 
     def create
-        # Grab current user
-        # (hardcoded user for now.)
 
-        list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: User.find(4))
+        binding.pry
+        list_owner = User.find(list_params["userId"])
+        # Add in check that list belongs to current user.
+
+        binding.pry
+
+        list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: list_owner)
+        binding.pry
         list_params["list_items"].uniq.each do |i|
             list.list_items.build(name: i)
         end
@@ -77,7 +83,7 @@ class ListsController < ApplicationController
     private
 
     def list_params
-        params.require(:list).permit(:id, :checklist, :name, :list_items => [])
+        params.require(:list).permit(:id, :userId, :checklist, :name, :list_items => [])
     end
 
     def json_include

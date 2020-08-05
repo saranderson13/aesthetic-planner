@@ -323,16 +323,18 @@ SUNDAY 7/12
 
 
 MONDAY 7/13
-[ ] Logout request
-[ ] cookie token? (how to sustain login)
+[ ] Remove hardcoded user from resource requests
+    [ ] Journal
+    [ ] Lists
+    [ ] Trackers
+    [ ] Day Planner?
 
 - - - - - -
 
 
 NEXT:
-[ ] Cookies
-[ ] User authentication for requests
-[ ] User authorization for requests and navigation
+[ ] Logout request
+[ ] cookie token? (how to sustain login)
 
 
 EVENTUALLY:
