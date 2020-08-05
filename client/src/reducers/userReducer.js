@@ -33,6 +33,7 @@ const userReducer = (
                 }    
                 
             case 'SET_USER':
+                debugger;
                 const userInfo = JSON.parse(action.user.user_info)
                 return {
                     ...state,

@@ -3,14 +3,17 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(email: session_params["email"])
-
+        # binding.pry
         if @user && @user.authenticate(session_params["password"])
+            # binding.pry
             login!
+            # binding.pry
             render json: {
                 logged_in: true,
                 user_info: @user.to_json()
             }
         else
+            # binding.pry
             render json: {
                 status: 401,
                 errors: ['user credentials incorrect', 'verify credentials and try again, or sign up']
