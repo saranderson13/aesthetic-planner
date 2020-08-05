@@ -5,6 +5,7 @@ import { fetchLists } from '../../actions/listsActions'
 import NavContainer from '../navContainer'
 import ListsControlsContainer from './listsControlsContainer'
 import ListsBodyContainer from './listsBodyContainer'
+import UserControls from '../../components/navComponents/userControls'
 
 class ListsContainer extends Component {
 
@@ -28,6 +29,9 @@ class ListsContainer extends Component {
                     <nav id="navContainer"><NavContainer pageName="non-tracker" /></nav>
                     <ListsControlsContainer 
                         lists={this.props.lists} />
+                    <div id="userControlsBar">
+                        <UserControls />
+                    </div>
                 </aside>
                 <section id="bodyContainer" className="grid" >
                     <ListsBodyContainer 

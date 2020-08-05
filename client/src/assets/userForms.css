@@ -51,3 +51,8 @@
     display: block;
     margin: auto;
 }
+
+#userControlsBar .userControlsButton {
+    margin: 10px;
+    float: right;
+}

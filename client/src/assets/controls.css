@@ -24,6 +24,16 @@
     margin-top: 310px
 }
 
+#userControlsBar {
+    box-sizing: inherit;
+    display: block;
+    width: inherit; height: 50px;
+    position: absolute;
+    bottom: 0px; left: 0px;
+    background-color: rgb(240, 214, 221);
+    border-right: 1px solid rgb(233, 187, 187);
+}
+
 .pageLinksBar {
     width: inherit; height: 30px;
     font-size: 12px;

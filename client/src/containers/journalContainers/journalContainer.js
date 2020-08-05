@@ -4,6 +4,7 @@ import { fetchJournal, submitEntry } from '../../actions/journalActions'
 import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
+import UserControls from '../../components/navComponents/userControls'
 
 class JournalContainer extends Component {
 
@@ -187,6 +188,9 @@ class JournalContainer extends Component {
                         recentEntries={recentEntries} 
                         formatDate={this.formatDate.bind(this)} 
                         toggleView={this.toggleView.bind(this)} />
+                    <div id="userControlsBar">
+                        <UserControls />
+                    </div>
                 </aside>
                 <section id="bodyContainer">{this.selectEntry()}</section>
             </>

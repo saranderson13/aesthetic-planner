@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import NavContainer from '../navContainer'
 import DayPlannerControlsContainer from './dayPlannerControlsContainer'
 import DayPlannerBodyContainer from './dayPlannerBodyContainer'
+import UserControls from '../../components/navComponents/userControls'
 
 class DayPlannerContainer extends Component {
 
@@ -69,6 +70,9 @@ class DayPlannerContainer extends Component {
                             pageName="non-tracker"
                             dayId={this.props.match.params.id} />
                     </nav>
+                    <div id="userControlsBar">
+                        <UserControls />
+                    </div>
                 </aside>
                 <section id="bodyContainer"><DayPlannerBodyContainer pageName={`Day Planner - ${this.state.currentDayId}`} /></section>
             </>

@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import NavContainer from '../navContainer'
 import TrackersControlsContainer from './trackersControlsContainer'
 import TrackersBodyContainer from './trackersBodyContainer'
+import UserControls from '../../components/navComponents/userControls'
 
 class TrackerContainer extends Component {
 
@@ -49,6 +50,9 @@ class TrackerContainer extends Component {
                             monthId={this.props.match.params.monthId} />
                     </nav>
                     <TrackersControlsContainer changeColor={this.changeColor.bind(this)} />
+                    <div id="userControlsBar">
+                        <UserControls />
+                    </div>
                 </aside>
                 <section id="bodyContainer">
                     <TrackersBodyContainer 
