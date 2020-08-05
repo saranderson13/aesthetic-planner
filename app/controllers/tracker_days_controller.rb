@@ -3,7 +3,7 @@ class TrackerDaysController < ApplicationController
     def update
         tracker_day = TrackerDay.find_by(id: t_days_params["id"])
         tracker_day.update(t_days_params)
-        monthTrackers = tracker_day.tracker_line.tracker.month.trackers
+        monthTrackers = tracker_day.user.list_trackers_in_month(tracker_day.month_id)
 
         render json: monthTrackers.to_json(
             include: {

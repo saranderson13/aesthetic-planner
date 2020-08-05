@@ -8,6 +8,14 @@ class TrackerDay < ApplicationRecord
   validate :validate_not_duplicate_day, on: :create
   validate :validate_day_within_month, :validate_duration_if_sleep
 
+  def user
+    return self.tracker_line.tracker.user
+  end
+
+  def month_id
+    return self.tracker_line.month.id
+  end
+
 
   private
 
