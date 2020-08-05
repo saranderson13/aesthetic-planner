@@ -16,12 +16,7 @@ class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log("Submitting Form")
-        // assemble packet
-        // call #loginUser
-        // reset form
-        // handle login errors?
-        // debugger;
+        
         const loginPacket = {
             user: { 
                 email: this.state.email,

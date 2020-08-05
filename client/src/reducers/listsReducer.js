@@ -20,6 +20,12 @@ const listsReducer = (
                     loading: false
                 }
 
+            case 'CLEAR_LISTS':
+                return {
+                    ...state,
+                    lists: []
+                }
+
             default:
                 return state;
         }

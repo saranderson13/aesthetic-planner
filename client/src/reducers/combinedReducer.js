@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 import userReducer from './userReducer'
 import dayPlannerReducer from './dayPlannerReducer'
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     trackers: trackersReducer,
     lists: listsReducer,
     journals: journalReducer,
-    controls: controlsReducer,
+    controls: controlsReducer
 })
 
 export default rootReducer;

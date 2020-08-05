@@ -21,6 +21,13 @@ const journalReducer = (
                     loadingJournal: false 
                 }
 
+            case 'CLEAR_JOURNAL':
+                return {
+                    ...state,
+                    journal: null,
+                    entries: []
+                }
+
             default:
                 return state;
 

@@ -49,6 +49,12 @@ const trackersReducer = (
                     loadingTrackers: false
                 }
 
+            case 'CLEAR_TRACKERS':
+                return {
+                    ...state,
+                    trackers: [],
+                }
+
             default:
                 return state
         }
