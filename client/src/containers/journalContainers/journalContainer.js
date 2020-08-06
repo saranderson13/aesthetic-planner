@@ -115,10 +115,10 @@ class JournalContainer extends Component {
     }
 
     recentEntries = () => {
-        if (this.props.entries.length > 0 && this.props.entries.length > 5) {
-            return this.props.entries.slice(this.props.entries.length - 5).sort( (a, b) => b.day_id - a.day_id )
+        if (this.props.recentEntries.length > 0) {
+            return this.props.recentEntries.sort( (a, b) => b.day_id - a.day_id )
         } else {
-            return this.props.entries.sort( (a, b) => b.day_id - a.day_id )
+            return []
         }
     }
 
@@ -205,6 +205,7 @@ const mapStateToProps = state => {
         days: state.controls.days,
         journal: state.journals.journal,
         entries: state.journals.entries,
+        recentEntries: state.journals.recentEntries,
         loadingJournal: state.journals.loadingJournal,
         currentDayId: state.controls.currentDayId
     })

@@ -5,4 +5,9 @@ class Journal < ApplicationRecord
 
   validates :user, presence: true
 
+
+  def recent_entries
+    self.journal_entries.last(3)
+  end
+
 end

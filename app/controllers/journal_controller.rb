@@ -1,9 +1,13 @@
 class JournalController < ApplicationController
 
     def index
-        user = User.find(params["user_id"])
-        render json: user.journal.to_json(
-            include: :journal_entries
+        recent_entries = current_user.journal.recent_entries
+
+        render json: current_user.journal.to_json(
+            include: [ 
+                :journal_entries,
+                :recent_entries 
+            ]
         )
     end
 

@@ -2,6 +2,7 @@ const journalReducer = (
     state = {
         journal: null,
         entries: [],
+        recentEntries: [],
         loadingJournal: false
     }, action ) => {
 
@@ -18,6 +19,7 @@ const journalReducer = (
                     ...state,
                     journal: action.journal,
                     entries: [...action.journal.journal_entries],
+                    recentEntries: [...action.journal.recent_entries],
                     loadingJournal: false 
                 }
 
@@ -25,7 +27,8 @@ const journalReducer = (
                 return {
                     ...state,
                     journal: null,
-                    entries: []
+                    entries: [],
+                    recentEntries: []
                 }
 
             default:

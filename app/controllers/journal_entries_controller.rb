@@ -9,16 +9,20 @@ class JournalEntriesController < ApplicationController
 
         # Get current user from session
         # Get journal from current user
-
-        user = User.find(4)
-        journal = user.journal
-        new_entry = journal.journal_entries.build(entry_params)
+        binding.pry
+        
+        new_entry = current_user.journal.journal_entries.build(entry_params)
 
         if new_entry.valid?
             new_entry.save
 
-            render json: journal.to_json(
-                include: :journal_entries
+            recent_entries = current_user.journal.recent_entries
+
+            render json: current_user.journal.to_json(
+                include: [ 
+                    :journal_entries,
+                    :recent_entries 
+                ]
             )
         else 
             # Throw error
@@ -27,15 +31,18 @@ class JournalEntriesController < ApplicationController
 
 
     def update
-        user = User.find(4)
-        journal = user.journal
         entry = JournalEntry.find(entry_params["id"])
 
-        if (journal === entry.journal) 
+        if (current_user.journal === entry.journal) 
             entry.update(entry_params)
             
-            render json: journal.to_json(
-                include: :journal_entries
+            recent_entries = current_user.journal.recent_entries
+
+            render json: current_user.journal.to_json(
+                include: [ 
+                    :journal_entries,
+                    :recent_entries 
+                ]
             )
         else
             # Throw error

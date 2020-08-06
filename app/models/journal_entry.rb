@@ -7,4 +7,9 @@ class JournalEntry < ApplicationRecord
   validates :content, length: { maximum: 10000, 
     too_long: "Journal entry must not exceed %{count} characters." }
 
+
+  def user
+    return self.journal.user
+  end
+
 end
