@@ -86,7 +86,8 @@
 
 .listDeleteButton {
     box-sizing: border-box;
-    margin-left: 25px
+    float: right;
+    margin-top: 2px;
 }
 
 .checklistCheckbox {

@@ -9,7 +9,6 @@ class JournalEntriesController < ApplicationController
 
         # Get current user from session
         # Get journal from current user
-        binding.pry
         
         new_entry = current_user.journal.journal_entries.build(entry_params)
 

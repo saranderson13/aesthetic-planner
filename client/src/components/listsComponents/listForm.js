@@ -41,8 +41,12 @@ export default class ListForm extends Component {
     }
 
     handleDelete = e => {
+        e.preventDefault()
         this.props.back()
-        this.props.deleteList(this.state.currentListId)
+        this.props.deleteList({
+            listId: this.state.currentListId,
+            userId: this.props.userId
+        })
     }
 
     generateListOptions = () => {
@@ -132,13 +136,13 @@ export default class ListForm extends Component {
                         type="submit" 
                         className="customButton"
                         value={this.props.submitName} />
+                    <button 
+                        onClick={e => this.handleDelete(e)}
+                        className="customButton listDeleteButton"
+                        style={{display: !!this.state.currentListId ? 'block' : 'none' }}>
+                        Delete List
+                    </button>
                 </form>
-                <button 
-                    onClick={e => this.handleDelete(e)}
-                    className="customButton listDeleteButton"
-                    style={{display: !!this.state.currentListId ? 'block' : 'none' }}>
-                    Delete List
-                </button>
             </>
         )
     }

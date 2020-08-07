@@ -96,7 +96,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     createOrUpdate: (listPacket, method) => dispatch(createOrUpdateList(listPacket, method)),
-    deleteList: id => dispatch(deleteList(id)),
+    deleteList: infoPacket => dispatch(deleteList(infoPacket)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListsControlsContainer)

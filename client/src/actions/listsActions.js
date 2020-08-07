@@ -30,9 +30,10 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
     }
 }
 
-export const deleteList = id => {
+export const deleteList = infoPacket => {
+    debugger;
     return async function (dispatch) {
-        const resp = await fetch(`./lists/${id}`, {
+        const resp = await fetch(`./users/${infoPacket.userId}/lists/${infoPacket.listId}`, {
             method: 'DELETE',
             header: {
                 'Accept': 'application/json',

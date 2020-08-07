@@ -1,6 +1,7 @@
 class ListItemsController < ApplicationController
 
     def update
+        binding.pry
         item = ListItem.find_by(id: list_item_params["id"])
         item.update(completed: list_item_params["completed"])
         lists = List.all
