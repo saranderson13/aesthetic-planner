@@ -10,7 +10,6 @@ class ListsController < ApplicationController
 
 
     def create
-        binding.pry
         if (list_params["userId"] === current_user.id)
             list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: current_user)
 
