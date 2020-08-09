@@ -9,32 +9,25 @@ class ListsController < ApplicationController
     end
 
 
-    # def show
-    #     list = List.find_by(id: params["id"])
-    #     render json: list.to_json(
-    #         include: json_include()
-    #     )
-    # end
-
-
     def create
-
         binding.pry
-        list_owner = User.find(list_params["userId"])
-        # Add in check that list belongs to current user.
+        if (list_params["userId"] === current_user.id)
+            list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: current_user)
 
-        binding.pry
+            list_params["list_items"].uniq.each do |i|
+                list.list_items.build(name: i)
+            end
 
-        list = List.create(name: list_params["name"], checklist: list_params["checklist"], user: list_owner)
-        binding.pry
-        list_params["list_items"].uniq.each do |i|
-            list.list_items.build(name: i)
+            list.save
+            render json: current_user.lists.to_json(
+                include: json_include()
+            )
+        else 
+            render json: {
+                status: 401,
+                error: "You are not authorized to perform this action."
+            }
         end
-        list.save
-        lists = List.all
-        render json: lists.to_json(
-            include: json_include()
-        )
     end
 
 

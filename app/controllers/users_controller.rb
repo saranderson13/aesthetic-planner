@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
     
     def show
-        binding.pry
         @user = User.all.find(params["id"])
         if !!@user
             render json: @user.to_json(
@@ -31,7 +30,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        # binding.pry
         if @user.valid?
             @user.save
 

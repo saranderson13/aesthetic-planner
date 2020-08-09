@@ -15,7 +15,7 @@ export const fetchLists = infoPacket => {
 }
 
 export const createOrUpdateList = (listPacket, fetchMethod) => {
-    const url = !!listPacket.list.id  ? `/users/${listPacket.userId}/lists/${listPacket.list.id}` : '/user/4/lists'
+    const url = !!listPacket.list.id  ? `/users/${listPacket.userId}/lists/${listPacket.list.id}` : `/users/${listPacket.userId}/lists`
     return async function (dispatch) {
         const resp = await fetch(url, {
             method: fetchMethod,
@@ -31,7 +31,6 @@ export const createOrUpdateList = (listPacket, fetchMethod) => {
 }
 
 export const deleteList = infoPacket => {
-    debugger;
     return async function (dispatch) {
         const resp = await fetch(`./users/${infoPacket.userId}/lists/${infoPacket.listId}`, {
             method: 'DELETE',
