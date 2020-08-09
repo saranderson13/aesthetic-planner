@@ -23,6 +23,28 @@ resizeAllListBoxes = () => {
     for( let x = 0; x < allBoxes.length; x++ ) {
         this.resizeListBox(allBoxes[x]);
     }
+    if (this.props.lists.length > 1) {
+        this.bottomMarginFix()
+    }}
+
+bottomMarginFix = () => {
+    // Adds margin to the bottom of the box that goes the lowest.
+
+    const lists = document.getElementsByClassName('listBox')
+
+    // Reset all bottom margins.
+    function resetBottomMargin(node) {
+        node.style.marginBottom = "0px"
+    }
+    Array.from(lists).forEach( resetBottomMargin )
+    
+    // Sort by lowest screen position (screen position of the bottom of the box that goes the lowest).
+    let bottomOrder = Array.from(lists).sort( (a, b) => {
+        return (b.offsetTop + b.offsetHeight) - (a.offsetTop + a.offsetHeight)
+    } )
+
+    // Add bottom margin to the first box in the array ordered by bottom position.
+    bottomOrder[0].style.marginBottom = "20px"   
 }
 
     generateListBoxes = () => {
