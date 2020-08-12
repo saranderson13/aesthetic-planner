@@ -40,7 +40,7 @@ class UsersController < ApplicationController
             months = Month.all
             months.each do |mo|
                 h = Tracker.create(month_id: mo.id, kind: "habit", user: @user)
-                htl = TrackerLine.create(tracker: h, name: "Example Line")
+                # htl = TrackerLine.create(tracker: h, name: "Example Line")
 
                 m = Tracker.create(month_id: mo.id, kind: "mood", user: @user)
                 mtl = TrackerLine.create(tracker: m, name: "mood line")
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
                 days = mo.days()
                 days.each do |d|
-                    TrackerDay.create(tracker_line: htl, day: d)
+                    # TrackerDay.create(tracker_line: htl, day: d)
                     TrackerDay.create(tracker_line: mtl, day: d)
                     TrackerDay.create(tracker_line: stl, day: d)
                 end

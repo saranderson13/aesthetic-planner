@@ -20,6 +20,7 @@ export const fetchUser = userPacket => {
 
 export const createUser = signupPacket => {
     return async function (dispatch) {
+        dispatch({ type: 'LOADING_USER' })
         dispatch({ type: 'USER_CREATION' })
         const resp = await fetch('/users', {
             method: 'POST',

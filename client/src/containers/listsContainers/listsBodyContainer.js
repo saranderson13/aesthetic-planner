@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ListBox from '../../components/listsComponents/listBox'
-import LoadingWheel from '../../assets/images/loading-wheel.gif'
+import LoadingPage from '../../containers/loadingPageContainer'
 
 class ListsBodyContainer extends Component {
 
@@ -58,7 +58,7 @@ bottomMarginFix = () => {
     render() {
         if (this.props.loading) {
             return (
-                <img src={LoadingWheel} alt="Loading" />
+                <LoadingPage />
             )
         } else {
             return (

@@ -13,14 +13,23 @@ class UserControls extends Component {
     render() {
         return (
             // Link for profile or account settings or something.
-            <form 
-                id="logoutForm"
-                onSubmit = { e => this.handleLogout(e) }>
-                <input type="submit" className="customButton userControlsButton" value="Log Out"></input>
-            </form>
+            <>
+                <span className="greeting">{"Hello, "}{this.props.firstName}</span>
+                <form 
+                    id="logoutForm"
+                    onSubmit = { e => this.handleLogout(e) }>
+                    <input type="submit" className="customButton userControlsButton" value="Log Out"></input>
+                </form>
+            </>
         )
     }
 
+}
+
+const mapStateToProps = state => {
+    return ({
+        firstName: state.user.name.split(" ")[0]
+    })
 }
 
 const mapDispatchToProps = dispatch => {
@@ -29,4 +38,4 @@ const mapDispatchToProps = dispatch => {
     })
 }
 
-export default connect(null, mapDispatchToProps)(UserControls)
+export default connect(mapStateToProps, mapDispatchToProps)(UserControls)
