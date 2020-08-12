@@ -43,10 +43,10 @@ class UsersController < ApplicationController
                 # htl = TrackerLine.create(tracker: h, name: "Example Line")
 
                 m = Tracker.create(month_id: mo.id, kind: "mood", user: @user)
-                mtl = TrackerLine.create(tracker: m, name: "mood line")
+                mtl = TrackerLine.create(tracker: m, name: "Mood Summary")
 
                 s = Tracker.create(month_id: mo.id, kind: "sleep", user: @user)
-                stl = TrackerLine.create(tracker: s, name: "sleep line")
+                stl = TrackerLine.create(tracker: s, name: "Sleep Quality")
 
                 days = mo.days()
                 days.each do |d|

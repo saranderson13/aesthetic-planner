@@ -318,50 +318,50 @@ Day.find(140).journal_entries.build(journal: test_user.journal, content: "Is thi
 
 nums = *(3..15)
 
-l1 = List.create(name: "Artists")
-nums.sample.times { l1.list_items.build(name: Faker::Artist.name, user: test_user) }
+l1 = List.create(name: "Artists", user: test_user)
+nums.sample.times { l1.list_items.build(name: Faker::Artist.name) }
 l1.save
 
-l2 = List.create(name: "Coffee Varieties")
-nums.sample.times { l2.list_items.build(name: Faker::Coffee.variety, user: test_user) }
+l2 = List.create(name: "Coffee Varieties", user: test_user)
+nums.sample.times { l2.list_items.build(name: Faker::Coffee.variety) }
 l2.save
 
-l3 = List.create(name: "Ancient Heroes")
-nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero, user: test_user) }
+l3 = List.create(name: "Ancient Heroes", user: test_user)
+nums.sample.times { l3.list_items.build(name: Faker::Ancient.hero) }
 l3.save
 
-l4 = List.create(name: "Middle-earth")
-nums.sample.times { l4.list_items.build(name: Faker::Movies::LordOfTheRings.location, user: test_user) }
+l4 = List.create(name: "Middle-earth", user: test_user)
+nums.sample.times { l4.list_items.build(name: Faker::Movies::LordOfTheRings.location) }
 l4.save
 
-l5 = List.create(name: "Cat Breeds", checklist: true)
-nums.sample.times { l5.list_items.build(name: Faker::Creature::Cat.breed, user: test_user) }
+l5 = List.create(name: "Cat Breeds", checklist: true, user: test_user)
+nums.sample.times { l5.list_items.build(name: Faker::Creature::Cat.breed) }
 l5.save
 
-l6 = List.create(name: "Groceries", checklist: true)
-nums.sample.times { l6.list_items.build(name: Faker::Food.ingredient, user: test_user) }
+l6 = List.create(name: "Groceries", checklist: true, user: test_user)
+nums.sample.times { l6.list_items.build(name: Faker::Food.ingredient) }
 l6.save
 
-l7 = List.create(name: "Elder Scrolls Creatures")
-nums.sample.times { l7.list_items.build(name: Faker::Games::ElderScrolls.creature, user: test_user) }
+l7 = List.create(name: "Elder Scrolls Creatures", user: test_user)
+nums.sample.times { l7.list_items.build(name: Faker::Games::ElderScrolls.creature) }
 l7.save
 
-l8 = List.create(name: "Pokemon", checklist: true)
-nums.sample.times { l8.list_items.build(name: Faker::Games::Pokemon.name, user: test_user) }
+l8 = List.create(name: "Pokemon", checklist: true, user: test_user)
+nums.sample.times { l8.list_items.build(name: Faker::Games::Pokemon.name) }
 l8.save
 
-l9 = List.create(name: "Princess Bride Quotes")
-nums.sample.times { l9.list_items.build(name: Faker::Movies::PrincessBride.quote, user: test_user) }
+l9 = List.create(name: "Princess Bride Quotes", user: test_user)
+nums.sample.times { l9.list_items.build(name: Faker::Movies::PrincessBride.quote) }
 l9.save
 
-l10 = List.create(name: "Twin Peaks Characters")
-nums.sample.times { l10.list_items.build(name: Faker::TvShows::TwinPeaks.character, user: test_user) }
+l10 = List.create(name: "Twin Peaks Characters", user: test_user)
+nums.sample.times { l10.list_items.build(name: Faker::TvShows::TwinPeaks.character) }
 l10.save
 
-l11 = List.create(name: "Quotes from the Hitchhiker's Guide to the Galaxy")
-nums.sample.times { l11.list_items.build(name: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, user: test_user) }
+l11 = List.create(name: "Quotes from the Hitchhiker's Guide to the Galaxy", user: test_user)
+nums.sample.times { l11.list_items.build(name: Faker::Movies::HitchhikersGuideToTheGalaxy.quote) }
 l11.save
 
-l12 = List.create(name: "Spells of the Potterverse")
-nums.sample.times { l12.list_items.build(name: Faker::Movies::HarryPotter.spell, user: test_user) }
+l12 = List.create(name: "Spells of the Potterverse", user: test_user)
+nums.sample.times { l12.list_items.build(name: Faker::Movies::HarryPotter.spell) }
 l12.save

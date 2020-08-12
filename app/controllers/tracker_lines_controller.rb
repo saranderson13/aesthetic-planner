@@ -1,37 +1,47 @@
 class TrackerLinesController < ApplicationController
 
     def create
-        line = TrackerLine.create(t_line_params)
+        tracker = Tracker.find(t_line_params["tracker_id"])
+        if tracker.user === current_user
+            line = TrackerLine.create(t_line_params)
+    
+            # Create tracker days
+            days = line.days
+            days.each { |d| d.tracker_days.build(tracker_line_id: line.id).save }
 
-        # Create tracker days
-        days = line.days
-        days.each { |d| d.tracker_days.build(tracker_line_id: line.id).save }
-
-        trackers = line.all_trackers_for_month
-        render json: trackers.to_json(
-            include: json_include()
-        )
+            trackers = current_user.list_trackers_in_month(tracker.month_id)
+            render json: trackers.to_json(
+                include: json_include()
+            )
+        else 
+            render json: {
+                status: 401,
+                error: "You are not authorized to perform this action."
+            }
+        end
     end
 
 
-    def update
-        line = TrackerLine.find_by(id: t_line_params["id"])
-        line.update(t_line_params)
-        trackers = Tracker.all
-        render json: trackers.to_json(
-            include: json_include()
-        )
-    end
+    # NOT YET IMPLEMENTED
+    # 
+    # def update
+    #     line = TrackerLine.find_by(id: t_line_params["id"])
+    #     line.update(t_line_params)
+    #     trackers = Tracker.all
+    #     render json: trackers.to_json(
+    #         include: json_include()
+    #     )
+    # end
 
 
-    def destroy
-        line = TrackerLine.find_by(id: t_line_params["id"])
-        line.delete
-        trackers = Tracker.all
-        render json: trackers.to_json(
-            include: json_include()
-        )
-    end
+    # def destroy
+    #     line = TrackerLine.find_by(id: t_line_params["id"])
+    #     line.delete
+    #     trackers = Tracker.all
+    #     render json: trackers.to_json(
+    #         include: json_include()
+    #     )
+    # end
 
 
     private
