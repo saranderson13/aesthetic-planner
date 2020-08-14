@@ -11,17 +11,25 @@ class HabitTable extends Component {
     }
 
     generateHabitLines = () => {
-        return (
-            this.props.lines.map( l => {
-                return (
-                    <HabitLine 
-                        key={uuid()}
-                        days={l.tracker_days} 
-                        name={l.name} 
-                        paintColor={this.props.paintColor} />
-                )
-            })
-        )
+        if (this.props.lines.length === 0) {
+            return (
+                <div className="instruction">
+                    {"❤ Create your first line"}
+                </div>
+            )
+        } else {
+            return (
+                this.props.lines.map( l => {
+                    return (
+                        <HabitLine 
+                            key={uuid()}
+                            days={l.tracker_days} 
+                            name={l.name} 
+                            paintColor={this.props.paintColor} />
+                    )
+                })
+            )
+        }
     }
 
     addLine = e => {

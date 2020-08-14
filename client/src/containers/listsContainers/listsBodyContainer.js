@@ -60,6 +60,12 @@ bottomMarginFix = () => {
             return (
                 <LoadingPage />
             )
+        } else if (this.props.lists.length === 0) {
+            return (
+                <div className="instruction">
+                    {"❤ Create your first list"}
+                </div>
+            )
         } else {
             return (
                 <>

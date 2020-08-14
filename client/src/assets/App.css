@@ -26,3 +26,9 @@ html, body, #root {
   text-align: center;
   padding-top: 300px;
 }
+
+.instruction {
+  font-size: 10px;
+  text-transform: uppercase;
+  user-select: none;
+}

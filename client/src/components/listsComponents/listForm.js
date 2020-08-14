@@ -42,11 +42,13 @@ export default class ListForm extends Component {
 
     handleDelete = e => {
         e.preventDefault()
-        this.props.back()
-        this.props.deleteList({
-            listId: this.state.currentListId,
-            userId: this.props.userId
-        })
+        if( window.confirm("Are you sure you wish to delete this list?") ) {
+            this.props.back()
+            this.props.deleteList({
+                listId: this.state.currentListId,
+                userId: this.props.userId
+            })
+        }
     }
 
     generateListOptions = () => {
