@@ -74,7 +74,11 @@ class DayPlannerContainer extends Component {
                         <UserControls />
                     </div>
                 </aside>
-                <section id="bodyContainer"><DayPlannerBodyContainer pageName={`Day Planner - ${this.state.currentDayId}`} /></section>
+                <section id="bodyContainer">
+                    <DayPlannerBodyContainer 
+                        pageName={`Day Planner - ${this.state.currentDayId}`}
+                        dayId={this.props.match.params.id} />
+                </section>
             </>
         )
     }

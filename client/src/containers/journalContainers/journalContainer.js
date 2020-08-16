@@ -5,6 +5,8 @@ import NavContainer from '../navContainer'
 import JournalControlsContainer from './journalControlsContainer'
 import JournalBodyContainer from './journalBodyContainer'
 import UserControls from '../../components/navComponents/userControls'
+import { formatDate } from '../../helperFunctions'
+
 
 class JournalContainer extends Component {
 
@@ -73,13 +75,6 @@ class JournalContainer extends Component {
         }
     }
 
-    formatDate = dateObj => {
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        
-        return !!dateObj ? `${weekDays[dateObj.getUTCDay()]}, ${months[dateObj.getUTCMonth()]} ${dateObj.getUTCDate()}, ${dateObj.getUTCFullYear()}` : null
-    }
-
     toggleView = e => {
         this.setState( prevState => {
             return {
@@ -134,7 +129,7 @@ class JournalContainer extends Component {
                 const entry = this.props.entries.find( j => j.day_id.toString() === this.state.selectedDay )
                 const day = this.props.days.find( d => d.id.toString() === this.state.selectedDay)
                 const dateObj = !!day ? new Date(day.date) : null
-                const formattedDate = this.formatDate(dateObj)
+                const formattedDate = this.props.formatDate(dateObj)
                 if (!!entry) {
                     return (
                         <JournalBodyContainer 
@@ -186,7 +181,7 @@ class JournalContainer extends Component {
                         inputLegal={this.state.inputLegal}
                         mode={mode}
                         recentEntries={recentEntries} 
-                        formatDate={this.formatDate.bind(this)} 
+                        formatDate={this.props.formatDate.bind(this)} 
                         toggleView={this.toggleView.bind(this)} />
                     <div id="userControlsBar">
                         <UserControls />
@@ -214,7 +209,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         fetchJournal: infoPacket => dispatch(fetchJournal(infoPacket)),
-        submitEntry: (entryPacket, method) => dispatch(submitEntry(entryPacket, method))
+        submitEntry: (entryPacket, method) => dispatch(submitEntry(entryPacket, method)),
+        formatDate: dateObj => formatDate(dateObj)
     })
 }
 
