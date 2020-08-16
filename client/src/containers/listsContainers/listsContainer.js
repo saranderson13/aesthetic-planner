@@ -33,7 +33,7 @@ class ListsContainer extends Component {
                         <UserControls />
                     </div>
                 </aside>
-                <section id="bodyContainer" className="grid" >
+                <section id="bodyContainer" >
                     <ListsBodyContainer 
                         style={{maxWidth: window.innerWidth - 300}}
                         pageName="Lists" 

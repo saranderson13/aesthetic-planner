@@ -111,7 +111,7 @@
     text-align: left;
     width: 50px;
     cursor: crosshair;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 30px;
     text-transform: uppercase;
 }
@@ -120,7 +120,7 @@
     text-align: right;
     width: 50px; 
     cursor: crosshair;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 30px;
     text-transform: uppercase;
 }

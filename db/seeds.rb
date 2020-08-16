@@ -232,11 +232,11 @@ palettes = [
         name: "80's Glam",
         color_1: "#C8007D",
         color_2: "#A31895",
-        color_3: "#7F2ABC",
-        color_4: "#4943CE",
-        color_5: "#1963B6",
-        color_6: "#0082BB",
-        color_7: "#0091B1"
+        color_3: "#7C22BC",
+        color_4: "#5643CE",
+        color_5: "#2D69C4",
+        color_6: "#008EC7",
+        color_7: "#00ADB1"
     },
     {
         name: "Gemtones",
