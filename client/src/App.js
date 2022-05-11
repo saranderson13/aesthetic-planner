@@ -35,6 +35,12 @@ class App extends Component {
     this.props.fetchMonthsForWidget() 
   }
 
+  componentDidUpdate() {
+    console.log(this.props)
+    debugger;
+    // if (this.props.user)
+  }
+
   confirmAllFetchesAndLoggedIn = () => {
     return this.props.user.logged_in && this.props.currentDayId && this.props.currentMonthId
   }
